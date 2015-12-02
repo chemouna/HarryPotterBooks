@@ -1,0 +1,14 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+  <style name="Widget.HenriPotier" parent="android:Widget"/>
+
+  <style name="Widget.HenriPotier.Toolbar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+    <item name="android:background">@color/primary</item>
+    <item name="titleTextColor">@color/text_primary_light</item>
+    <item name="android:textColor">@color/text_primary_light</item>
+    <item name="android:elevation" tools:targetApi="lollipop">@dimen/toolbar_elevation</item>
+  </style>
+
+  <style name="HenriPotier.MainActivity"/>
+
+</resources>

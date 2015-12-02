@@ -1,0 +1,21 @@
+apply from: rootProject.file('dependencies.gradle')
+
+subprojects {
+  buildscript {
+    dependencies {
+      classpath rootProject.ext.androidPlugin
+      classpath rootProject.ext.aptPlugin
+    }
+    repositories {
+      mavenCentral()
+    }
+  }
+
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://jitpack.io"
+    }
+  }
+}
+

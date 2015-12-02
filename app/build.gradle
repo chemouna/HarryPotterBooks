@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+  compileSdkVersion rootProject.ext.compileSdkVersion
+  buildToolsVersion rootProject.ext.buildToolsVersion
+
+  defaultConfig {
+    applicationId "com.mounacheikhna.xebiaproject"
+    minSdkVersion rootProject.ext.minSdkVersion
+    targetSdkVersion rootProject.ext.targetSdkVersion
+    versionCode rootProject.ext.versionCode
+    versionName rootProject.ext.versionName
+
+    buildConfigField "String", "HENRI_POTIER_ENDPOINT_URL", "\"http://henri-potier.xebia.fr\""
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    debug {
+      applicationIdSuffix '.debug'
+    }
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  compile rootProject.ext.supportAppCompat
+  compile rootProject.ext.supportAnnotations
+
+  compile rootProject.ext.timber
+
+  compile rootProject.ext.dagger
+  apt rootProject.ext.daggerCompiler
+  provided rootProject.ext.javaxAnnotation
+
+  compile rootProject.ext.retrofit
+  compile rootProject.ext.converterMoshi
+  compile rootProject.ext.adapterRxjava
+  compile rootProject.ext.rxJava
+  compile rootProject.ext.rxAndroid
+
+  compile rootProject.ext.butterknife
+  compile rootProject.ext.picasso
+
+  compile rootProject.ext.stetho
+  compile rootProject.ext.stethoOkhttp
+
+  debugCompile rootProject.ext.rxJavaDebug
+
+  testCompile rootProject.ext.junit
+}
