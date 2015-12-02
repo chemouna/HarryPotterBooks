@@ -28,9 +28,12 @@ android {
   }
 }
 
+
 dependencies {
   compile rootProject.ext.supportAppCompat
   compile rootProject.ext.supportAnnotations
+  compile rootProject.ext.supportRecyclerView
+  compile rootProject.ext.supportDesign
 
   compile rootProject.ext.timber
 
