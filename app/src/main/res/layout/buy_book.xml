@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,7 +10,7 @@
 
   <RelativeLayout
       android:id="@+id/container"
-      android:layout_width="200dp"
+      android:layout_width="280dp"
       android:layout_height="200dp"
       android:layout_gravity="center"
       android:padding="@dimen/spacing_normal"
@@ -17,32 +18,47 @@
       android:background="@drawable/dialog_background"
       android:transitionName="@string/transition_buy_book">
 
-    <TextView
-        android:id="@+id/book_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/Widget.HenriPotier.BuyTitle"
-        tools:text="Henri Potier 1"/>
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/book_price"
+      <TextView
+          android:id="@+id/book_title"
+          app:layout_widthPercent="70%"
+          android:layout_height="wrap_content"
+          style="@style/Widget.HenriPotier.BuyTitle"
+          tools:text="Henri Potier blabla blabla blabla 1"/>
+
+      <TextView
+          android:id="@+id/book_price"
+          app:layout_widthPercent="30%"
+          android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/book_title"
+          android:layout_toEndOf="@id/book_title"
+          android:layout_alignParentRight="true"
+          android:layout_alignParentEnd="true"
+          android:gravity="end"
+          style="@style/Widget.HenriPotier.BuyPrice"
+          tools:text="10.33€"/>
+
+    </android.support.percent.PercentRelativeLayout>
+
+    <com.mounacheikhna.xebiaproject.ui.view.QuantityView
+        android:id="@+id/quantity"
+        android:layout_below="@id/header"
+        android:layout_marginTop="@dimen/spacing_double"
+        android:layout_marginBottom="@dimen/spacing_double"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/book_title"
-        android:layout_toEndOf="@id/book_title"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:gravity="end"
-        style="@style/Widget.HenriPotier.BuyPrice"
-        android:text="10.33€"/>
+        android:layout_centerHorizontal="true"
+        tools:background="@color/primary"/>
 
     <Button
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:padding="@dimen/padding_normal"
-        android:layout_marginBottom="@dimen/spacing_small"
+        style="?android:borderlessButtonStyle"
         android:textColor="@color/text_primary_light"
         android:background="@color/accent"
         android:layout_alignParentBottom="true"

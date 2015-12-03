@@ -61,5 +61,9 @@
     <item name="android:ellipsize">end</item>
   </style>
 
+  <style name="Widget.HenriPotier.QuantityAction">
+  </style>
+
+
   <color name="translucent_background">#99323232</color>
 </resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+  <!-- widget for +/- -->
+  <ImageView
+      android:id="@+id/remove_quantity"
+      android:layout_width="38dp"
+      android:layout_height="38dp"
+      android:src="@drawable/ic_remove_circle_outline_grey_600_18dp"
+      style="@style/Widget.HenriPotier.QuantityAction"/>
+
+  <TextView
+      android:id="@+id/tv_quantity"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="32sp"
+      android:textColor="@color/text_secondary_dark"
+      android:layout_centerHorizontal="true"
+      android:paddingLeft="@dimen/spacing_normal"
+      android:paddingRight="@dimen/spacing_normal"/>
+
+  <ImageView
+      android:id="@+id/add_quantity"
+      android:layout_width="38dp"
+      android:layout_height="38dp"
+      android:src="@drawable/ic_add_circle_outline_grey_600_18dp"
+      style="@style/Widget.HenriPotier.QuantityAction"/>
+
+</merge>

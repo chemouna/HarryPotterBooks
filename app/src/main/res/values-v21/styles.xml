@@ -14,4 +14,8 @@
     <item name="android:windowReturnTransition">@transition/book_return</item>
   </style>
 
+  <style name="Widget.HenriPotier.QuantityAction">
+    <item name="android:background">?android:selectableItemBackgroundBorderless</item>
+  </style>
+
 </resources>

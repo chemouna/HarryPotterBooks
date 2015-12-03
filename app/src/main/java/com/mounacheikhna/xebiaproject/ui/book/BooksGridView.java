@@ -13,6 +13,7 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -141,7 +142,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
         ActivityCompat.startActivity(mHost, intent, options.toBundle());
       }
     });
-    final int spacing = getResources().getDimensionPixelSize(R.dimen.spacing_very_small);
+    final int spacing = getResources().getDimensionPixelSize(R.dimen.spacing_small);
     mBooksView.addItemDecoration(new OffsetDecoration(spacing));
     mBooksView.setAdapter(mAdapter);
     mBooksView.scheduleLayoutAnimation();
