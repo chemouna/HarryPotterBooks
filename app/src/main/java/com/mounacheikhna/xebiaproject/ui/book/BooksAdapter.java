@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.model.Book;
 import com.squareup.picasso.Picasso;
+import java.util.ArrayList;
 import java.util.List;
 import rx.functions.Action1;
 
@@ -16,7 +17,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
     implements Action1<List<Book>> {
 
   private final Picasso mPicasso;
-  private List<Book> mItems;
+  private List<Book> mItems = new ArrayList<>();
 
   public BooksAdapter(Picasso picasso) {
     mPicasso = picasso;
@@ -32,7 +33,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
   }
 
   @Override public int getItemCount() {
-    return 0;
+    return mItems.size();
   }
 
   @Override public void call(List<Book> books) {

@@ -10,5 +10,20 @@ public class Book {
   private int price;
   private String cover;
 
+  public String getIsbn() {
+    return isbn;
+  }
+
+  public String getTitle() {
+    return title;
+  }
+
+  public int getPrice() {
+    return price;
+  }
+
+  public String getCover() {
+    return cover;
+  }
 
 }

@@ -61,7 +61,7 @@ import timber.log.Timber;
     return new Picasso.Builder(app).downloader(new OkHttpDownloader(okClient))
         .listener(new Picasso.Listener() {
           @Override public void onImageLoadFailed(Picasso picasso, Uri uri, Exception e) {
-            Timber.e("Failed to load image: %s, cause : %s", uri, e);
+            Timber.e(e, "Failed to load image: %s ", uri);
           }
         })
         .build();

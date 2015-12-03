@@ -16,6 +16,7 @@ ext {
   supportDesign = "com.android.support:design:$supportVersion"
   supportAnnotations = "com.android.support:support-annotations:$supportVersion"
   supportRecyclerView = "com.android.support:recyclerview-v7:$supportVersion"
+  supportCardView = "com.android.support:cardview-v7:$supportVersion"
 
   playServicesVersion = '8.3.0'
 

@@ -10,6 +10,7 @@
   <dimen name="padding_normal">16dp</dimen>
 
   <dimen name="toolbar_elevation">4dp</dimen>
+  <dimen name="book_column_width">144dp</dimen>
 
 
 </resources>

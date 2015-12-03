@@ -4,9 +4,12 @@
   <!-- app main colors -->
   <color name="primary">#03A9F4</color>
   <color name="primary_dark">#0288D1</color>
-  <color name="accent">#EC407A</color>
+  <color name="accent">#4DB6AC</color>
   <color name="primary_super_dark">#01579B</color>
-  <color name="accent_dark">#C2185B</color>
+  <color name="accent_dark">#26A69A</color>
+
+  <color name="colorAccentPressed">#26A69A</color>
+  <color name="colorAccentFocused">#80CBC4</color>
 
   <!-- app common colors -->
   <color name="text_primary_dark">#de000000</color>
@@ -20,5 +23,6 @@
   <color name="background_dark">#ff333333</color>
   <color name="background_super_dark">#ff292929</color>
   <color name="hint_disabled_dark">#43000000</color>
+  <color name="background_light_grey">#E0E0E0</color>
 
 </resources>
