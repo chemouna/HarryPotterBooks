@@ -25,4 +25,8 @@
     <item name="android:textColor">@color/text_secondary_dark</item>
   </style>
 
+  <style name="Widget.HenriPotier.CardPrice">
+    <item name="android:textColor">@color/accent</item>
+  </style>
+
 </resources>

@@ -106,7 +106,6 @@ public class BookActivity extends AppCompatActivity {
                   applyToStatusBar(isDark, palette);
                   applyToToolbar(palette);
                   applyToFab(palette);
-                  //applyToBackButton(isDark);
                 }
               });
         }

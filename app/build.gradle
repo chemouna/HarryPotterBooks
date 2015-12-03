@@ -24,6 +24,9 @@ android {
 
     buildConfigField "String", "HENRI_POTIER_ENDPOINT_URL", "\"http://henri-potier.xebia.fr\""
 
+    buildConfigField "String", "GOOD_READS_KEY", "\"rSgxFW23ByRubOCGfwEQTg\""
+    buildConfigField "String", "GOOD_READS_SCECRET", "\"xs3msWO6DTgBFh5zpRyOjvGm8sxF9HuUd0NWtGbQwi4\""
+
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
 
@@ -46,6 +49,7 @@ dependencies {
   compile rootProject.ext.supportDesign
   compile rootProject.ext.supportCardView
   compile rootProject.ext.supportPalette
+  compile rootProject.ext.supportPercent
 
   compile rootProject.ext.timber
 
