@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -23,8 +25,9 @@ import com.mounacheikhna.xebiaproject.api.model.Book;
 import com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator;
 import com.mounacheikhna.xebiaproject.ui.view.recyclerview.OffsetDecoration;
 import com.squareup.picasso.Picasso;
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 import javax.inject.Inject;
+import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -83,11 +86,37 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
 
     mBooksPresenter.onAttach(this);
     initList();
+    loadBooks();
+  }
+
+  private void loadBooks() {
+    if (!isConnected()) {
+      mStateView.setText(R.string.no_network);
+      return;
+    }
     mBooksPresenter.loadBooks()
-        .delay(16, TimeUnit.SECONDS)
-        .subscribeOn(Schedulers.io())
-        .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(mAdapter);
+          //.delay(25, TimeUnit.SECONDS) //just for debugging
+          .subscribeOn(Schedulers.io())
+          .observeOn(AndroidSchedulers.mainThread())
+          .subscribe(new Subscriber<List<Book>>() {
+            @Override public void onCompleted() {}
+
+            @Override public void onError(Throwable e) {
+              mStateView.setText(R.string.loading_error);
+              mAnimatorView.setDisplayedChildId(R.id.state);
+            }
+
+            @Override public void onNext(List<Book> books) {
+              mAdapter.call(books);
+            }
+          });
+  }
+
+  private boolean isConnected() {
+    ConnectivityManager connectivityManager =
+        (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+    NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+    return activeNetworkInfo != null && activeNetworkInfo.isConnected();
   }
 
   private void initList() {
@@ -122,4 +151,6 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
     super.onDetachedFromWindow();
     mBooksPresenter.onDetach();
   }
+
+
 }

@@ -2,4 +2,6 @@
   <string name="app_name">XebiaProject</string>
   <string name="no_books">No books</string>
   <string name="default_author">J.K. Rowling</string>
+  <string name="loading_error">Error while loading books.</string>
+  <string name="no_network">No network.</string>
 </resources>
