@@ -27,17 +27,13 @@
           android:id="@+id/book_image"
           android:layout_width="@dimen/book_column_width"
           android:layout_height="@dimen/book_column_width"
-          android:scaleType="fitStart"
-          android:layout_gravity="center_horizontal"
           android:transitionName="@string/transition_book_image"
           tools:ignore="NewApi"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/spacing_normal"
-            android:layout_marginStart="@dimen/spacing_normal">
+            android:padding="@dimen/spacing_normal">
 
           <ImageView
               android:id="@+id/book_overflow_menu"
