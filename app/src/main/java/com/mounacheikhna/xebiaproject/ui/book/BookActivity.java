@@ -5,6 +5,7 @@ import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.app.SharedElementCallback;
 import android.content.Context;
 import android.content.Intent;
@@ -32,9 +33,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.transition.MophFabDialogHelper;
+import com.mounacheikhna.xebiaproject.ui.buy.BuyBook;
 import com.mounacheikhna.xebiaproject.util.Animations.EmptyTransitionListener;
 import com.mounacheikhna.xebiaproject.util.Colors;
 import com.squareup.picasso.Callback;
@@ -50,6 +54,7 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastM;
 public class BookActivity extends AppCompatActivity {
 
   private static final String BOOK_EXTRA = "book_extra";
+  private static final int REQUEST_CODE_BUY_BOOK = 1;
 
   @Bind(R.id.book_image) ImageView mBookImage;
   @Bind(R.id.toolbar) Toolbar mToolbar;
@@ -64,6 +69,7 @@ public class BookActivity extends AppCompatActivity {
       mBookFab.setVisibility(View.INVISIBLE);
     }
   };
+  private int mFabColor;
 
   public static Intent getIntent(Context context, Book book) {
     Intent intent = new Intent(context, BookActivity.class);
@@ -77,31 +83,35 @@ public class BookActivity extends AppCompatActivity {
 
     HenriPotierApp.get(this).getComponent().injectBooksActivity(this);
     ButterKnife.bind(this);
+
+    mFabColor = ContextCompat.getColor(this, R.color.accent);
     final Book book = getIntent().getParcelableExtra(BOOK_EXTRA);
     setupToolbar();
     setupTransitions();
     displayBook(book);
   }
 
-  private void displayBook(Book book) {
+  @SuppressLint("NewApi") private void displayBook(Book book) {
     mCollapsingToolbarLayout.setTitle(book.getTitle());
 
-    postponeEnterTransition();
-    mBookImage.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-      @Override public boolean onPreDraw() {
-        mBookImage.getViewTreeObserver().removeOnPreDrawListener(this);
-        enterAnimation();
-        startPostponedEnterTransition();
-        return true;
-      }
-    });
+    if (isAtLeastLollipop()) {
+      postponeEnterTransition();
+      mBookImage.getViewTreeObserver()
+          .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override public boolean onPreDraw() {
+              mBookImage.getViewTreeObserver().removeOnPreDrawListener(this);
+              enterAnimation();
+              startPostponedEnterTransition();
+              return true;
+            }
+          });
+    }
 
     if (!TextUtils.isEmpty(book.getCover())) {
       mPicasso.load(book.getCover())
           //.placeholder(R.drawable.people) //temp
           //.error(R.drawable.people) //temp
-          .fit()
-          .into(mBookImage, new Callback() {
+          .fit().into(mBookImage, new Callback() {
         @Override public void onSuccess() {
           final Bitmap bitmap = ((BitmapDrawable) mBookImage.getDrawable()).getBitmap();
           Palette.from(bitmap)
@@ -127,18 +137,17 @@ public class BookActivity extends AppCompatActivity {
         }
       });
     }
-
   }
 
-  private void enterAnimation() {
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP) private void enterAnimation() {
     ObjectAnimator showFab = ObjectAnimator.ofPropertyValuesHolder(mBookFab,
         PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f),
         PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f),
         PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f));
     showFab.setStartDelay(300L);
     showFab.setDuration(300L);
-    showFab.setInterpolator(AnimationUtils.loadInterpolator(this,
-        android.R.interpolator.linear_out_slow_in));
+    showFab.setInterpolator(
+        AnimationUtils.loadInterpolator(this, android.R.interpolator.linear_out_slow_in));
     showFab.start();
   }
 
@@ -146,8 +155,7 @@ public class BookActivity extends AppCompatActivity {
     setSupportActionBar(mToolbar);
   }
 
-  @SuppressLint("NewApi")
-  private void setupTransitions() {
+  @SuppressLint("NewApi") private void setupTransitions() {
     if (isAtLeastLollipop()) {
       setExitSharedElementCallback(new SharedElementCallback() {
         @Override public Parcelable onCaptureSharedElementSnapshot(View sharedElement,
@@ -162,16 +170,15 @@ public class BookActivity extends AppCompatActivity {
           return bitmap;
         }
       });
-      getWindow()
-          .getSharedElementReturnTransition()
-          .addListener(mReturnTransitionListener);
+      getWindow().getSharedElementReturnTransition().addListener(mReturnTransitionListener);
     }
   }
 
   private void applyToFab(Palette palette) {
     Palette.Swatch topColor = palette.getVibrantSwatch();
     if (topColor == null) return;
-    mBookFab.setBackgroundTintList(ColorStateList.valueOf(topColor.getRgb()));
+    mFabColor = topColor.getRgb();
+    mBookFab.setBackgroundTintList(ColorStateList.valueOf(mFabColor));
   }
 
   /**
@@ -223,4 +230,15 @@ public class BookActivity extends AppCompatActivity {
     }
   }
 
+  @OnClick(R.id.book_fab) @TargetApi(Build.VERSION_CODES.LOLLIPOP) public void onBookFabClick() {
+    Intent buyIntent = new Intent(this, BuyBook.class);
+    if (isAtLeastLollipop()) {
+      buyIntent.putExtra(MophFabDialogHelper.EXTRA_SHARED_ELEMENT_START_COLOR, mFabColor);
+      ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, mBookFab,
+          getString(R.string.transition_buy_book));
+      startActivity(buyIntent, /*REQUEST_CODE_BUY_BOOK, */ options.toBundle());
+    } else {
+      startActivity(buyIntent);
+    }
+  }
 }

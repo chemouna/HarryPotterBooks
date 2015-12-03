@@ -29,7 +29,25 @@
     <item name="android:textColor">@color/accent</item>
   </style>
 
+
+  <style name="HenriPotier.TranslucentBase"/>
+
+  <style name="HenriPotier.Translucent" parent="HenriPotier.TranslucentBase">
+    <item name="android:windowBackground">@color/translucent_background</item>
+    <item name="android:colorBackgroundCacheHint">@null</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowNoTitle">true</item>
+  </style>
+
   <style name="HenriPotier.BookActivity">
   </style>
 
+  <style name="HenriPotier.BuyBook">
+    <item name="android:windowAnimationStyle">@null</item>
+    <item name="colorPrimary">@color/accent</item>
+  </style>
+
+  <color name="translucent_background">#99323232</color>
 </resources>

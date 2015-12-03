@@ -2,5 +2,6 @@
 <resources>
 
   <string name="transition_book_image" translatable="false">transition_book_image</string>
+  <string name="transition_buy_book">transition_buy_book</string>
 
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="dismiss"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.buy.BuyBook">
+
+  <LinearLayout
+      android:id="@+id/container"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/spacing_very_large"
+      android:padding="@dimen/spacing_very_large"
+      android:paddingTop="@dimen/spacing_very_large"
+      android:orientation="vertical"
+      android:layout_gravity="center"
+      android:elevation="4dp"
+      android:background="@drawable/dialog_background"
+      android:transitionName="@string/transition_buy_book">
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="@dimen/padding_normal"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:textColor="@color/text_primary_light"
+        android:background="@color/accent"
+        android:text="Confirm"/>
+
+  </LinearLayout>
+
+
+</FrameLayout>
