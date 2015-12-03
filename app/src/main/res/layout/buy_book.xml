@@ -4,22 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="dismiss"
     android:fitsSystemWindows="true"
     tools:context=".ui.buy.BuyBook">
 
-  <LinearLayout
+  <RelativeLayout
       android:id="@+id/container"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_margin="@dimen/spacing_very_large"
-      android:padding="@dimen/spacing_very_large"
-      android:paddingTop="@dimen/spacing_very_large"
-      android:orientation="vertical"
+      android:layout_width="200dp"
+      android:layout_height="200dp"
       android:layout_gravity="center"
+      android:padding="@dimen/spacing_normal"
       android:elevation="4dp"
       android:background="@drawable/dialog_background"
       android:transitionName="@string/transition_buy_book">
+
+    <TextView
+        android:id="@+id/book_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.HenriPotier.BuyTitle"
+        tools:text="Henri Potier 1"/>
+
+    <TextView
+        android:id="@+id/book_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/book_title"
+        android:layout_toEndOf="@id/book_title"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="end"
+        style="@style/Widget.HenriPotier.BuyPrice"
+        android:text="10.33€"/>
 
     <Button
         android:id="@+id/confirm"
@@ -30,9 +45,11 @@
         android:layout_marginBottom="@dimen/spacing_small"
         android:textColor="@color/text_primary_light"
         android:background="@color/accent"
-        android:text="Confirm"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/confirm"/>
 
-  </LinearLayout>
+  </RelativeLayout>
 
 
 </FrameLayout>

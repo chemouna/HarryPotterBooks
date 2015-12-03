@@ -4,4 +4,5 @@
   <string name="default_author">J.K. Rowling</string>
   <string name="loading_error">Error while loading books.</string>
   <string name="no_network">No network.</string>
+  <string name="confirm">Confirm</string>
 </resources>

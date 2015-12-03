@@ -53,7 +53,7 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastM;
  */
 public class BookActivity extends AppCompatActivity {
 
-  private static final String BOOK_EXTRA = "book_extra";
+  private static final String EXTRA_BOOK = "extra_book";
   private static final int REQUEST_CODE_BUY_BOOK = 1;
 
   @Bind(R.id.book_image) ImageView mBookImage;
@@ -70,10 +70,11 @@ public class BookActivity extends AppCompatActivity {
     }
   };
   private int mFabColor;
+  private Book mBook;
 
   public static Intent getIntent(Context context, Book book) {
     Intent intent = new Intent(context, BookActivity.class);
-    intent.putExtra(BOOK_EXTRA, book);
+    intent.putExtra(EXTRA_BOOK, book);
     return intent;
   }
 
@@ -85,10 +86,10 @@ public class BookActivity extends AppCompatActivity {
     ButterKnife.bind(this);
 
     mFabColor = ContextCompat.getColor(this, R.color.accent);
-    final Book book = getIntent().getParcelableExtra(BOOK_EXTRA);
+    mBook = getIntent().getParcelableExtra(EXTRA_BOOK);
     setupToolbar();
     setupTransitions();
-    displayBook(book);
+    displayBook(mBook);
   }
 
   @SuppressLint("NewApi") private void displayBook(Book book) {
@@ -232,6 +233,9 @@ public class BookActivity extends AppCompatActivity {
 
   @OnClick(R.id.book_fab) @TargetApi(Build.VERSION_CODES.LOLLIPOP) public void onBookFabClick() {
     Intent buyIntent = new Intent(this, BuyBook.class);
+    //TODO: send current colors from palette too
+    buyIntent.putExtra(BuyBook.EXTRA_BUY_BOOK, mBook);
+    buyIntent.putExtra(BuyBook.EXTRA_ACCENT_COLOR, mFabColor);
     if (isAtLeastLollipop()) {
       buyIntent.putExtra(MophFabDialogHelper.EXTRA_SHARED_ELEMENT_START_COLOR, mFabColor);
       ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, mBookFab,

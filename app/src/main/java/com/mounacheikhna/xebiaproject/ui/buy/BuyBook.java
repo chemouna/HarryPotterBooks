@@ -8,9 +8,14 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.mounacheikhna.xebiaproject.R;
+import com.mounacheikhna.xebiaproject.api.model.Book;
 import com.mounacheikhna.xebiaproject.transition.MophFabDialogHelper;
+import com.mounacheikhna.xebiaproject.util.PriceFormatter;
 
 import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
 
@@ -21,86 +26,38 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
  */
 @TargetApi(Build.VERSION_CODES.LOLLIPOP) public class BuyBook extends AppCompatActivity {
 
+  public static final String EXTRA_BUY_BOOK = "extra_book";
+  public static final String EXTRA_ACCENT_COLOR = "extra_accent_color";
+
   @Bind(R.id.container) ViewGroup mContainer;
+  @Bind(R.id.book_title) TextView mTitleView;
+  @Bind(R.id.book_price) TextView mPriceView;
+  @Bind(R.id.confirm) Button mConfirmButton;
 
   @SuppressLint("NewApi") @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.buy_book);
+    ButterKnife.bind(this);
+
     getWindow().getDecorView()
         .setBackgroundColor(ContextCompat.getColor(this, R.color.background_dark));
+
+    final Book book = getIntent().getParcelableExtra(EXTRA_BUY_BOOK);
+    int accentColor = getIntent().getIntExtra(EXTRA_ACCENT_COLOR, 0);
+
+    if(accentColor != 0) {
+      mConfirmButton.setBackgroundColor(accentColor);
+      //mPriceView.setTextColor(accentColor);
+    }
+    mTitleView.setText(book.getTitle());
+    //mPriceView.setText(PriceFormatter.formatEuro(book.getPrice()));
+
     if (isAtLeastLollipop()) {
       MophFabDialogHelper.setupSharedElementTransitions(this, mContainer,
           getResources().getDimensionPixelSize(R.dimen.dialog_corner));
       //TransitionManager.beginDelayedTransition(mContainer);
     }
 
-    /*
-    if(isAtLeastLollipop()) {
-      setExitSharedElementCallback(new SharedElementCallback() {
-        @Override
-        public View onCreateSnapshotView(Context context, Parcelable snapshot) {
-          // grab the saved fab snapshot and pass it to the below via a View
-          View view = new View(context);
-          final Bitmap snapshotBitmap = getSnapshot(snapshot);
-          if (snapshotBitmap != null) {
-            view.setBackground(new BitmapDrawable(context.getResources(), snapshotBitmap));
-          }
-          return view;
-        }
-
-        @Override
-        public void onSharedElementStart(List<String> sharedElementNames,
-            List<View> sharedElements,
-            List<View> sharedElementSnapshots) {
-          // grab the fab snapshot and fade it out/in (depending on if we are entering or exiting)
-          for (int i = 0; i < sharedElements.size(); i++) {
-            if (sharedElements.get(i) == mContainer) {
-              View snapshot = sharedElementSnapshots.get(i);
-              BitmapDrawable fabSnapshot = (BitmapDrawable) snapshot.getBackground();
-              fabSnapshot.setBounds(0, 0, snapshot.getWidth(), snapshot.getHeight());
-              mContainer.getOverlay().clear();
-              mContainer.getOverlay().add(fabSnapshot);
-              //if (!isDismissing) {
-              // fab -> login: fade out the fab snapshot
-              ObjectAnimator.ofInt(fabSnapshot, "alpha", 0).setDuration(100).start();
-              */
-/*} else {
-            // login -> fab: fade in the fab snapshot toward the end of the transition
-            fabSnapshot.setAlpha(0);
-            ObjectAnimator fadeIn = ObjectAnimator.ofInt(fabSnapshot, "alpha", 255)
-                .setDuration(150);
-            fadeIn.setStartDelay(150);
-            fadeIn.start();
-          }*/    /*
-
-              forceSharedElementLayout();
-              break;
-            }
-          }
-        }
-
-        private Bitmap getSnapshot(Parcelable parcel) {
-          if (parcel instanceof Bitmap) {
-            return (Bitmap) parcel;
-          } else if (parcel instanceof Bundle) {
-            Bundle bundle = (Bundle) parcel;
-            // see SharedElementCallback#onCaptureSharedElementSnapshot
-            return (Bitmap) bundle.getParcelable("sharedElement:snapshot:bitmap");
-          }
-          return null;
-        }
-      });
-    }
-    */
   }
 
- /* private void forceSharedElementLayout() {
-    int widthSpec = View.MeasureSpec.makeMeasureSpec(mContainer.getWidth(),
-        View.MeasureSpec.EXACTLY);
-    int heightSpec = View.MeasureSpec.makeMeasureSpec(mContainer.getHeight(),
-        View.MeasureSpec.EXACTLY);
-   mContainer.measure(widthSpec, heightSpec);
-   mContainer.layout(mContainer.getLeft(),mContainer.getTop(),mContainer.getRight(),mContainer
-        .getBottom());
-  }*/
 }

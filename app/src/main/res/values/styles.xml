@@ -49,5 +49,17 @@
     <item name="colorPrimary">@color/accent</item>
   </style>
 
+  <style name="Widget.HenriPotier.BuyPrice">
+    <item name="android:textColor">@color/accent</item>
+    <item name="android:textSize">18sp</item>
+  </style>
+
+  <style name="Widget.HenriPotier.BuyTitle">
+    <item name="android:textColor">@color/text_primary_dark</item>
+    <item name="android:textSize">18sp</item>
+    <item name="android:maxLines">3</item>
+    <item name="android:ellipsize">end</item>
+  </style>
+
   <color name="translucent_background">#99323232</color>
 </resources>
