@@ -1,5 +1,7 @@
 package com.mounacheikhna.xebiaproject.ui.book;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -25,6 +27,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.transition.Transition;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import butterknife.Bind;
@@ -83,6 +86,16 @@ public class BookActivity extends AppCompatActivity {
   private void displayBook(Book book) {
     mCollapsingToolbarLayout.setTitle(book.getTitle());
 
+    postponeEnterTransition();
+    mBookImage.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+      @Override public boolean onPreDraw() {
+        mBookImage.getViewTreeObserver().removeOnPreDrawListener(this);
+        enterAnimation();
+        startPostponedEnterTransition();
+        return true;
+      }
+    });
+
     if (!TextUtils.isEmpty(book.getCover())) {
       mPicasso.load(book.getCover())
           //.placeholder(R.drawable.people) //temp
@@ -115,6 +128,18 @@ public class BookActivity extends AppCompatActivity {
       });
     }
 
+  }
+
+  private void enterAnimation() {
+    ObjectAnimator showFab = ObjectAnimator.ofPropertyValuesHolder(mBookFab,
+        PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f),
+        PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f),
+        PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f));
+    showFab.setStartDelay(300L);
+    showFab.setDuration(300L);
+    showFab.setInterpolator(AnimationUtils.loadInterpolator(this,
+        android.R.interpolator.linear_out_slow_in));
+    showFab.start();
   }
 
   private void setupToolbar() {

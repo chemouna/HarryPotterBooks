@@ -23,7 +23,8 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".ui.book.BookActivity"/>
+    <activity android:name=".ui.book.BookActivity"
+      android:theme="@style/HenriPotier.BookActivity"/>
 
   </application>
 

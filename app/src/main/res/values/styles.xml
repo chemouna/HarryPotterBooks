@@ -29,4 +29,7 @@
     <item name="android:textColor">@color/accent</item>
   </style>
 
+  <style name="HenriPotier.BookActivity">
+  </style>
+
 </resources>
