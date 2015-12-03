@@ -11,4 +11,18 @@
 
   <style name="HenriPotier.MainActivity"/>
 
+  <style name="Widget.HenriPotier.CardTitle">
+    <item name="android:maxLines">2</item>
+    <item name="android:ellipsize">end</item>
+    <item name="android:textSize">16sp</item>
+    <item name="android:textColor">@color/text_primary_dark</item>
+  </style>
+
+  <style name="Widget.HenriPotier.CardSubtitle" parent="TextAppearance.AppCompat.Small">
+    <item name="android:maxLines">1</item>
+    <item name="android:ellipsize">end</item>
+    <item name="android:layout_marginBottom">@dimen/spacing_very_small</item>
+    <item name="android:textColor">@color/text_secondary_dark</item>
+  </style>
+
 </resources>
