@@ -2,14 +2,14 @@
 <resources>
 
   <!-- app main colors -->
-  <color name="primary">#03A9F4</color>
-  <color name="primary_dark">#0288D1</color>
-  <color name="accent">#4DB6AC</color>
-  <color name="primary_super_dark">#01579B</color>
-  <color name="accent_dark">#26A69A</color>
+  <color name="primary">#009688</color>
+  <color name="light_primary">#B2DFDB</color>
+  <color name="primary_dark">#00796B</color>
+  <color name="accent">#448AFF</color>
+  <color name="accent_dark">#2979FF</color>
 
-  <color name="colorAccentPressed">#26A69A</color>
-  <color name="colorAccentFocused">#80CBC4</color>
+  <color name="colorAccentPressed">#42A5F5</color>
+  <color name="colorAccentFocused">#64B5F6</color>
 
   <!-- app common colors -->
   <color name="text_primary_dark">#de000000</color>

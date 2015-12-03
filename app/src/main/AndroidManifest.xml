@@ -23,6 +23,8 @@
       </intent-filter>
     </activity>
 
+    <activity android:name=".ui.book.BookActivity"/>
+
   </application>
 
 </manifest>

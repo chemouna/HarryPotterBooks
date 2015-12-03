@@ -21,7 +21,7 @@
   </android.support.design.widget.AppBarLayout>
 
   <com.mounacheikhna.xebiaproject.ui.book.BooksGridView
-      android:id="@+id/venues_view"
+      android:id="@+id/books_grid_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:ignore="NewApi">
+
+  <android.support.design.widget.AppBarLayout
+      android:id="@+id/appbar"
+      android:layout_width="match_parent"
+      android:layout_height="256dp"
+      android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+      android:fitsSystemWindows="true">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed"
+        android:fitsSystemWindows="true"
+        app:contentScrim="?attr/colorPrimary"
+        app:expandedTitleMarginStart="48dp"
+        app:expandedTitleMarginEnd="64dp"
+        android:elevation="6dp"
+        tools:ignore="NewApi">
+
+      <ImageView
+          android:id="@+id/book_image"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scaleType="centerCrop"
+          android:fitsSystemWindows="true"
+          android:transitionName="@string/transition_book_image"
+          tools:ignore="NewApi"/>
+
+      <android.support.v7.widget.Toolbar
+          android:id="@+id/toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="?attr/actionBarSize"
+          app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+          app:layout_collapseMode="pin"/>
+
+    </android.support.design.widget.CollapsingToolbarLayout>
+
+  </android.support.design.widget.AppBarLayout>
+
+  <com.mounacheikhna.xebiaproject.ui.book.BookDetailsView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"/>
+
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/book_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:layout_anchor="@id/appbar"
+      app:layout_anchorGravity="bottom|right|end"
+      app:fabSize="normal"
+      android:layout_margin="@dimen/spacing_double"
+      android:clickable="true"
+      tools:ignore="NewApi"/>
+
+</android.support.design.widget.CoordinatorLayout>

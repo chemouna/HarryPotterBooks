@@ -2,6 +2,7 @@ package com.mounacheikhna.xebiaproject;
 
 import com.mounacheikhna.xebiaproject.api.CoreApiModule;
 import com.mounacheikhna.xebiaproject.api.DebugApiModule;
+import com.mounacheikhna.xebiaproject.ui.book.BookActivity;
 import com.mounacheikhna.xebiaproject.ui.book.BooksGridView;
 import dagger.Component;
 import javax.inject.Singleton;
@@ -14,6 +15,7 @@ import javax.inject.Singleton;
 public interface AppComponent {
   void injectApplication(HenriPotierApp starWarsApp);
   void injectBooksView(BooksGridView booksGridView);
+  void injectBooksActivity(BookActivity bookActivity);
 
   final class Initializer {
     private Initializer() {

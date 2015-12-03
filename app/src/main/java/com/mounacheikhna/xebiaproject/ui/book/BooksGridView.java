@@ -1,8 +1,14 @@
 package com.mounacheikhna.xebiaproject.ui.book;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -13,6 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
+import com.mounacheikhna.xebiaproject.api.model.Book;
 import com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator;
 import com.mounacheikhna.xebiaproject.ui.view.recyclerview.OffsetDecoration;
 import com.squareup.picasso.Picasso;
@@ -34,6 +41,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
 
   @Inject Picasso mPicasso;
   @Inject BooksPresenter mBooksPresenter;
+  @Nullable  private Activity mHost;
 
   public BooksGridView(Context context) {
     super(context);
@@ -63,6 +71,10 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
     ButterKnife.bind(this, view);
   }
 
+  public void bind(Activity host) {
+    mHost = host;
+  }
+
   @Override protected void onAttachedToWindow() {
     super.onAttachedToWindow();
 
@@ -90,7 +102,16 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
             mAdapter.getItemCount() == 0 ? R.id.state : R.id.books_rv);
       }
     });
-
+    mAdapter.setBookSelectedListener(new BooksAdapter.BookSelectedListener() {
+      @Override public void onBookSelectedListener(View transitionView, Book book) {
+        if(mHost == null) return;
+        final Intent intent = BookActivity.getIntent(getContext(), book);
+        final ActivityOptionsCompat options =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(mHost,
+                new Pair<>(transitionView, getContext().getString(R.string.transition_book_image)));
+        ActivityCompat.startActivity(mHost, intent, options.toBundle());
+      }
+    });
     final int spacing = getResources().getDimensionPixelSize(R.dimen.spacing_very_small);
     mBooksView.addItemDecoration(new OffsetDecoration(spacing));
     mBooksView.setAdapter(mAdapter);

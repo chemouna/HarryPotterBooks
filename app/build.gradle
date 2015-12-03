@@ -45,6 +45,7 @@ dependencies {
   compile rootProject.ext.supportRecyclerView
   compile rootProject.ext.supportDesign
   compile rootProject.ext.supportCardView
+  compile rootProject.ext.supportPalette
 
   compile rootProject.ext.timber
 
