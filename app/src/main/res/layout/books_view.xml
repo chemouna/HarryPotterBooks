@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <android.support.v7.widget.RecyclerView
+    <com.mounacheikhna.xebiaproject.ui.view.recyclerview.GridRecyclerView
         android:id="@+id/books_rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,7 +32,8 @@
         android:clipToPadding="false"
         android:scrollbarStyle="outsideOverlay"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
-        app:spanCount="@integer/nb_columns_books"/>
+        app:spanCount="@integer/nb_columns_books"
+        android:layoutAnimation="@anim/grid_layout_animation"/>
 
   </com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator>
 

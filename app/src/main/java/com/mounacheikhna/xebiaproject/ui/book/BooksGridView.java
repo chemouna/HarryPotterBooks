@@ -94,6 +94,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
     final int spacing = getResources().getDimensionPixelSize(R.dimen.spacing_very_small);
     mBooksView.addItemDecoration(new OffsetDecoration(spacing));
     mBooksView.setAdapter(mAdapter);
+    mBooksView.scheduleLayoutAnimation();
   }
 
   @Override protected void onDetachedFromWindow() {
