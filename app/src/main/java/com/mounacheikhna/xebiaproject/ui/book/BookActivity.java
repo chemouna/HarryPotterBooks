@@ -27,6 +27,7 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.AnimationUtils;
@@ -49,9 +50,11 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
 import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastM;
 
 /**
- * Created by cheikhnamouna on 12/3/15.
+ * Created by cheikhnamouna on 3/12/15.
  */
 public class BookActivity extends AppCompatActivity {
+
+  private static final String TAG = "BookActivity";
 
   private static final String EXTRA_BOOK = "extra_book";
   private static final int REQUEST_CODE_BUY_BOOK = 1;
@@ -65,6 +68,7 @@ public class BookActivity extends AppCompatActivity {
 
   private Transition.TransitionListener mReturnTransitionListener = new EmptyTransitionListener() {
     @SuppressLint("NewApi") @Override public void onTransitionStart(Transition transition) {
+      Log.d(TAG, "onTransitionStart() called with: " + "transition = [" + transition + "]");
       super.onTransitionStart(transition);
       mBookFab.setVisibility(View.INVISIBLE);
     }
@@ -89,10 +93,11 @@ public class BookActivity extends AppCompatActivity {
     mBook = getIntent().getParcelableExtra(EXTRA_BOOK);
     setupToolbar();
     setupTransitions();
-    displayBook(mBook);
+    displayBook(savedInstanceState, mBook);
   }
 
-  @SuppressLint("NewApi") private void displayBook(Book book) {
+  @SuppressLint("NewApi") private void displayBook(final Bundle savedInstanceState, Book book) {
+    Log.d(TAG, "displayBook() called with: " + "book = [" + book + "]");
     mCollapsingToolbarLayout.setTitle(book.getTitle());
 
     if (isAtLeastLollipop()) {
@@ -100,8 +105,9 @@ public class BookActivity extends AppCompatActivity {
       mBookImage.getViewTreeObserver()
           .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override public boolean onPreDraw() {
+              Log.d(TAG, "onPreDraw() called with: " + "");
               mBookImage.getViewTreeObserver().removeOnPreDrawListener(this);
-              enterAnimation();
+              enterAnimation(savedInstanceState != null);
               startPostponedEnterTransition();
               return true;
             }
@@ -140,20 +146,27 @@ public class BookActivity extends AppCompatActivity {
     }
   }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP) private void enterAnimation() {
-    ObjectAnimator showFab = ObjectAnimator.ofPropertyValuesHolder(mBookFab,
-        PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f),
-        PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f),
-        PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f));
-    showFab.setStartDelay(300L);
-    showFab.setDuration(300L);
-    showFab.setInterpolator(
-        AnimationUtils.loadInterpolator(this, android.R.interpolator.linear_out_slow_in));
-    showFab.start();
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+  private void enterAnimation(boolean orientationChanged) {
+    Log.d(TAG, "enterAnimation() called with: " + "");
+    if (orientationChanged) {
+      ObjectAnimator showFab = ObjectAnimator.ofPropertyValuesHolder(mBookFab,
+          PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f),
+          PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f),
+          PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f));
+      showFab.setStartDelay(300L);
+      showFab.setDuration(300L);
+      showFab.setInterpolator(
+          AnimationUtils.loadInterpolator(this, android.R.interpolator.linear_out_slow_in));
+      showFab.start();
+    }
   }
 
   private void setupToolbar() {
     setSupportActionBar(mToolbar);
+    if (getSupportActionBar() != null) {
+      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
   }
 
   @SuppressLint("NewApi") private void setupTransitions() {
@@ -161,6 +174,14 @@ public class BookActivity extends AppCompatActivity {
       setExitSharedElementCallback(new SharedElementCallback() {
         @Override public Parcelable onCaptureSharedElementSnapshot(View sharedElement,
             Matrix viewToGlobalMatrix, RectF screenBounds) {
+          Log.d(TAG, "onCaptureSharedElementSnapshot() called with: "
+              + "sharedElement = ["
+              + sharedElement
+              + "], viewToGlobalMatrix = ["
+              + viewToGlobalMatrix
+              + "], screenBounds = ["
+              + screenBounds
+              + "]");
           int bitmapWidth = Math.round(screenBounds.width());
           int bitmapHeight = Math.round(screenBounds.height());
           Bitmap bitmap = null;
@@ -231,7 +252,7 @@ public class BookActivity extends AppCompatActivity {
     }
   }
 
-  @OnClick(R.id.book_fab) @TargetApi(Build.VERSION_CODES.LOLLIPOP) public void onBookFabClick() {
+  @SuppressLint("NewApi") @OnClick(R.id.book_fab) public void onBookFabClick() {
     Intent buyIntent = new Intent(this, BuyBook.class);
     //TODO: send current colors from palette too
     buyIntent.putExtra(BuyBook.EXTRA_BUY_BOOK, mBook);
@@ -240,9 +261,28 @@ public class BookActivity extends AppCompatActivity {
       buyIntent.putExtra(MophFabDialogHelper.EXTRA_SHARED_ELEMENT_START_COLOR, mFabColor);
       ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this, mBookFab,
           getString(R.string.transition_buy_book));
-      startActivity(buyIntent, /*REQUEST_CODE_BUY_BOOK, */ options.toBundle());
+      startActivityForResult(buyIntent, REQUEST_CODE_BUY_BOOK, options.toBundle());
     } else {
-      startActivity(buyIntent);
+      startActivityForResult(buyIntent, REQUEST_CODE_BUY_BOOK);
+    }
+  }
+
+  @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    switch (requestCode) {
+      case REQUEST_CODE_BUY_BOOK:
+        if (resultCode == RESULT_OK) {
+          //TODO: display state of purchased
+        }
+        Log.d(TAG, "onActivityResult() called with: "
+            + "requestCode = ["
+            + requestCode
+            + "], resultCode = ["
+            + resultCode
+            + "], data = ["
+            + data
+            + "]");
+        //mBookFab.setAlpha(1f);
+        break;
     }
   }
 }

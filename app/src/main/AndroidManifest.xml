@@ -27,7 +27,7 @@
       android:theme="@style/HenriPotier.BookActivity"/>
 
     <activity android:name=".ui.buy.BuyBook"
-      android:theme="@style/HenriPotier.BuyBook"/>
+      android:theme="@style/HenriPotier.Translucent.BuyBook"/>
   </application>
 
 </manifest>

@@ -60,6 +60,6 @@
       android:clickable="true"
       android:src="@drawable/ic_shopping_basket_white_24dp"
       tools:ignore="NewApi"/>
-      <!--  android:alpha="0" -->
+  <!-- android:alpha="0"-->
 
 </android.support.design.widget.CoordinatorLayout>

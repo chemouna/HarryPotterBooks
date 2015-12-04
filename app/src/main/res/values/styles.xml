@@ -44,7 +44,7 @@
   <style name="HenriPotier.BookActivity">
   </style>
 
-  <style name="HenriPotier.BuyBook">
+  <style name="HenriPotier.Translucent.BuyBook">
     <item name="android:windowAnimationStyle">@null</item>
     <item name="colorPrimary">@color/accent</item>
   </style>
