@@ -5,8 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.ui.BindableBookItem;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,23 +21,26 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
   private final Picasso mPicasso;
   private List<Book> mItems = new ArrayList<>();
   @Nullable private BookSelectedListener mBookSelectedListener;
+  private int mItemLayoutId;
 
-  public BooksAdapter(Picasso picasso) {
+  public BooksAdapter(int layoutId, Picasso picasso) {
     mPicasso = picasso;
+    mItemLayoutId = layoutId;
   }
 
   @Override public BookViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new BookViewHolder((BookItemView) LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.book_item, parent, false));
+    return new BookViewHolder((BindableBookItem) LayoutInflater.from(parent.getContext())
+        .inflate(mItemLayoutId, parent, false));
   }
 
   @Override public void onBindViewHolder(final BookViewHolder holder, int position) {
     final Book book = mItems.get(position);
     holder.bindTo(book);
-    holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+    ((ViewGroup) holder.itemView).setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        if(mBookSelectedListener != null) {
-          mBookSelectedListener.onBookSelectedListener(holder.itemView.mImageView, book);
+        if (mBookSelectedListener != null) {
+          mBookSelectedListener.onBookSelectedListener(holder.itemView.getImageView(), book);
         }
       }
     });
@@ -57,10 +60,10 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
   }
 
   public final class BookViewHolder extends RecyclerView.ViewHolder {
-    public final BookItemView itemView;
+    public final BindableBookItem itemView;
 
-    public BookViewHolder(BookItemView itemView) {
-      super(itemView);
+    public BookViewHolder(BindableBookItem itemView) {
+      super((ViewGroup) itemView);
       this.itemView = itemView;
     }
 
@@ -70,6 +73,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
   }
 
   public interface BookSelectedListener {
-    void onBookSelectedListener(View transitionView, Book book);
+    void onBookSelectedListener(@Nullable View transitionView, Book book);
   }
 }

@@ -79,12 +79,10 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
     mHost = host;
   }
 
-  @Override protected void onAttachedToWindow() {
-    super.onAttachedToWindow();
-
+  @Override protected void onFinishInflate() {
+    super.onFinishInflate();
     //temp for now -> TODO: later set an injection per component (i.e BooksComponent and scoped to it -> @see mrgabriel)
     HenriPotierApp.get(getContext()).getComponent().injectBooksView(this);
-
     mBooksPresenter.onAttach(this);
     initList();
     loadBooks();
@@ -96,7 +94,6 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
       return;
     }
     mBooksPresenter.loadBooks()
-        //.delay(25, TimeUnit.SECONDS) //just for debugging
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Subscriber<List<Book>>() {
@@ -122,7 +119,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
   }
 
   private void initList() {
-    mAdapter = new BooksAdapter(mPicasso);
+    mAdapter = new BooksAdapter(R.layout.book_item, mPicasso);
     mAnimatorView.setDisplayedChildId(R.id.progress);
     mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
       @Override public void onChanged() {
@@ -134,11 +131,11 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
       }
     });
     mAdapter.setBookSelectedListener(new BooksAdapter.BookSelectedListener() {
-      @SuppressLint("NewApi")
-      @Override public void onBookSelectedListener(View transitionView, Book book) {
+      @SuppressLint("NewApi") @Override
+      public void onBookSelectedListener(View transitionView, Book book) {
         if (mHost == null) return;
         final Intent intent = BookActivity.getIntent(getContext(), book);
-        if (isAtLeastLollipop()) {
+        if (transitionView == null || isAtLeastLollipop()) {
           ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(mHost,
               android.util.Pair.create(transitionView,
                   mHost.getString(R.string.transition_book_image)),

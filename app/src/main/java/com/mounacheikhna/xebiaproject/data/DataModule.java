@@ -12,15 +12,12 @@ import javax.inject.Singleton;
 /**
  * Created by mouna on 05/12/15.
  */
-@Module
-public class DataModule {
+@Module public class DataModule {
 
   @Provides @Singleton @Named("cart")
   public Preference<Cart> provideCart(RxSharedPreferences rxPrefs, Gson gson) {
-    GsonPreferenceAdapter<Cart> adapter =
-        new GsonPreferenceAdapter<>(gson, Cart.class, null,
-            GsonPreferenceAdapter.SyntaxExceptionBehavior.NULL);
+    GsonPreferenceAdapter<Cart> adapter = new GsonPreferenceAdapter<>(gson, Cart.class, null,
+        GsonPreferenceAdapter.SyntaxExceptionBehavior.NULL);
     return rxPrefs.getObject("cart", null, adapter);
   }
-
 }

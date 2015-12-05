@@ -13,6 +13,4 @@ public class Offer {
   private String type;
   private int sliceValue;
   private int value;
-
-
 }

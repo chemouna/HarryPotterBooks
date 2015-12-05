@@ -146,8 +146,7 @@ public class BookActivity extends AppCompatActivity {
     }
   }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-  private void enterAnimation(boolean orientationChanged) {
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP) private void enterAnimation(boolean orientationChanged) {
     Log.d(TAG, "enterAnimation() called with: " + "");
     if (orientationChanged) {
       ObjectAnimator showFab = ObjectAnimator.ofPropertyValuesHolder(mBookFab,

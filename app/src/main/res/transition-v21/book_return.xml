@@ -4,11 +4,11 @@
     android:transitionOrdering="together"
     android:interpolator="@android:interpolator/fast_out_slow_in">
 
-    <fade android:duration="@android:integer/config_mediumAnimTime">
-        <targets>
-            <target android:targetId="@android:id/navigationBarBackground" />
-            <target android:targetId="@android:id/statusBarBackground" />
-        </targets>
-    </fade>
+  <fade android:duration="@android:integer/config_mediumAnimTime">
+    <targets>
+      <target android:targetId="@android:id/navigationBarBackground"/>
+      <target android:targetId="@android:id/statusBarBackground"/>
+    </targets>
+  </fade>
 
 </transitionSet>

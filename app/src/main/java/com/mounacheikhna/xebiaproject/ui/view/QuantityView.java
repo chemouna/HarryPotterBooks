@@ -73,6 +73,10 @@ public class QuantityView extends LinearLayout {
     }
   }
 
+  public int getQuantity() {
+    return mQuantity;
+  }
+
   public interface OnQuantityChangeListener {
     void onQuantityChange(String key, int quantity);
   }

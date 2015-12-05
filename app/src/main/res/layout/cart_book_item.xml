@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mounacheikhna.xebiaproject.ui.cart.CartItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+  <TextView
+      android:id="@+id/cart_item_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/cart_item_quantity"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/cart_item_price"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
+
+</com.mounacheikhna.xebiaproject.ui.cart.CartItemView>

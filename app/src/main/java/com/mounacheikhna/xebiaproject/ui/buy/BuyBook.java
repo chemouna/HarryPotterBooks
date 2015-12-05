@@ -50,8 +50,7 @@ public class BuyBook extends AppCompatActivity {
   @Inject @Named("cart") Preference<Cart> mCartPref;
   private Book mBook;
 
-  @SuppressLint("NewApi")
-  @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+  @SuppressLint("NewApi") @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.buy_book);
     ButterKnife.bind(this);
@@ -87,7 +86,8 @@ public class BuyBook extends AppCompatActivity {
     Log.d(TAG, "onConfirm() called with: " + "");
     //TODO: save bought books in preferences
     Cart cart = mCartPref.get();
-    if(cart == null) cart = new Cart();
+    if (cart == null) cart = new Cart();
+    mBook.setQuantity(mQuantityView.getQuantity());
     cart.addBook(mBook);
     mCartPref.set(cart);
     setResult(Activity.RESULT_OK);

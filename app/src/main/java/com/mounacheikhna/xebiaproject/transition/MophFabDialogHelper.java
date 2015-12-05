@@ -30,44 +30,41 @@ import android.view.animation.Interpolator;
 /**
  * Helper class for setting up Fab <-> Dialog shared element transitions.
  */
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class MophFabDialogHelper {
+@TargetApi(Build.VERSION_CODES.LOLLIPOP) public class MophFabDialogHelper {
 
-    public static final String EXTRA_SHARED_ELEMENT_START_COLOR =
-            "EXTRA_SHARED_ELEMENT_START_COLOR";
-    public static final String EXTRA_SHARED_ELEMENT_START_CORNER_RADIUS =
-            "EXTRA_SHARED_ELEMENT_START_CORNER_RADIUS";
+  public static final String EXTRA_SHARED_ELEMENT_START_COLOR = "EXTRA_SHARED_ELEMENT_START_COLOR";
+  public static final String EXTRA_SHARED_ELEMENT_START_CORNER_RADIUS =
+      "EXTRA_SHARED_ELEMENT_START_CORNER_RADIUS";
 
-    private MophFabDialogHelper() { }
+  private MophFabDialogHelper() {
+  }
 
-    public static void setupSharedElementTransitions(@NonNull Activity activity,
-                                                      @Nullable View target,
-                                                      int dialogCornerRadius) {
-        if (!activity.getIntent().hasExtra(EXTRA_SHARED_ELEMENT_START_COLOR)) return;
+  public static void setupSharedElementTransitions(@NonNull Activity activity,
+      @Nullable View target, int dialogCornerRadius) {
+    if (!activity.getIntent().hasExtra(EXTRA_SHARED_ELEMENT_START_COLOR)) return;
 
-        int startCornerRadius = activity.getIntent().getIntExtra
-                (EXTRA_SHARED_ELEMENT_START_CORNER_RADIUS, -1);
+    int startCornerRadius =
+        activity.getIntent().getIntExtra(EXTRA_SHARED_ELEMENT_START_CORNER_RADIUS, -1);
 
-        ArcMotion arcMotion = new ArcMotion();
-        arcMotion.setMinimumHorizontalAngle(50f);
-        arcMotion.setMinimumVerticalAngle(50f);
-        int color = activity.getIntent().
-                getIntExtra(EXTRA_SHARED_ELEMENT_START_COLOR, Color.TRANSPARENT);
-        Interpolator easeInOut =
-                AnimationUtils.loadInterpolator(activity, android.R.interpolator.fast_out_slow_in);
-        MorphFabToDialog sharedEnter =
-                new MorphFabToDialog(color, dialogCornerRadius, startCornerRadius);
-        sharedEnter.setPathMotion(arcMotion);
-        sharedEnter.setInterpolator(easeInOut);
-        MorphDialogToFab sharedReturn = new MorphDialogToFab(color, startCornerRadius);
-        sharedReturn.setPathMotion(arcMotion);
-        sharedReturn.setInterpolator(easeInOut);
-        if (target != null) {
-            sharedEnter.addTarget(target);
-            sharedReturn.addTarget(target);
-        }
-        activity.getWindow().setSharedElementEnterTransition(sharedEnter);
-        activity.getWindow().setSharedElementReturnTransition(sharedReturn);
+    ArcMotion arcMotion = new ArcMotion();
+    arcMotion.setMinimumHorizontalAngle(50f);
+    arcMotion.setMinimumVerticalAngle(50f);
+    int color = activity.getIntent().
+        getIntExtra(EXTRA_SHARED_ELEMENT_START_COLOR, Color.TRANSPARENT);
+    Interpolator easeInOut =
+        AnimationUtils.loadInterpolator(activity, android.R.interpolator.fast_out_slow_in);
+    MorphFabToDialog sharedEnter =
+        new MorphFabToDialog(color, dialogCornerRadius, startCornerRadius);
+    sharedEnter.setPathMotion(arcMotion);
+    sharedEnter.setInterpolator(easeInOut);
+    MorphDialogToFab sharedReturn = new MorphDialogToFab(color, startCornerRadius);
+    sharedReturn.setPathMotion(arcMotion);
+    sharedReturn.setInterpolator(easeInOut);
+    if (target != null) {
+      sharedEnter.addTarget(target);
+      sharedReturn.addTarget(target);
     }
-
+    activity.getWindow().setSharedElementEnterTransition(sharedEnter);
+    activity.getWindow().setSharedElementReturnTransition(sharedReturn);
+  }
 }

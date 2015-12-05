@@ -6,19 +6,25 @@ import com.mounacheikhna.xebiaproject.data.DataModule;
 import com.mounacheikhna.xebiaproject.ui.book.BookActivity;
 import com.mounacheikhna.xebiaproject.ui.book.BooksGridView;
 import com.mounacheikhna.xebiaproject.ui.buy.BuyBook;
+import com.mounacheikhna.xebiaproject.ui.cart.CartView;
 import dagger.Component;
 import javax.inject.Singleton;
 
 /**
  * Created by cheikhnamouna on 11/21/15.
  */
-@Singleton
-@Component(modules = { AppModule.class, CoreApiModule.class, DebugApiModule.class, DataModule.class })
-public interface AppComponent {
+@Singleton @Component(modules = {
+    AppModule.class, CoreApiModule.class, DebugApiModule.class, DataModule.class
+}) public interface AppComponent {
   void injectApplication(HenriPotierApp starWarsApp);
+
   void injectBooksView(BooksGridView booksGridView);
+
   void injectBooksActivity(BookActivity bookActivity);
+
   void injectBuyBook(BuyBook buyBook);
+
+  void injectCartView(CartView cartView);
 
   final class Initializer {
     private Initializer() {
@@ -28,5 +34,4 @@ public interface AppComponent {
       return DaggerAppComponent.builder().appModule(new AppModule(app)).build();
     }
   }
-
 }

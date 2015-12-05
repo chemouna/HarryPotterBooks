@@ -2,7 +2,7 @@
     package="com.mounacheikhna.xebiaproject">
 
   <uses-permission android:name="android.permission.INTERNET"/>
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
   <application
       android:name=".HenriPotierApp"
@@ -24,7 +24,7 @@
     </activity>
 
     <activity android:name=".ui.book.BookActivity"
-      android:theme="@style/HenriPotier.BookActivity"/>
+        android:theme="@style/HenriPotier.BookActivity"/>
 
     <activity android:name=".ui.buy.BuyBook"
         android:theme="@style/HenriPotier.Translucent.BuyBook"/>

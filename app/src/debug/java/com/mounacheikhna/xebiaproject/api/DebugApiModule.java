@@ -9,8 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import javax.inject.Singleton;
 
-@Module
-public class DebugApiModule {
+@Module public class DebugApiModule {
 
   /**
    * We need logging and stetho only for debug builds since we don't want information
@@ -19,5 +18,4 @@ public class DebugApiModule {
   @Provides @Singleton @NetworkInterceptors List<Interceptor> provideNetworkInterceptors() {
     return Arrays.asList(new StethoInterceptor(), new LoggingInterceptor());
   }
-
 }

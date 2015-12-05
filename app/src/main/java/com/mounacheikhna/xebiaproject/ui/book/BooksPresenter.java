@@ -14,17 +14,13 @@ import rx.Observable;
 @Singleton //temp singleton -> TODO: make it later scoped per component
 public class BooksPresenter extends BasePresenter<BooksScreen> {
 
-  @Inject
-  HenriPotierAPi mApi;
+  private HenriPotierAPi mApi;
 
-  @Inject
-  public BooksPresenter(HenriPotierAPi api) {
+  @Inject public BooksPresenter(HenriPotierAPi api) {
     mApi = api;
   }
 
   public Observable<List<Book>> loadBooks() {
     return mApi.fetchBooks();
   }
-
-
 }

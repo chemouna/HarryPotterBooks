@@ -5,4 +5,6 @@
   <string name="loading_error">Error while loading books.</string>
   <string name="no_network">No network.</string>
   <string name="confirm">Confirm</string>
+  <string name="cart_empty">Cart is empty</string>
+  <string name="total">Total</string>
 </resources>

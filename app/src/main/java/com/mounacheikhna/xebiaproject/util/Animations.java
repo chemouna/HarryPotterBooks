@@ -14,7 +14,8 @@ import java.util.ArrayList;
  */
 public final class Animations {
 
-  private Animations() {}
+  private Animations() {
+  }
 
   /**
    * An implementation of {@link android.util.Property} to be used specifically with fields of
@@ -37,8 +38,7 @@ public final class Animations {
      */
     public abstract void setValue(T object, float value);
 
-    @Override
-    final public void set(T object, Float value) {
+    @Override final public void set(T object, Float value) {
       setValue(object, value);
     }
   }
@@ -65,11 +65,9 @@ public final class Animations {
      */
     public abstract void setValue(T object, int value);
 
-    @Override
-    final public void set(T object, Integer value) {
+    @Override final public void set(T object, Integer value) {
       setValue(object, value.intValue());
     }
-
   }
 
   @TargetApi(Build.VERSION_CODES.KITKAT) public static class EmptyTransitionListener
@@ -105,23 +103,19 @@ public final class Animations {
       mListener = listener;
     }
 
-    @Override
-    public void onAnimationStart(Animator animator) {
+    @Override public void onAnimationStart(Animator animator) {
       mListener.onAnimationStart(mAnimator);
     }
 
-    @Override
-    public void onAnimationEnd(Animator animator) {
+    @Override public void onAnimationEnd(Animator animator) {
       mListener.onAnimationEnd(mAnimator);
     }
 
-    @Override
-    public void onAnimationCancel(Animator animator) {
+    @Override public void onAnimationCancel(Animator animator) {
       mListener.onAnimationCancel(mAnimator);
     }
 
-    @Override
-    public void onAnimationRepeat(Animator animator) {
+    @Override public void onAnimationRepeat(Animator animator) {
       mListener.onAnimationRepeat(mAnimator);
     }
   }
@@ -141,8 +135,7 @@ public final class Animations {
       mAnimator = animator;
     }
 
-    @Override
-    public void addListener(AnimatorListener listener) {
+    @Override public void addListener(AnimatorListener listener) {
       AnimatorListener wrapper = new AnimatorListenerWrapper(this, listener);
       if (!mListeners.containsKey(listener)) {
         mListeners.put(listener, wrapper);
@@ -150,58 +143,47 @@ public final class Animations {
       }
     }
 
-    @Override
-    public void cancel() {
+    @Override public void cancel() {
       mAnimator.cancel();
     }
 
-    @Override
-    public void end() {
+    @Override public void end() {
       mAnimator.end();
     }
 
-    @Override
-    public long getDuration() {
+    @Override public long getDuration() {
       return mAnimator.getDuration();
     }
 
-    @Override
-    public TimeInterpolator getInterpolator() {
+    @Override public TimeInterpolator getInterpolator() {
       return mAnimator.getInterpolator();
     }
 
-    @Override
-    public void setInterpolator(TimeInterpolator timeInterpolator) {
+    @Override public void setInterpolator(TimeInterpolator timeInterpolator) {
       mAnimator.setInterpolator(timeInterpolator);
     }
 
-    @Override
-    public ArrayList<AnimatorListener> getListeners() {
+    @Override public ArrayList<AnimatorListener> getListeners() {
       return new ArrayList<AnimatorListener>(mListeners.keySet());
     }
 
-    @Override
-    public long getStartDelay() {
+    @Override public long getStartDelay() {
       return mAnimator.getStartDelay();
     }
 
-    @Override
-    public void setStartDelay(long delayMS) {
+    @Override public void setStartDelay(long delayMS) {
       mAnimator.setStartDelay(delayMS);
     }
 
-    @Override
-    public boolean isPaused() {
+    @Override public boolean isPaused() {
       return mAnimator.isPaused();
     }
 
-    @Override
-    public boolean isRunning() {
+    @Override public boolean isRunning() {
       return mAnimator.isRunning();
     }
 
-    @Override
-    public boolean isStarted() {
+    @Override public boolean isStarted() {
       return mAnimator.isStarted();
     }
 
@@ -216,14 +198,12 @@ public final class Animations {
         public void removePauseListener(AnimatorPauseListener listener);
         */
 
-    @Override
-    public void removeAllListeners() {
+    @Override public void removeAllListeners() {
       mListeners.clear();
       mAnimator.removeAllListeners();
     }
 
-    @Override
-    public void removeListener(AnimatorListener listener) {
+    @Override public void removeListener(AnimatorListener listener) {
       AnimatorListener wrapper = mListeners.get(listener);
       if (wrapper != null) {
         mListeners.remove(listener);
@@ -231,31 +211,25 @@ public final class Animations {
       }
     }
 
-    @Override
-    public Animator setDuration(long durationMS) {
+    @Override public Animator setDuration(long durationMS) {
       mAnimator.setDuration(durationMS);
       return this;
     }
 
-    @Override
-    public void setTarget(Object target) {
+    @Override public void setTarget(Object target) {
       mAnimator.setTarget(target);
     }
 
-    @Override
-    public void setupEndValues() {
+    @Override public void setupEndValues() {
       mAnimator.setupEndValues();
     }
 
-    @Override
-    public void setupStartValues() {
+    @Override public void setupStartValues() {
       mAnimator.setupStartValues();
     }
 
-    @Override
-    public void start() {
+    @Override public void start() {
       mAnimator.start();
     }
   }
-
 }

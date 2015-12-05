@@ -7,13 +7,11 @@ import android.annotation.SuppressLint;
  */
 public class PriceFormatter {
 
-  @SuppressLint("DefaultLocale")
-  public static String formatPrice(float price){
+  @SuppressLint("DefaultLocale") public static String formatPrice(float price) {
     return String.format("%.2f", price);
   }
 
   public static String formatEuro(float price) {
     return formatPrice(price) + "€";
   }
-
 }

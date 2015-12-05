@@ -6,16 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <com.mounacheikhna.xebiaproject.ui.book.BooksGridView
-      android:id="@+id/books_grid_view"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical"
-      android:paddingTop="?attr/actionBarSize"
-      android:clipToPadding="false"
-      tools:listitem="@layout/book_item"/>
-      <!-- android:layout_margin="@dimen/spacing_double" -->
-
   <android.support.design.widget.AppBarLayout
       android:id="@+id/appbar"
       android:layout_width="match_parent"
@@ -30,6 +20,24 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
   </android.support.design.widget.AppBarLayout>
+
+
+  <com.mounacheikhna.xebiaproject.ui.book.BooksGridView
+      android:id="@+id/books_grid_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:clipToPadding="false"
+      android:paddingTop="?attr/actionBarSize"
+      tools:listitem="@layout/book_item"/>
+  <!-- android:layout_margin="@dimen/spacing_double" -->
+
+  <com.mounacheikhna.xebiaproject.ui.cart.CartView
+      android:id="@+id/cart_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:paddingTop="?attr/actionBarSize"
+      android:visibility="gone"/>
 
   <android.support.design.widget.FloatingActionButton
       android:id="@+id/cart_fab"

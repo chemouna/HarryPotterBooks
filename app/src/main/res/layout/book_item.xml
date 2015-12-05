@@ -28,50 +28,50 @@
           android:transitionName="@string/transition_book_image"
           tools:ignore="NewApi"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/spacing_normal">
+
+        <ImageView
+            android:id="@+id/book_overflow_menu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:scaleType="fitEnd"
+            android:src="@drawable/ic_more_vert_black_24dp"/>
+
+        <TextView
+            android:id="@+id/book_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/spacing_normal">
+            android:layout_toLeftOf="@id/book_overflow_menu"
+            android:layout_toStartOf="@id/book_overflow_menu"
+            style="@style/Widget.HenriPotier.CardTitle"
+            tools:text="Book name Book name Book name"/>
 
-          <ImageView
-              android:id="@+id/book_overflow_menu"
-              android:layout_width="24dp"
-              android:layout_height="24dp"
-              android:layout_alignParentRight="true"
-              android:layout_alignParentEnd="true"
-              android:scaleType="fitEnd"
-              android:src="@drawable/ic_more_vert_black_24dp"/>
-
-          <TextView
-              android:id="@+id/book_name"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_toLeftOf="@id/book_overflow_menu"
-              android:layout_toStartOf="@id/book_overflow_menu"
-              style="@style/Widget.HenriPotier.CardTitle"
-              tools:text="Book name Book name Book name"/>
-
-          <TextView
-              android:id="@+id/book_author"
-              android:layout_below="@id/book_name"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              style="@style/Widget.HenriPotier.CardSubtitle"
-              android:text="@string/default_author"
-              tools:text="@string/default_author"/>
+        <TextView
+            android:id="@+id/book_author"
+            android:layout_below="@id/book_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.HenriPotier.CardSubtitle"
+            android:text="@string/default_author"
+            tools:text="@string/default_author"/>
 
 
-          <TextView
-              android:id="@+id/book_price"
-              android:layout_below="@id/book_author"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_alignParentRight="true"
-              android:layout_alignParentEnd="true"
-              android:layout_marginRight="@dimen/spacing_normal"
-              android:layout_marginEnd="@dimen/spacing_normal"
-              style="@style/Widget.HenriPotier.CardPrice"
-              tools:text="17.72€"/>
+        <TextView
+            android:id="@+id/book_price"
+            android:layout_below="@id/book_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="@dimen/spacing_normal"
+            android:layout_marginEnd="@dimen/spacing_normal"
+            style="@style/Widget.HenriPotier.CardPrice"
+            tools:text="17.72€"/>
 
 
       </RelativeLayout>

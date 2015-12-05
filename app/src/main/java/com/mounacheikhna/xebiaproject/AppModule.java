@@ -3,7 +3,6 @@ package com.mounacheikhna.xebiaproject;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import com.f2prateek.rx.preferences.RxSharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,5 +38,4 @@ import javax.inject.Singleton;
   @Provides @Singleton Gson provideGson() {
     return new GsonBuilder().create();
   }
-
 }

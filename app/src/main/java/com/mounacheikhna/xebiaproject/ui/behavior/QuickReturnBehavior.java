@@ -37,24 +37,19 @@ public class QuickReturnBehavior extends CoordinatorLayout.Behavior<View> {
   public QuickReturnBehavior(Context context, AttributeSet attrs) {
     super(context, attrs);
 
-    TypedArray a = context.getTheme()
-        .obtainStyledAttributes(new int[] { R.attr.actionBarSize });
+    TypedArray a = context.getTheme().obtainStyledAttributes(new int[] { R.attr.actionBarSize });
     mScrollThreshold = a.getDimensionPixelSize(0, 0) / 2;
     a.recycle();
   }
 
-  @Override
-  public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout,
-      View child, View directTargetChild, View target,
-      int nestedScrollAxes) {
+  @Override public boolean onStartNestedScroll(CoordinatorLayout coordinatorLayout, View child,
+      View directTargetChild, View target, int nestedScrollAxes) {
     return (nestedScrollAxes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
   }
 
   @Override
-  public void onNestedPreScroll(CoordinatorLayout coordinatorLayout,
-      View child, View target,
-      int dx, int dy,
-      int[] consumed) {
+  public void onNestedPreScroll(CoordinatorLayout coordinatorLayout, View child, View target,
+      int dx, int dy, int[] consumed) {
     if (dy > 0 && mScrollingDirection != DIRECTION_UP) {
       mScrollingDirection = DIRECTION_UP;
       mScrollDistance = 0;
@@ -64,28 +59,21 @@ public class QuickReturnBehavior extends CoordinatorLayout.Behavior<View> {
     }
   }
 
-  @Override
-  public void onNestedScroll(CoordinatorLayout coordinatorLayout,
-      View child, View target,
-      int dxConsumed, int dyConsumed,
-      int dxUnconsumed, int dyUnconsumed) {
+  @Override public void onNestedScroll(CoordinatorLayout coordinatorLayout, View child, View target,
+      int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
     mScrollDistance += dyConsumed;
-    if (mScrollDistance > mScrollThreshold
-        && mScrollTrigger != DIRECTION_UP) {
+    if (mScrollDistance > mScrollThreshold && mScrollTrigger != DIRECTION_UP) {
       mScrollTrigger = DIRECTION_UP;
       restartAnimator(child, getTargetHideValue(coordinatorLayout, child));
-    } else if (mScrollDistance < -mScrollThreshold
-        && mScrollTrigger != DIRECTION_DOWN) {
+    } else if (mScrollDistance < -mScrollThreshold && mScrollTrigger != DIRECTION_DOWN) {
       mScrollTrigger = DIRECTION_DOWN;
       restartAnimator(child, 0f);
     }
   }
 
   @Override
-  public boolean onNestedFling(CoordinatorLayout coordinatorLayout,
-      View child, View target,
-      float velocityX, float velocityY,
-      boolean consumed) {
+  public boolean onNestedFling(CoordinatorLayout coordinatorLayout, View child, View target,
+      float velocityX, float velocityY, boolean consumed) {
     if (consumed) {
       if (velocityY > 0 && mScrollTrigger != DIRECTION_UP) {
         mScrollTrigger = DIRECTION_UP;
@@ -99,16 +87,13 @@ public class QuickReturnBehavior extends CoordinatorLayout.Behavior<View> {
     return false;
   }
 
-
   private void restartAnimator(View target, float value) {
     if (mAnimator != null) {
       mAnimator.cancel();
       mAnimator = null;
     }
 
-    mAnimator = ObjectAnimator
-        .ofFloat(target, View.TRANSLATION_Y, value)
-        .setDuration(250);
+    mAnimator = ObjectAnimator.ofFloat(target, View.TRANSLATION_Y, value).setDuration(250);
     mAnimator.start();
   }
 
@@ -121,5 +106,4 @@ public class QuickReturnBehavior extends CoordinatorLayout.Behavior<View> {
 
     return 0f;
   }
-
 }

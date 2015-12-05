@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <TextView
+      android:id="@+id/total_label"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/total"
+      android:layout_marginLeft="@dimen/spacing_very_large"
+      android:textAllCaps="true"/>
+
+  <TextView
+      android:id="@+id/total_amount"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      style="@style/Widget.HenriPotier.CardPrice"
+      android:layout_marginLeft="@dimen/spacing_very_large"
+      android:text="0€"
+      tools:text="100.0€"/>
+
+</LinearLayout>

@@ -31,8 +31,7 @@ import com.mounacheikhna.xebiaproject.util.Animations;
  * A drawable that can morph size, shape (via it's corner radius) and color.  Specifically this is
  * useful for animating between a FAB and a dialog.
  */
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class MorphDrawable extends Drawable {
+@TargetApi(Build.VERSION_CODES.LOLLIPOP) public class MorphDrawable extends Drawable {
 
   public static final Property<MorphDrawable, Float> CORNER_RADIUS =
       new Animations.FloatProperty<MorphDrawable>("cornerRadius") {

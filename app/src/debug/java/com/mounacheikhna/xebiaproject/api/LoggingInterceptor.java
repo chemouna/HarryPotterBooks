@@ -9,8 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import timber.log.Timber;
 
-@Singleton
-public final class LoggingInterceptor implements Interceptor {
+@Singleton public final class LoggingInterceptor implements Interceptor {
 
   @Inject public LoggingInterceptor() {
   }

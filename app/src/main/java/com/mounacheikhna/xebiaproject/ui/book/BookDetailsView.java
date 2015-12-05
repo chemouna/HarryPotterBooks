@@ -2,13 +2,9 @@ package com.mounacheikhna.xebiaproject.ui.book;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.mounacheikhna.xebiaproject.R;
 
@@ -16,7 +12,6 @@ import com.mounacheikhna.xebiaproject.R;
  * Created by cheikhnamouna on 12/3/15.
  */
 public class BookDetailsView extends LinearLayout {
-
 
   private Activity mHost;
 
@@ -35,7 +30,7 @@ public class BookDetailsView extends LinearLayout {
   }
 
   private void init(Context context) {
-    if(isInEditMode()) return;
+    if (isInEditMode()) return;
     LayoutInflater.from(context).inflate(R.layout.book_details_view, this, true);
     setOrientation(VERTICAL);
   }

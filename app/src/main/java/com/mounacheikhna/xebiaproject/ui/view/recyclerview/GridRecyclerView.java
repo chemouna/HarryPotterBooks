@@ -11,7 +11,6 @@ import android.view.animation.GridLayoutAnimationController;
 /**
  * A {@link RecyclerView} that can handle {@code <gridLayoutAnimation>} with a
  * {@link android.support.v7.widget.GridLayoutManager}.
- *
  */
 public class GridRecyclerView extends RecyclerView {
 
@@ -27,19 +26,20 @@ public class GridRecyclerView extends RecyclerView {
     super(context, attrs, defStyle);
   }
 
-  @Override
-  public void setLayoutManager(LayoutManager layout) {
-    if (layout instanceof GridLayoutManager){
+  @Override public void setLayoutManager(LayoutManager layout) {
+    if (layout instanceof GridLayoutManager) {
       super.setLayoutManager(layout);
     } else {
-      throw new ClassCastException("You should only use a GridLayoutManager with GridRecyclerView.");
+      throw new ClassCastException(
+          "You should only use a GridLayoutManager with GridRecyclerView.");
     }
   }
 
   @Override
-  protected void attachLayoutAnimationParameters(View child, ViewGroup.LayoutParams params, int index, int count) {
+  protected void attachLayoutAnimationParameters(View child, ViewGroup.LayoutParams params,
+      int index, int count) {
 
-    if (getAdapter() != null && getLayoutManager() instanceof GridLayoutManager){
+    if (getAdapter() != null && getLayoutManager() instanceof GridLayoutManager) {
 
       GridLayoutAnimationController.AnimationParameters animationParams =
           (GridLayoutAnimationController.AnimationParameters) params.layoutAnimationParameters;
@@ -59,7 +59,6 @@ public class GridRecyclerView extends RecyclerView {
       final int invertedIndex = count - 1 - index;
       animationParams.column = columns - 1 - (invertedIndex % columns);
       animationParams.row = animationParams.rowsCount - 1 - invertedIndex / columns;
-
     } else {
       super.attachLayoutAnimationParameters(child, params, index, count);
     }

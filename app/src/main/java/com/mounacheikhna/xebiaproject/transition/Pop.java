@@ -32,49 +32,42 @@ import com.mounacheikhna.xebiaproject.util.Animations;
 /**
  * A transition that animates the alpha & scale X & Y of a view simultaneously.
  */
-@TargetApi(Build.VERSION_CODES.LOLLIPOP)
-public class Pop extends Transition {
+@TargetApi(Build.VERSION_CODES.LOLLIPOP) public class Pop extends Transition {
 
-    private static final String PROPNAME_ALPHA = "com:mounacheikhna:xebiaproject:pop:alpha";
-    private static final String PROPNAME_SCALE_X = "com:mounacheikhna:xebiaproject:pop:scaleX";
-    private static final String PROPNAME_SCALE_Y = "com:mounacheikhna:xebiaproject:pop:scaleY";
+  private static final String PROPNAME_ALPHA = "com:mounacheikhna:xebiaproject:pop:alpha";
+  private static final String PROPNAME_SCALE_X = "com:mounacheikhna:xebiaproject:pop:scaleX";
+  private static final String PROPNAME_SCALE_Y = "com:mounacheikhna:xebiaproject:pop:scaleY";
 
-    private static final String[] transitionProperties = {
-            PROPNAME_ALPHA,
-            PROPNAME_SCALE_X,
-            PROPNAME_SCALE_Y
-    };
+  private static final String[] transitionProperties = {
+      PROPNAME_ALPHA, PROPNAME_SCALE_X, PROPNAME_SCALE_Y
+  };
 
-    public Pop(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
+  public Pop(Context context, AttributeSet attrs) {
+    super(context, attrs);
+  }
 
-    @Override
-    public String[] getTransitionProperties() {
-        return transitionProperties;
-    }
+  @Override public String[] getTransitionProperties() {
+    return transitionProperties;
+  }
 
-    @Override
-    public void captureStartValues(TransitionValues transitionValues) {
-        transitionValues.values.put(PROPNAME_ALPHA, 0f);
-        transitionValues.values.put(PROPNAME_SCALE_X, 0f);
-        transitionValues.values.put(PROPNAME_SCALE_Y, 0f);
-    }
+  @Override public void captureStartValues(TransitionValues transitionValues) {
+    transitionValues.values.put(PROPNAME_ALPHA, 0f);
+    transitionValues.values.put(PROPNAME_SCALE_X, 0f);
+    transitionValues.values.put(PROPNAME_SCALE_Y, 0f);
+  }
 
-    @Override
-    public void captureEndValues(TransitionValues transitionValues) {
-        transitionValues.values.put(PROPNAME_ALPHA, 1f);
-        transitionValues.values.put(PROPNAME_SCALE_X, 1f);
-        transitionValues.values.put(PROPNAME_SCALE_Y, 1f);
-    }
+  @Override public void captureEndValues(TransitionValues transitionValues) {
+    transitionValues.values.put(PROPNAME_ALPHA, 1f);
+    transitionValues.values.put(PROPNAME_SCALE_X, 1f);
+    transitionValues.values.put(PROPNAME_SCALE_Y, 1f);
+  }
 
-    @Override
-    public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues,
-                                   TransitionValues endValues) {
-        PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f);
-        PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f);
-        PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f);
-        return new Animations.NoPauseAnimator(ObjectAnimator.ofPropertyValuesHolder(endValues
-                .view, alpha, scaleX, scaleY));
-    }
+  @Override public Animator createAnimator(ViewGroup sceneRoot, TransitionValues startValues,
+      TransitionValues endValues) {
+    PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f);
+    PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0f, 1f);
+    PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0f, 1f);
+    return new Animations.NoPauseAnimator(
+        ObjectAnimator.ofPropertyValuesHolder(endValues.view, alpha, scaleX, scaleY));
+  }
 }

@@ -39,5 +39,4 @@ public class DebugHenriPotierApp extends HenriPotierApp {
           }
         }));
   }
-
 }
