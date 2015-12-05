@@ -2,9 +2,14 @@ package com.mounacheikhna.xebiaproject.api;
 
 import android.app.Application;
 import android.net.Uri;
+import com.f2prateek.rx.preferences.Preference;
+import com.f2prateek.rx.preferences.RxSharedPreferences;
+import com.google.gson.Gson;
 import com.mounacheikhna.xebiaproject.BuildConfig;
 import com.mounacheikhna.xebiaproject.annotation.ApiClient;
 import com.mounacheikhna.xebiaproject.annotation.NetworkInterceptors;
+import com.mounacheikhna.xebiaproject.data.Cart;
+import com.mounacheikhna.xebiaproject.data.prefs.GsonPreferenceAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Interceptor;
@@ -14,6 +19,7 @@ import com.squareup.picasso.Picasso;
 import dagger.Module;
 import dagger.Provides;
 import java.util.List;
+import javax.inject.Named;
 import javax.inject.Singleton;
 import retrofit.MoshiConverterFactory;
 import retrofit.Retrofit;
@@ -66,4 +72,6 @@ import timber.log.Timber;
         })
         .build();
   }
+
+
 }

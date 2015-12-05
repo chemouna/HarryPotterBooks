@@ -71,6 +71,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
     if (isInEditMode()) return;
     final View view = LayoutInflater.from(context).inflate(R.layout.books_view, this, true);
     setOrientation(VERTICAL);
+    setClipToPadding(false);
     ButterKnife.bind(this, view);
   }
 
@@ -137,10 +138,6 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
       @Override public void onBookSelectedListener(View transitionView, Book book) {
         if (mHost == null) return;
         final Intent intent = BookActivity.getIntent(getContext(), book);
-        /*final ActivityOptionsCompat options =
-            ActivityOptionsCompat.makeSceneTransitionAnimation(mHost,
-                new Pair<>(transitionView, getContext().getString(R.string.transition_book_image)));*/
-
         if (isAtLeastLollipop()) {
           ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(mHost,
               android.util.Pair.create(transitionView,

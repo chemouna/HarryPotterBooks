@@ -67,7 +67,7 @@
       app:fabSize="normal"
       android:layout_margin="@dimen/spacing_double"
       android:clickable="true"
-      android:src="@drawable/ic_shopping_basket_white_24dp"
+      android:src="@drawable/ic_add_shopping_cart_white_24dp"
       android:alpha="0"
       tools:ignore="NewApi"/>
 

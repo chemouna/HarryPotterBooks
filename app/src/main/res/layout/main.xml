@@ -6,27 +6,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-  <android.support.design.widget.AppBarLayout
-      android:layout_height="wrap_content"
-      android:layout_width="match_parent">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-  </android.support.design.widget.AppBarLayout>
-
   <com.mounacheikhna.xebiaproject.ui.book.BooksGridView
       android:id="@+id/books_grid_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+      android:paddingTop="?attr/actionBarSize"
+      android:clipToPadding="false"
+      tools:listitem="@layout/book_item"/>
+      <!-- android:layout_margin="@dimen/spacing_double" -->
 
+  <android.support.design.widget.AppBarLayout
+      android:id="@+id/appbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      app:layout_behavior="com.mounacheikhna.xebiaproject.ui.behavior.QuickReturnBehavior">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+  </android.support.design.widget.AppBarLayout>
+
+  <android.support.design.widget.FloatingActionButton
+      android:id="@+id/cart_fab"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      app:fabSize="normal"
+      android:layout_gravity="bottom|end"
+      android:layout_marginBottom="@dimen/spacing_double"
+      android:layout_marginEnd="@dimen/spacing_double"
+      android:layout_marginRight="@dimen/spacing_double"
+      android:src="@drawable/ic_shopping_basket_white_24dp"
+      app:layout_behavior="com.mounacheikhna.xebiaproject.ui.behavior.QuickReturnBehavior"
+      tools:ignore="UnusedAttribute"/>
 
 </android.support.design.widget.CoordinatorLayout>

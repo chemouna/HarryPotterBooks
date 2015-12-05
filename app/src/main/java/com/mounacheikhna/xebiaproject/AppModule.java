@@ -2,6 +2,11 @@ package com.mounacheikhna.xebiaproject;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.net.Uri;
+import com.f2prateek.rx.preferences.RxSharedPreferences;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mounacheikhna.xebiaproject.annotation.ApplicationContext;
 import dagger.Module;
 import dagger.Provides;
@@ -21,4 +26,18 @@ import javax.inject.Singleton;
   @Provides @ApplicationContext public Context provideApplicationContext() {
     return application.getApplicationContext();
   }
+
+  @Provides @Singleton SharedPreferences provideSharedPreferences(
+      @ApplicationContext Context appContext) {
+    return appContext.getSharedPreferences("henripotier", Context.MODE_PRIVATE);
+  }
+
+  @Provides @Singleton RxSharedPreferences provideRxSharedPreferences(SharedPreferences prefs) {
+    return RxSharedPreferences.create(prefs);
+  }
+
+  @Provides @Singleton Gson provideGson() {
+    return new GsonBuilder().create();
+  }
+
 }

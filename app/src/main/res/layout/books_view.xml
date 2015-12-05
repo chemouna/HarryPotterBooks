@@ -10,7 +10,8 @@
       android:layout_height="match_parent"
       android:layout_gravity="center_horizontal"
       android:inAnimation="@android:anim/fade_in"
-      android:outAnimation="@android:anim/fade_out">
+      android:outAnimation="@android:anim/fade_out"
+      android:clipToPadding="false">
 
     <TextView
         android:id="@+id/state"

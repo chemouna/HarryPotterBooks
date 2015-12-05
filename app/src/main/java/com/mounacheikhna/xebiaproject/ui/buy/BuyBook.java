@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.TransitionManager;
 import android.util.Log;
@@ -17,11 +16,16 @@ import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import com.f2prateek.rx.preferences.Preference;
+import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.data.Cart;
 import com.mounacheikhna.xebiaproject.transition.MophFabDialogHelper;
 import com.mounacheikhna.xebiaproject.ui.view.QuantityView;
 import com.mounacheikhna.xebiaproject.util.PriceFormatter;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
 
@@ -43,29 +47,34 @@ public class BuyBook extends AppCompatActivity {
   @Bind(R.id.quantity) QuantityView mQuantityView;
   @Bind(R.id.parent) FrameLayout mParent;
 
+  @Inject @Named("cart") Preference<Cart> mCartPref;
+  private Book mBook;
+
   @SuppressLint("NewApi")
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.buy_book);
     ButterKnife.bind(this);
 
+    HenriPotierApp.get(this).getComponent().injectBuyBook(this);
+
     if (isAtLeastLollipop()) {
       MophFabDialogHelper.setupSharedElementTransitions(this, mContainer,
           getResources().getDimensionPixelSize(R.dimen.dialog_corner));
     }
 
-    final Book book = getIntent().getParcelableExtra(EXTRA_BUY_BOOK);
+    mBook = getIntent().getParcelableExtra(EXTRA_BUY_BOOK);
     int accentColor = getIntent().getIntExtra(EXTRA_ACCENT_COLOR, 0);
 
     if (accentColor != 0) {
       mConfirmButton.setBackgroundColor(accentColor);
       mPriceView.setTextColor(accentColor);
     }
-    mTitleView.setText(book.getTitle());
-    mPriceView.setText(PriceFormatter.formatEuro(book.getPrice()));
+    mTitleView.setText(mBook.getTitle());
+    mPriceView.setText(PriceFormatter.formatEuro(mBook.getPrice()));
     mQuantityView.setOnQuantityChangeListener(new QuantityView.OnQuantityChangeListener() {
       @Override public void onQuantityChange(String key, int quantity) {
-        mPriceView.setText(PriceFormatter.formatEuro(book.getPrice() * quantity));
+        mPriceView.setText(PriceFormatter.formatEuro(mBook.getPrice() * quantity));
       }
     });
 
@@ -76,6 +85,11 @@ public class BuyBook extends AppCompatActivity {
 
   @OnClick(R.id.confirm) public void onConfirm() {
     Log.d(TAG, "onConfirm() called with: " + "");
+    //TODO: save bought books in preferences
+    Cart cart = mCartPref.get();
+    if(cart == null) cart = new Cart();
+    cart.addBook(mBook);
+    mCartPref.set(cart);
     setResult(Activity.RESULT_OK);
     ActivityCompat.finishAfterTransition(this);
   }
