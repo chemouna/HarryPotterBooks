@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cart_item_container"
+    android:layout_columnSpan="3"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/padding_normal"
+    android:paddingTop="32dp"
+    android:paddingEnd="@dimen/padding_normal">
 
-</LinearLayout>
+  <TextView
+      android:id="@+id/title_book"
+      app:layout_widthPercent="33%"
+      android:layout_height="wrap_content"
+      android:text="@string/title_book"
+      style="@style/Widget.HenriPotier.CartTitle"/>
+
+  <TextView
+      android:id="@+id/title_quantity"
+      app:layout_widthPercent="33%"
+      android:layout_height="wrap_content"
+      android:text="@string/title_quantity"
+      android:layout_toRightOf="@id/title_book"
+      android:layout_toEndOf="@id/title_book"
+      android:gravity="center"
+      style="@style/Widget.HenriPotier.CartTitle"/>
+
+  <TextView
+      android:id="@+id/title_price"
+      app:layout_widthPercent="33%"
+      android:layout_height="wrap_content"
+      android:text="@string/title_price"
+      android:layout_toRightOf="@id/title_quantity"
+      android:layout_toEndOf="@id/title_quantity"
+      android:gravity="center"
+      style="@style/Widget.HenriPotier.CartTitle"/>
+
+</android.support.percent.PercentRelativeLayout>

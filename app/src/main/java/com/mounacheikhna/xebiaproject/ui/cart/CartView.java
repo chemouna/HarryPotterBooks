@@ -68,10 +68,10 @@ public class CartView extends FrameLayout implements CartScreen {
     final View cartFooterView =
         LayoutInflater.from(getContext()).inflate(R.layout.cart_footer, this, false);
     final Cart cart = mCartPref.get();
-    /*if(cart != null) {
+    if(cart != null) {
       final TextView totalView = ButterKnife.findById(cartFooterView, R.id.total_amount);
-      totalView.setText(cart.getTotal());
-    }*/
+      totalView.setText(String.valueOf(cart.getTotal()));
+    }
     mHeaderFooterAdapter.addFooter(cartFooterView);
 
     mHeaderFooterAdapter.getWrappedAdapter()

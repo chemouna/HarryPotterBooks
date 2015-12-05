@@ -7,4 +7,8 @@
   <string name="confirm">Confirm</string>
   <string name="cart_empty">Cart is empty</string>
   <string name="total">Total</string>
+
+  <string name="title_book">Book</string>
+  <string name="title_quantity">Quantity</string>
+  <string name="title_price">Price</string>
 </resources>

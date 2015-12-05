@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+  <android.support.percent.PercentRelativeLayout
+      android:id="@+id/cart_item_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingStart="@dimen/padding_normal"
+      android:paddingTop="32dp"
+      android:paddingEnd="@dimen/padding_normal">
+
+    <android.support.v4.widget.Space
+        android:id="@+id/empty_space"
+        app:layout_widthPercent="33%"
+        android:layout_height="wrap_content"/>
+
   <TextView
       android:id="@+id/total_label"
-      android:layout_width="wrap_content"
+      app:layout_widthPercent="33%"
       android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/empty_space"
+      android:layout_toEndOf="@id/empty_space"
       android:text="@string/total"
-      android:layout_marginLeft="@dimen/spacing_very_large"
+      android:textStyle="bold"
+      android:gravity="center"
       android:textAllCaps="true"/>
 
   <TextView
       android:id="@+id/total_amount"
-      android:layout_width="wrap_content"
+      app:layout_widthPercent="33%"
       android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/total_label"
+      android:layout_toEndOf="@id/total_label"
       style="@style/Widget.HenriPotier.CardPrice"
-      android:layout_marginLeft="@dimen/spacing_very_large"
-      android:text="0€"
+      android:gravity="center"
       tools:text="100.0€"/>
+
+  </android.support.percent.PercentRelativeLayout>
 
 </LinearLayout>

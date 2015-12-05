@@ -64,6 +64,10 @@
   <style name="Widget.HenriPotier.QuantityAction">
   </style>
 
+  <style name="Widget.HenriPotier.CartTitle" parent="TextAppearance.AppCompat.Caption">
+    <item name="android:textAllCaps">true</item>
+  </style>
 
   <color name="translucent_background">#99323232</color>
+
 </resources>

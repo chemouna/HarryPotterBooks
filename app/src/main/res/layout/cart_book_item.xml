@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.mounacheikhna.xebiaproject.ui.cart.CartItemView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="horizontal">
+
+  <android.support.percent.PercentRelativeLayout
+      android:id="@+id/cart_item_container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingStart="@dimen/padding_normal"
+      android:paddingTop="32dp"
+      android:paddingEnd="@dimen/padding_normal">
 
   <TextView
       android:id="@+id/cart_item_title"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      app:layout_widthPercent="33%"
+      android:layout_height="wrap_content"
+      tools:text="Book 1"/>
 
   <TextView
       android:id="@+id/cart_item_quantity"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      app:layout_widthPercent="33%"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/cart_item_title"
+      android:layout_toEndOf="@id/cart_item_title"
+      android:gravity="center"
+      tools:text="2"/>
 
   <TextView
       android:id="@+id/cart_item_price"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      app:layout_widthPercent="33%"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/cart_item_quantity"
+      android:layout_toEndOf="@id/cart_item_quantity"
+      android:gravity="center"
+      tools:text="30.00€"/>
+
+  </android.support.percent.PercentRelativeLayout>
 
 </com.mounacheikhna.xebiaproject.ui.cart.CartItemView>

@@ -24,10 +24,12 @@ public class CartItemView extends LinearLayout implements BindableBookItem {
 
   public CartItemView(Context context) {
     super(context);
+    setOrientation(HORIZONTAL);
   }
 
   public CartItemView(Context context, AttributeSet attrs) {
     super(context, attrs);
+    setOrientation(HORIZONTAL);
   }
 
   @Override protected void onFinishInflate() {
@@ -37,8 +39,8 @@ public class CartItemView extends LinearLayout implements BindableBookItem {
 
   public void bindTo(Book book, Picasso picasso) {
     mTitleView.setText(book.getTitle());
-    //mQuantityView.setText(book.getQuantity());
-    ///mPriceView.setText(PriceFormatter.formatEuro(book.getQuantity() * book.getPrice()));
+    mQuantityView.setText(String.valueOf(book.getQuantity()));
+    mPriceView.setText(PriceFormatter.formatEuro(book.getQuantity() * book.getPrice()));
   }
 
   @Override public View getImageView() {
