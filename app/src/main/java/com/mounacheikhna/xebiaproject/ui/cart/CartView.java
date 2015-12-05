@@ -16,6 +16,7 @@ import com.mounacheikhna.xebiaproject.data.Cart;
 import com.mounacheikhna.xebiaproject.ui.book.BooksAdapter;
 import com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator;
 import com.mounacheikhna.xebiaproject.ui.view.recyclerview.HeaderFooterAdapter;
+import com.mounacheikhna.xebiaproject.util.PriceFormatter;
 import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -70,7 +71,7 @@ public class CartView extends FrameLayout implements CartScreen {
     final Cart cart = mCartPref.get();
     if(cart != null) {
       final TextView totalView = ButterKnife.findById(cartFooterView, R.id.total_amount);
-      totalView.setText(String.valueOf(cart.getTotal()));
+      totalView.setText(PriceFormatter.formatEuro(cart.getTotal()));
     }
     mHeaderFooterAdapter.addFooter(cartFooterView);
 

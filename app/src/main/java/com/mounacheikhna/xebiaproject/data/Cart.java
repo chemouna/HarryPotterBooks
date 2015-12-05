@@ -29,7 +29,7 @@ public class Cart {
   public int getTotal() {
     int total = 0;
     for (Book b : mBooks) {
-      total += b.getQuantity() + b.getPrice();
+      total += (b.getQuantity() * b.getPrice());
     }
     return total;
   }

@@ -38,6 +38,7 @@
       android:layout_toEndOf="@id/total_label"
       style="@style/Widget.HenriPotier.CardPrice"
       android:gravity="center"
+      android:textStyle="bold"
       tools:text="100.0€"/>
 
   </android.support.percent.PercentRelativeLayout>
