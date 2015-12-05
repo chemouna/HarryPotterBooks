@@ -1,7 +1,9 @@
 package com.mounacheikhna.xebiaproject.ui.book;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -9,11 +11,8 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -32,6 +31,8 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
+import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
+
 /**
  * Created by mouna on 02/12/15.
  */
@@ -40,12 +41,10 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
   @Bind(R.id.books_rv) RecyclerView mBooksView;
   @Bind(R.id.container_animator) CustomViewAnimator mAnimatorView;
   @Bind(R.id.state) TextView mStateView;
-
-  private BooksAdapter mAdapter;
-
   @Inject Picasso mPicasso;
   @Inject BooksPresenter mBooksPresenter;
-  @Nullable  private Activity mHost;
+  private BooksAdapter mAdapter;
+  @Nullable private Activity mHost;
 
   public BooksGridView(Context context) {
     super(context);
@@ -69,7 +68,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
   }
 
   private void init(Context context) {
-    if(isInEditMode()) return;
+    if (isInEditMode()) return;
     final View view = LayoutInflater.from(context).inflate(R.layout.books_view, this, true);
     setOrientation(VERTICAL);
     ButterKnife.bind(this, view);
@@ -96,21 +95,22 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
       return;
     }
     mBooksPresenter.loadBooks()
-          //.delay(25, TimeUnit.SECONDS) //just for debugging
-          .subscribeOn(Schedulers.io())
-          .observeOn(AndroidSchedulers.mainThread())
-          .subscribe(new Subscriber<List<Book>>() {
-            @Override public void onCompleted() {}
+        //.delay(25, TimeUnit.SECONDS) //just for debugging
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Subscriber<List<Book>>() {
+          @Override public void onCompleted() {
+          }
 
-            @Override public void onError(Throwable e) {
-              mStateView.setText(R.string.loading_error);
-              mAnimatorView.setDisplayedChildId(R.id.state);
-            }
+          @Override public void onError(Throwable e) {
+            mStateView.setText(R.string.loading_error);
+            mAnimatorView.setDisplayedChildId(R.id.state);
+          }
 
-            @Override public void onNext(List<Book> books) {
-              mAdapter.call(books);
-            }
-          });
+          @Override public void onNext(List<Book> books) {
+            mAdapter.call(books);
+          }
+        });
   }
 
   private boolean isConnected() {
@@ -133,13 +133,24 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
       }
     });
     mAdapter.setBookSelectedListener(new BooksAdapter.BookSelectedListener() {
+      @SuppressLint("NewApi")
       @Override public void onBookSelectedListener(View transitionView, Book book) {
-        if(mHost == null) return;
+        if (mHost == null) return;
         final Intent intent = BookActivity.getIntent(getContext(), book);
-        final ActivityOptionsCompat options =
+        /*final ActivityOptionsCompat options =
             ActivityOptionsCompat.makeSceneTransitionAnimation(mHost,
-                new Pair<>(transitionView, getContext().getString(R.string.transition_book_image)));
-        ActivityCompat.startActivity(mHost, intent, options.toBundle());
+                new Pair<>(transitionView, getContext().getString(R.string.transition_book_image)));*/
+
+        if (isAtLeastLollipop()) {
+          ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(mHost,
+              android.util.Pair.create(transitionView,
+                  mHost.getString(R.string.transition_book_image)),
+              android.util.Pair.create(transitionView,
+                  mHost.getString(R.string.transition_book_container)));
+          ActivityCompat.startActivity(mHost, intent, options.toBundle());
+        } else {
+          mHost.startActivity(intent);
+        }
       }
     });
     final int spacing = getResources().getDimensionPixelSize(R.dimen.spacing_small);
@@ -152,6 +163,4 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
     super.onDetachedFromWindow();
     mBooksPresenter.onDetach();
   }
-
-
 }

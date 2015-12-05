@@ -52,7 +52,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.BookViewHold
     notifyDataSetChanged();
   }
 
-  public void setBookSelectedListener(BookSelectedListener bookSelectedListener) {
+  public void setBookSelectedListener(@Nullable BookSelectedListener bookSelectedListener) {
     mBookSelectedListener = bookSelectedListener;
   }
 

@@ -35,6 +35,7 @@ public class BuyBook extends AppCompatActivity {
   public static final String EXTRA_BUY_BOOK = "extra_book";
   public static final String EXTRA_ACCENT_COLOR = "extra_accent_color";
   private static final String TAG = "BuyBook";
+
   @Bind(R.id.container) ViewGroup mContainer;
   @Bind(R.id.book_title) TextView mTitleView;
   @Bind(R.id.book_price) TextView mPriceView;
@@ -42,7 +43,8 @@ public class BuyBook extends AppCompatActivity {
   @Bind(R.id.quantity) QuantityView mQuantityView;
   @Bind(R.id.parent) FrameLayout mParent;
 
-  @SuppressLint("NewApi") @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
+  @SuppressLint("NewApi")
+  @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.buy_book);
     ButterKnife.bind(this);
@@ -67,7 +69,9 @@ public class BuyBook extends AppCompatActivity {
       }
     });
 
-    TransitionManager.beginDelayedTransition(mContainer);
+    if (isAtLeastLollipop()) {
+      TransitionManager.beginDelayedTransition(mContainer);
+    }
   }
 
   @OnClick(R.id.confirm) public void onConfirm() {

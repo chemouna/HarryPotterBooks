@@ -39,8 +39,8 @@ import com.mounacheikhna.xebiaproject.R;
 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
 public class MorphDialogToFab extends ChangeBounds {
 
-    private static final String PROPERTY_COLOR = "plaid:rectMorph:color";
-    private static final String PROPERTY_CORNER_RADIUS = "plaid:rectMorph:cornerRadius";
+    private static final String PROPERTY_COLOR = "com:mounacheikhna:xebiaproject:rectMorph:color";
+    private static final String PROPERTY_CORNER_RADIUS = "com:mounacheikhna:xebiaproject:rectMorph:cornerRadius";
     private static final String[] TRANSITION_PROPERTIES = {
             PROPERTY_COLOR,
             PROPERTY_CORNER_RADIUS

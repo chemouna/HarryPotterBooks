@@ -3,11 +3,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:ignore="NewApi">
+
+  <FrameLayout
+      android:id="@+id/container"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/background_light"
+      android:transitionName="@string/transition_book_container"
+      android:transitionGroup="false">
 
   <android.support.design.widget.AppBarLayout
       android:id="@+id/appbar"
@@ -49,6 +56,8 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
+  </FrameLayout>
+
   <android.support.design.widget.FloatingActionButton
       android:id="@+id/book_fab"
       android:layout_width="wrap_content"
@@ -59,7 +68,7 @@
       android:layout_margin="@dimen/spacing_double"
       android:clickable="true"
       android:src="@drawable/ic_shopping_basket_white_24dp"
+      android:alpha="0"
       tools:ignore="NewApi"/>
-  <!-- android:alpha="0"-->
 
 </android.support.design.widget.CoordinatorLayout>

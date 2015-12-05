@@ -46,6 +46,8 @@ ext {
   stetho = "com.facebook.stetho:stetho:1.2.0"
   stethoOkhttp = "com.facebook.stetho:stetho-okhttp:1.2.0"
 
+  rxPreferences = "com.f2prateek.rx.preferences:rx-preferences:1.0.1"
+
   junit = "junit:junit:4.12"
 
 }

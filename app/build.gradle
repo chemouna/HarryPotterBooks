@@ -71,5 +71,6 @@ dependencies {
 
   debugCompile rootProject.ext.rxJavaDebug
 
+
   testCompile rootProject.ext.junit
 }
