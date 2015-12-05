@@ -13,4 +13,16 @@ public class Offer {
   private String type;
   private int sliceValue;
   private int value;
+
+  public String getType() {
+    return type;
+  }
+
+  public int getSliceValue() {
+    return sliceValue;
+  }
+
+  public int getValue() {
+    return value;
+  }
 }

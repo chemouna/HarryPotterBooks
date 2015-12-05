@@ -1,5 +1,5 @@
 <resources>
-  <string name="app_name">XebiaProject</string>
+  <string name="app_name" translatable="false">Henri Potier</string>
   <string name="no_books">No books</string>
   <string name="default_author">J.K. Rowling</string>
   <string name="loading_error">Error while loading books.</string>
@@ -7,8 +7,11 @@
   <string name="confirm">Confirm</string>
   <string name="cart_empty">Cart is empty</string>
   <string name="total">Total</string>
-
   <string name="title_book">Book</string>
   <string name="title_quantity">Quantity</string>
   <string name="title_price">Price</string>
+
+  <string name="offer">Offer</string>
+
+
 </resources>

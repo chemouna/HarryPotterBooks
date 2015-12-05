@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:id="@+id/total_footer_container"
+    android:id="@+id/offer_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingStart="@dimen/padding_normal"
@@ -12,30 +12,28 @@
     android:paddingEnd="@dimen/padding_normal">
 
   <android.support.v4.widget.Space
-      android:id="@+id/empty_space"
+      android:id="@+id/offer_empty_space"
       app:layout_widthPercent="33%"
       android:layout_height="wrap_content"/>
 
   <TextView
-      android:id="@+id/total_label"
+      android:id="@+id/offer_label"
       app:layout_widthPercent="33%"
       android:layout_height="wrap_content"
-      android:layout_toRightOf="@id/empty_space"
-      android:layout_toEndOf="@id/empty_space"
-      android:text="@string/total"
-      android:textStyle="bold"
+      android:layout_toRightOf="@id/offer_empty_space"
+      android:layout_toEndOf="@id/offer_empty_space"
+      android:text="@string/offer"
       android:gravity="center"
       android:textAllCaps="true"/>
 
   <TextView
-      android:id="@+id/total_amount"
+      android:id="@+id/offer_amount"
       app:layout_widthPercent="33%"
       android:layout_height="wrap_content"
-      android:layout_toRightOf="@id/total_label"
-      android:layout_toEndOf="@id/total_label"
+      android:layout_toRightOf="@id/offer_label"
+      android:layout_toEndOf="@id/offer_label"
       style="@style/Widget.HenriPotier.CardPrice"
       android:gravity="center"
-      android:textStyle="bold"
-      tools:text="100.0€"/>
+      tools:text="-10€"/>
 
 </android.support.percent.PercentRelativeLayout>

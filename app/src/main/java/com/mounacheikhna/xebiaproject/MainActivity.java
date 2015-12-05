@@ -134,4 +134,17 @@ public class MainActivity extends AppCompatActivity {
           }
         }
       };
+
+  @Override public void onBackPressed() {
+    if(mCartView.getVisibility() == View.VISIBLE) {
+      mCartView.setVisibility(View.GONE);
+      mCartFab.setVisibility(View.VISIBLE);
+      mBooksGridView.setVisibility(View.VISIBLE);
+    }
+    else {
+      super.onBackPressed();
+    }
+  }
+
+
 }

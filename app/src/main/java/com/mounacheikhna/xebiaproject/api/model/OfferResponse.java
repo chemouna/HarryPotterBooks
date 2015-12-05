@@ -8,4 +8,9 @@ import java.util.List;
 public class OfferResponse {
 
   private List<Offer> offers;
+
+  public List<Offer> getOffers() {
+    return offers;
+  }
+
 }
