@@ -7,7 +7,6 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import timber.log.Timber;
 
 @Singleton public final class LoggingInterceptor implements Interceptor {
 
@@ -18,13 +17,10 @@ import timber.log.Timber;
     Request request = chain.request();
 
     long startMs = System.currentTimeMillis();
-    Timber.v("Sending request %s%s", request.url(), prettyHeaders(request.headers()));
 
     Response response = chain.proceed(request);
 
     long tookMs = System.currentTimeMillis() - startMs;
-    Timber.v("Received response (%s) for %s in %sms%s", response.code(), response.request().url(),
-        tookMs, prettyHeaders(response.headers()));
 
     return response;
   }

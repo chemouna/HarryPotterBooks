@@ -14,11 +14,12 @@ import com.squareup.picasso.Picasso;
 import dagger.Module;
 import dagger.Provides;
 import java.util.List;
+import javax.inject.Named;
 import javax.inject.Singleton;
 import retrofit.MoshiConverterFactory;
 import retrofit.Retrofit;
 import retrofit.RxJavaCallAdapterFactory;
-import timber.log.Timber;
+import retrofit.SimpleXmlConverterFactory;
 
 /**
  * Created by cheikhnamouna on 11/21/15.
@@ -42,7 +43,7 @@ import timber.log.Timber;
     return new OkHttpClient();
   }
 
-  @Provides @Singleton Retrofit provideRetrofit(@ApiClient OkHttpClient apiClient, Moshi moshi) {
+  @Provides @Singleton @Named("RetrofitDefault") Retrofit provideRetrofit(@ApiClient OkHttpClient apiClient, Moshi moshi) {
     return new Retrofit.Builder().client(apiClient)
         .baseUrl(HttpUrl.parse(BuildConfig.HENRI_POTIER_ENDPOINT_URL))
         .addConverterFactory(MoshiConverterFactory.create(moshi))
@@ -50,8 +51,27 @@ import timber.log.Timber;
         .build();
   }
 
-  @Provides @Singleton HenriPotierAPi providesSwapiApi(Retrofit retrofit) {
+  @Provides @Singleton HenriPotierAPi providesSwapiApi(@Named("RetrofitDefault") Retrofit retrofit) {
     return retrofit.create(HenriPotierAPi.class);
+  }
+
+  @Provides @Singleton @Named("RetrofitGoodreads") Retrofit provideGoodreadsRetrofit(@ApiClient OkHttpClient apiClient, Moshi moshi,
+      GoodreadsInterceptor goodreadsInterceptor) {
+    OkHttpClient goodreadsClient = apiClient.clone();
+    goodreadsClient.interceptors().add(goodreadsInterceptor);
+    return new Retrofit.Builder().client(goodreadsClient)
+        .baseUrl(HttpUrl.parse(BuildConfig.GOOD_READ_ENDPOINT_URL))
+        .addConverterFactory(SimpleXmlConverterFactory.create())
+        .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .build();
+  }
+
+  @Provides @Singleton GoodreadsApi provideGoodreadsApi(@Named("RetrofitGoodreads") Retrofit retrofit){
+    return retrofit.create(GoodreadsApi.class);
+  }
+
+  @Provides @Singleton GoodreadsInterceptor provideGoodreadsInterceptor() {
+    return new GoodreadsInterceptor();
   }
 
   @Provides @Singleton Picasso providePicasso(Application app, OkHttpClient client,
@@ -61,7 +81,6 @@ import timber.log.Timber;
     return new Picasso.Builder(app).downloader(new OkHttpDownloader(okClient))
         .listener(new Picasso.Listener() {
           @Override public void onImageLoadFailed(Picasso picasso, Uri uri, Exception e) {
-            Timber.e(e, "Failed to load image: %s ", uri);
           }
         })
         .build();

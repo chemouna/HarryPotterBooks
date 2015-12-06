@@ -7,6 +7,7 @@ import com.mounacheikhna.xebiaproject.ui.book.BookActivity;
 import com.mounacheikhna.xebiaproject.ui.book.BooksGridView;
 import com.mounacheikhna.xebiaproject.ui.buy.BuyBook;
 import com.mounacheikhna.xebiaproject.ui.cart.CartView;
+import com.mounacheikhna.xebiaproject.ui.details.BookDetailsView;
 import dagger.Component;
 import javax.inject.Singleton;
 
@@ -25,6 +26,8 @@ import javax.inject.Singleton;
   void injectBuyBook(BuyBook buyBook);
 
   void injectCartView(CartView cartView);
+
+  void injectBookDetailsView(BookDetailsView bookDetailsView);
 
   final class Initializer {
     private Initializer() {

@@ -40,6 +40,7 @@ import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.model.Book;
 import com.mounacheikhna.xebiaproject.transition.MophFabDialogHelper;
 import com.mounacheikhna.xebiaproject.ui.buy.BuyBook;
+import com.mounacheikhna.xebiaproject.ui.details.BookDetailsView;
 import com.mounacheikhna.xebiaproject.util.Animations.EmptyTransitionListener;
 import com.mounacheikhna.xebiaproject.util.Colors;
 import com.squareup.picasso.Callback;
@@ -63,12 +64,12 @@ public class BookActivity extends AppCompatActivity {
   @Bind(R.id.toolbar) Toolbar mToolbar;
   @Bind(R.id.collapsing_toolbar) CollapsingToolbarLayout mCollapsingToolbarLayout;
   @Bind(R.id.book_fab) FloatingActionButton mBookFab;
+  @Bind(R.id.book_details_view) BookDetailsView mBookDetailsView;
 
   @Inject Picasso mPicasso;
 
   private Transition.TransitionListener mReturnTransitionListener = new EmptyTransitionListener() {
     @SuppressLint("NewApi") @Override public void onTransitionStart(Transition transition) {
-      Log.d(TAG, "onTransitionStart() called with: " + "transition = [" + transition + "]");
       super.onTransitionStart(transition);
       mBookFab.setVisibility(View.INVISIBLE);
     }
@@ -99,6 +100,7 @@ public class BookActivity extends AppCompatActivity {
   @SuppressLint("NewApi") private void displayBook(final Bundle savedInstanceState, Book book) {
     Log.d(TAG, "displayBook() called with: " + "book = [" + book + "]");
     mCollapsingToolbarLayout.setTitle(book.getTitle());
+    mBookDetailsView.display(mBook);
 
     if (isAtLeastLollipop()) {
       postponeEnterTransition();
@@ -272,15 +274,6 @@ public class BookActivity extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
           //TODO: display state of purchased
         }
-        Log.d(TAG, "onActivityResult() called with: "
-            + "requestCode = ["
-            + requestCode
-            + "], resultCode = ["
-            + resultCode
-            + "], data = ["
-            + data
-            + "]");
-        //mBookFab.setAlpha(1f);
         break;
     }
   }

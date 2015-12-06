@@ -23,4 +23,5 @@ public class BooksPresenter extends BasePresenter<BooksScreen> {
   public Observable<List<Book>> loadBooks() {
     return mApi.fetchBooks();
   }
+
 }

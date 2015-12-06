@@ -22,8 +22,11 @@ android {
     versionCode rootProject.ext.versionCode
     versionName rootProject.ext.versionName
 
+    //multiDexEnabled true
+
     buildConfigField "String", "HENRI_POTIER_ENDPOINT_URL", "\"http://henri-potier.xebia.fr\""
 
+    buildConfigField "String", "GOOD_READ_ENDPOINT_URL", "\"https://www.goodreads.com\""
     buildConfigField "String", "GOOD_READS_KEY", "\"rSgxFW23ByRubOCGfwEQTg\""
     buildConfigField "String", "GOOD_READS_SCECRET", "\"xs3msWO6DTgBFh5zpRyOjvGm8sxF9HuUd0NWtGbQwi4\""
 
@@ -50,6 +53,7 @@ dependencies {
   compile rootProject.ext.supportCardView
   compile rootProject.ext.supportPalette
   compile rootProject.ext.supportPercent
+  //compile rootProject.ext.multidex
 
   compile rootProject.ext.timber
 
@@ -59,6 +63,11 @@ dependencies {
 
   compile rootProject.ext.retrofit
   compile rootProject.ext.converterMoshi
+  compile(rootProject.ext.converterSimplexml){
+    exclude module: 'stax'
+    exclude module: 'stax-api'
+  }
+
   compile rootProject.ext.adapterRxjava
   compile rootProject.ext.rxJava
   compile rootProject.ext.rxAndroid

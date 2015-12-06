@@ -1,4 +1,4 @@
-package com.mounacheikhna.xebiaproject.ui.behavior;
+package com.mounacheikhna.xebiaproject.ui.view.behavior;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;

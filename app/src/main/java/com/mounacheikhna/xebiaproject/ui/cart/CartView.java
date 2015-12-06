@@ -22,7 +22,6 @@ import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 import javax.inject.Named;
 import rx.Subscriber;
-import timber.log.Timber;
 
 /**
  * Created by mouna on 05/12/15.
@@ -100,12 +99,10 @@ public class CartView extends FrameLayout implements CartScreen {
         @Override public void onCompleted() {}
 
         @Override public void onError(Throwable e) {
-          Timber.e("Error : "+ e);
         }
 
         @Override public void onNext(OfferResponse offerResponse) {
           final Cart.OfferPrice bestOffer = cart.getBestOffer(offerResponse.getOffers());
-          Timber.d(" bestOffer : "+ bestOffer);
           mOfferView.setText(PriceFormatter.formatEuro(bestOffer.getPromo()));
           mTotalView.setText(PriceFormatter.formatEuro(bestOffer.getPrice()));
         }
