@@ -16,6 +16,9 @@ import org.simpleframework.xml.Root;
   @Element(name = "description", required = false) String description;
   @Element(name = "author", required = false) Author author;
 
+  @Element(name="publisher", required = false) String publisher;
+  @Element(name="num_pages", required = false) String nbPages;
+
   public String getId() {
     return id;
   }
@@ -36,6 +39,13 @@ import org.simpleframework.xml.Root;
     return imageUrl;
   }
 
+  public String getPublisher() {
+    return publisher;
+  }
+
+  public String getNbPages() {
+    return nbPages;
+  }
 
   @Root(strict = false) public static class Author {
 

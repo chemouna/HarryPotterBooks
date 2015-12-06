@@ -150,7 +150,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
         }
       }
     });
-    final int spacing = getResources().getDimensionPixelSize(R.dimen.spacing_small);
+    final int spacing = getResources().getDimensionPixelSize(R.dimen.spacing_normal);
     mBooksView.addItemDecoration(new OffsetDecoration(spacing));
     mBooksView.setAdapter(mAdapter);
     mBooksView.scheduleLayoutAnimation();

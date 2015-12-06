@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.PluralsRes;
 import android.support.v4.app.ShareCompat;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
@@ -42,13 +41,14 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
   @Bind(R.id.ratings) Button mRatingsButton;
   @Bind(R.id.reviews) Button mReviewsButton;
   @Bind(R.id.share) Button mShareButton;
-  @Bind(R.id.publication_date_layout) DetailItemLayout mReleaseLayout;
-  @Bind(R.id.reviews_rv) RecyclerView mReviewsRv;
+  @Bind(R.id.publication_date_layout) DetailItemLayout mPublicationDateLayout;
+  @Bind(R.id.publisher_layout) DetailItemLayout mPublisherLayout;
+  @Bind(R.id.pages_info_layout) DetailItemLayout mPagesLayout;
+  /*@Bind(R.id.reviews_rv) RecyclerView mReviewsRv;*/
 
   private Activity mHost;
   private Book mBook;
   private GoodreadsBook mGoodreadsBook;
-  private ReviewAdapter mAdapter;
   private CompositeSubscription mSubscriptions;
 
   public BookDetailsView(Context context) {
@@ -107,7 +107,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
       /*if(author != null) {
         mAuthorView.setText(author.getName());
       }*/
-      displayReviews(mGoodreadsBook.getId());
+      displayMoreBookDetails(mGoodreadsBook.getId());
     }
 
     final Work work = goodreadsResponse.getFirsWork();
@@ -116,13 +116,12 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
       mRatingVotesView.setText(buildPluralsValue(work.getRatingsCount(), R.plurals.votes));
       mReviewsButton.setText(buildPluralsValue(work.getTextReviewsCount(), R.plurals.reviews));
       mRatingsButton.setText(buildPluralsValue(work.getRatingsCount(), R.plurals.ratings));
-      mReleaseLayout.setContentText(work.getFormattedReleaseDate());
+      mPublicationDateLayout.setContentText(work.getFormattedReleaseDate());
     }
   }
 
-  private void displayReviews(String bookId) {
-    mAdapter = new ReviewAdapter();
-    mSubscriptions.add(mBookDetailsPresenter.fetchReviews(bookId)
+  private void displayMoreBookDetails(String bookId) {
+    mSubscriptions.add(mBookDetailsPresenter.showBook(bookId)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Subscriber<GoodreadsResponse>() {
           @Override public void onCompleted() {
@@ -134,6 +133,12 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
 
           @Override public void onNext(GoodreadsResponse goodreadsResponse) {
             Timber.d("goodreadsResponse : %s", goodreadsResponse);
+            final GoodreadsBook book = goodreadsResponse.getBook();
+            if(book != null) {
+              mDescriptionView.setText(book.getDescription());
+              mPublisherLayout.setContentText(book.getPublisher());
+              mPagesLayout.setContentText(book.getNbPages());
+            }
           }
         }));
   }

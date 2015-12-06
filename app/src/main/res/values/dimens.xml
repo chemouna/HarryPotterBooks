@@ -6,6 +6,7 @@
   <dimen name="spacing_small">4dp</dimen>
   <dimen name="spacing_normal">8dp</dimen>
   <dimen name="spacing_double">16dp</dimen>
+  <dimen name="spacing_large">32dp</dimen>
   <dimen name="spacing_very_large">72dp</dimen>
   <dimen name="padding_normal">16dp</dimen>
 

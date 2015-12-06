@@ -11,7 +11,7 @@
     <item name="android:windowSharedElementReturnTransition">@transition/book_image_shared_return
     </item>
     <item name="android:windowEnterTransition">@transition/book_enter</item>
-    <item name="android:windowReturnTransition">@transition/book_return</item>
+    <!--<item name="android:windowReturnTransition">@transition/book_return</item>-->
     <item name="android:windowAllowReturnTransitionOverlap">false</item>
   </style>
 

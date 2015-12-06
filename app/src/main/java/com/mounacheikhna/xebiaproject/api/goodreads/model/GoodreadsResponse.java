@@ -16,6 +16,13 @@ public class GoodreadsResponse {
 
   @Element(name = "search", required = false) Search search;
 
+  @Nullable @Element(name = "book", required = false) GoodreadsBook book;
+
+  @Nullable
+  public GoodreadsBook getBook() {
+    return book;
+  }
+
   public Request getRequest() {
     return request;
   }

@@ -33,6 +33,8 @@
         android:clipToPadding="false"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
         app:spanCount="@integer/nb_columns_books"
+        android:padding="@dimen/spacing_small"
+        android:layout_gravity="center_horizontal"
         android:layoutAnimation="@anim/grid_layout_animation"/>
 
   </com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator>

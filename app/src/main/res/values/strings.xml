@@ -51,5 +51,9 @@
   <string name="publication_details">Publication</string>
   <string name="more">More</string>
   <string name="title_reviews">Reviews</string>
+  <string name="title_publisher">Publisher</string>
+  <string name="title_pages_info">Pages</string>
+  <string name="title_ratings">Ratings</string>
+  <string name="title_description">Description</string>
 
 </resources>

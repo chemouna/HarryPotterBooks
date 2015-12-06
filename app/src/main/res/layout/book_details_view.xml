@@ -5,14 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="@layout/book_activity">
 
+  <com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout
+      android:id="@+id/description_card_layout"
+      android:paddingTop="@dimen/spacing_large"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_large"
+      app:title="@string/title_description">
+
   <com.mounacheikhna.xebiaproject.ui.view.ExpandingTextView
       android:id="@+id/description"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:paddingTop="@dimen/spacing_normal"
       android:paddingLeft="@dimen/spacing_double"
       android:paddingRight="@dimen/spacing_double"
-      android:paddingBottom="@dimen/spacing_normal"
+      android:paddingBottom="@dimen/spacing_double"
       android:textAppearance="@style/TextAppearance.BookDescription"
       app:collapsed_maxLines="3"
       app:tv_expanded="false"
@@ -20,11 +27,20 @@
       android:layout_marginBottom="@dimen/spacing_double"
       tools:text="This is a description of the book."/>
 
+  </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
+
   <TextView
       android:id="@+id/author"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       tools:text="J.K Rowling"/>
+
+  <com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout
+      android:id="@+id/users_feedback_card_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_small"
+      app:title="@string/title_ratings">
 
   <GridLayout
       android:layout_width="match_parent"
@@ -33,6 +49,7 @@
       android:columnCount="3"
       android:useDefaultMargins="false"
       android:background="@android:color/transparent"
+      android:paddingBottom="@dimen/spacing_double"
       tools:background="@color/primary">
 
     <include layout="@layout/rating_layout"
@@ -45,9 +62,11 @@
         android:layout_columnSpan="3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/padding_normal"
-        android:paddingTop="32dp"
-        android:paddingEnd="@dimen/padding_normal">
+        android:paddingStart="@dimen/spacing_normal"
+        android:paddingLeft="@dimen/spacing_normal"
+        android:paddingTop="@dimen/spacing_large"
+        android:paddingRight="@dimen/spacing_double"
+        android:paddingEnd="@dimen/spacing_double">
 
       <Button
           android:id="@+id/ratings"
@@ -81,11 +100,13 @@
 
   </GridLayout>
 
+  </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
+
   <com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout
       android:id="@+id/detail_card_layout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/spacing_normal"
+      android:layout_marginTop="@dimen/spacing_small"
       app:title="@string/title_details">
 
     <LinearLayout
@@ -101,24 +122,23 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginBottom="@dimen/spacing_small"
-          app:title="@string/publication_details" />
+          app:title="@string/publication_details"/>
+
+      <com.mounacheikhna.xebiaproject.ui.view.DetailItemLayout
+          android:id="@+id/publisher_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/spacing_small"
+          app:title="@string/title_publisher"/>
+
+      <com.mounacheikhna.xebiaproject.ui.view.DetailItemLayout
+          android:id="@+id/pages_info_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/spacing_small"
+          app:title="@string/title_pages_info"/>
 
     </LinearLayout>
-
-  </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
-
-  <com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout
-      android:id="@+id/reviews_card_layout"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/spacing_normal"
-      app:title="@string/title_reviews">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/reviews_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
   </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
 

@@ -28,7 +28,7 @@ import rx.schedulers.Schedulers;
         .subscribeOn(Schedulers.io());
   }
 
-  public Observable<GoodreadsResponse> fetchReviews(String bookId) {
+  public Observable<GoodreadsResponse> showBook(String bookId) {
     return mGoodreadsApi.showBook(bookId).subscribeOn(Schedulers.io());
   }
 }
