@@ -4,13 +4,11 @@
     android:interpolator="@android:interpolator/fast_out_slow_in"
     android:transitionOrdering="together">
 
-  <!--
     <changeBounds>
       <targets>
         <target android:targetId="@id/container"/>
       </targets>
     </changeBounds>
-  -->
 
   <transitionSet>
     <targets>
