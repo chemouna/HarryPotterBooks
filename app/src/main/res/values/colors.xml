@@ -19,14 +19,12 @@
   <color name="text_primary_light">#ffffffff</color>
   <color name="text_secondary_light">#b3ffffff</color>
   <color name="text_disabled_light">#4dffffff</color>
-
   <color name="background_light">#fafafa</color>
   <color name="background_super_dark">#ff292929</color>
   <color name="hint_disabled_dark">#43000000</color>
   <color name="content_background">#FFE5E5E5</color>
-
   <color name="buy_primary_dark">#de000000</color>
-
   <color name="background_dark">#ff333333</color>
+  <color name="translucent_background">#99323232</color>
 
 </resources>

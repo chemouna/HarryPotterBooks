@@ -68,6 +68,16 @@
     <item name="android:textAllCaps">true</item>
   </style>
 
-  <color name="translucent_background">#99323232</color>
+  <style name="TextAppearance.BookDescription" parent="TextAppearance.AppCompat.Subhead">
+    <item name="android:textColor">@color/text_tertiary_dark</item>
+  </style>
+
+  <style name="TextAppearance.Rating" parent="TextAppearance.AppCompat.Display1">
+    <item name="android:textColor">?android:attr/textColorSecondary</item>
+    <item name="android:textSize">34sp</item>
+  </style>
+
+  <style name="TextAppearance.Caption" parent="TextAppearance.AppCompat.Caption">
+  </style>
 
 </resources>

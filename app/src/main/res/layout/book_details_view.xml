@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge
->
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="@layout/book_activity">
 
+  <com.mounacheikhna.xebiaproject.ui.view.ExpandingTextView
+      android:id="@+id/description"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingTop="@dimen/spacing_normal"
+      android:paddingLeft="@dimen/spacing_double"
+      android:paddingRight="@dimen/spacing_double"
+      android:paddingBottom="@dimen/spacing_normal"
+      android:textAppearance="@style/TextAppearance.BookDescription"
+      app:collapsed_maxLines="3"
+      app:tv_expanded="false"
+      android:textIsSelectable="true"
+      android:layout_marginBottom="@dimen/spacing_double"
+      tools:text="This is a description of the book."/>
+
+  <TextView
+    android:id="@+id/author"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:text="J.K Rowling"/>
+
+  <include layout="@layout/rating_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"/>
 
 </merge>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rating_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spacing_double"
+    tools:showIn="@layout/film_details_content">
+
+  <TextView
+      android:id="@+id/tv_rating_value"
+      app:layout_marginLeftPercent="35%"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/empty_rating"
+      android:textAppearance="@style/TextAppearance.Rating"
+      tools:text="8.5"/>
+
+  <TextView
+      android:id="@+id/tv_rating_range"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginRight="@dimen/spacing_normal"
+      android:layout_marginEnd="@dimen/spacing_normal"
+      android:layout_alignBaseline="@+id/tv_rating_value"
+      android:layout_toRightOf="@+id/tv_rating_value"
+      android:layout_toEndOf="@+id/tv_rating_value"
+      android:text="@string/rating_range"
+      android:textAppearance="@style/TextAppearance.Caption"/>
+
+  <TextView
+      android:id="@+id/tv_rating_votes"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignBaseline="@+id/tv_rating_value"
+      android:layout_toRightOf="@id/tv_rating_range"
+      android:layout_toEndOf="@id/tv_rating_range"
+      android:text="@string/none_rating"
+      tools:text="700 votes"
+      android:maxLines="2"
+      android:ellipsize="end"
+      android:textAppearance="@style/TextAppearance.Caption"/>
+
+</android.support.percent.PercentRelativeLayout>
+

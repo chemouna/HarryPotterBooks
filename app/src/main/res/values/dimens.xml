@@ -12,6 +12,7 @@
   <dimen name="toolbar_elevation">4dp</dimen>
   <dimen name="book_column_width">156dp</dimen>
   <dimen name="dialog_corner">2dp</dimen>
+  <dimen name="app_bar_height">256dp</dimen>
 
 
 </resources>

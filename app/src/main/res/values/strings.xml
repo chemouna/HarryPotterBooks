@@ -14,4 +14,16 @@
   <string name="offer">Offer</string>
 
 
+  <plurals name="votes">
+    <item quantity="zero">%d votes</item>
+    <item quantity="one">%d vote</item>
+    <item quantity="two">%d votes</item>
+    <item quantity="few">%d votes</item>
+    <item quantity="many">%d votes</item>
+    <item quantity="other">%d votes</item>
+  </plurals>
+  <string name="empty_rating" translatable="false">--</string>
+  <string name="rating_range">/5</string>
+  <string name="none_rating">n/a</string>
+
 </resources>
