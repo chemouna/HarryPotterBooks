@@ -11,7 +11,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
-import com.mounacheikhna.xebiaproject.ui.BindableBookItem;
+import com.mounacheikhna.xebiaproject.ui.base.BindableBookItem;
 import com.mounacheikhna.xebiaproject.util.PriceFormatter;
 import com.squareup.picasso.Picasso;
 
@@ -35,12 +35,11 @@ public class BookItemView extends RelativeLayout implements BindableBookItem {
 
   public void bindTo(Book book, Picasso picasso) {
     mNameView.setText(book.getTitle());
-    //mAuthorView.setText(book.get);
     mBookPriceView.setText(PriceFormatter.formatEuro(book.getPrice()));
     if (!TextUtils.isEmpty(book.getCover())) {
       picasso.load(book.getCover())
-          //.placeholder(R.drawable.ic_city)
-          //.error(R.drawable.ic_city)
+          //.placeholder(R.drawable.avatar)
+          //.error(R.drawable.avatar)
           .fit().into(mImageView);
     }
   }

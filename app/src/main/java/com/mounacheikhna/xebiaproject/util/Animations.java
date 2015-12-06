@@ -187,16 +187,6 @@ public final class Animations {
       return mAnimator.isStarted();
     }
 
-        /* We don't want to override pause or resume methods because we don't want them
-         * to affect mAnimator.
-        public void pause();
-
-        public void resume();
-
-        public void addPauseListener(AnimatorPauseListener listener);
-
-        public void removePauseListener(AnimatorPauseListener listener);
-        */
 
     @Override public void removeAllListeners() {
       mListeners.clear();

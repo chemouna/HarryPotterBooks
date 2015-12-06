@@ -13,7 +13,8 @@ import java.io.IOException;
 public class GoodreadsInterceptor implements Interceptor {
 
   @Override public Response intercept(Chain chain) throws IOException {
-    HttpUrl url = chain.request().httpUrl()
+    HttpUrl url = chain.request()
+        .httpUrl()
         .newBuilder()
         .setQueryParameter("key", BuildConfig.GOOD_READS_KEY)
         .setQueryParameter("secret", BuildConfig.GOOD_READS_SCECRET)
@@ -22,5 +23,4 @@ public class GoodreadsInterceptor implements Interceptor {
     final Request request = chain.request().newBuilder().url(url).build();
     return chain.proceed(request);
   }
-
 }

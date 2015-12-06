@@ -11,7 +11,6 @@ public class GsonPreferenceAdapter<T> implements Preference.Adapter<T> {
   private final SyntaxExceptionBehavior syntaxExceptionBehavior;
   private Class<T> clazz;
 
-  // Constructor and exception handling omitted for brevity.
   public GsonPreferenceAdapter(Gson gson, Class<T> clazz, T defaultValue,
       SyntaxExceptionBehavior syntaxExceptionBehavior) {
     this.gson = gson;

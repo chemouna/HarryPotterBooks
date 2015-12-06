@@ -56,18 +56,18 @@ public class Cart {
       switch (offer.getType()) {
         case Offer.TYPE_MINUS:
           bestPrice = price - offer.getValue();
-          promo = - offer.getValue();
+          promo = -offer.getValue();
           break;
         case Offer.TYPE_PERCENTAGE:
-          bestPrice = price * (1.0f-offer.getValue()/100f);
-          promo = - (price * offer.getValue()/100f);
+          bestPrice = price * (1.0f - offer.getValue() / 100f);
+          promo = -(price * offer.getValue() / 100f);
           break;
         case Offer.TYPE_SLICE:
-          if(offer.getSliceValue() == 0) {
+          if (offer.getSliceValue() == 0) {
             bestPrice = price;
           } else {
             float offerValue = ((int) price / offer.getSliceValue()) * offer.getValue();
-            promo = - offerValue;
+            promo = -offerValue;
             bestPrice = price - offerValue;
           }
           break;
@@ -77,8 +77,7 @@ public class Cart {
     return Collections.min(bestOffers);
   }
 
-
-  public static class OfferPrice implements Comparable<OfferPrice>{
+  public static class OfferPrice implements Comparable<OfferPrice> {
 
     private float price;
     private float promo;
@@ -110,17 +109,15 @@ public class Cart {
       return promo;
     }
 
-    @Override
-    public int compareTo(OfferPrice another) {
-      if(getPrice() < another.getPrice())
+    @Override public int compareTo(OfferPrice another) {
+      if (getPrice() < another.getPrice()) {
         return -1;
-      else if(getPrice() == another.getPrice())
+      } else if (getPrice() == another.getPrice()) {
         return 0;
-      else
+      } else {
         return 1;
+      }
     }
   }
-
-
 }
 

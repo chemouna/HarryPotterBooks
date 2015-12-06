@@ -46,7 +46,8 @@ import retrofit.SimpleXmlConverterFactory;
     return new OkHttpClient();
   }
 
-  @Provides @Singleton @Named("RetrofitDefault") Retrofit provideRetrofit(@ApiClient OkHttpClient apiClient, Moshi moshi) {
+  @Provides @Singleton @Named("RetrofitDefault") Retrofit provideRetrofit(
+      @ApiClient OkHttpClient apiClient, Moshi moshi) {
     return new Retrofit.Builder().client(apiClient)
         .baseUrl(HttpUrl.parse(BuildConfig.HENRI_POTIER_ENDPOINT_URL))
         .addConverterFactory(MoshiConverterFactory.create(moshi))
@@ -54,12 +55,13 @@ import retrofit.SimpleXmlConverterFactory;
         .build();
   }
 
-  @Provides @Singleton HenriPotierAPi providesSwapiApi(@Named("RetrofitDefault") Retrofit retrofit) {
+  @Provides @Singleton HenriPotierAPi providesSwapiApi(
+      @Named("RetrofitDefault") Retrofit retrofit) {
     return retrofit.create(HenriPotierAPi.class);
   }
 
-  @Provides @Singleton @Named("RetrofitGoodreads") Retrofit provideGoodreadsRetrofit(@ApiClient OkHttpClient apiClient, Moshi moshi,
-      GoodreadsInterceptor goodreadsInterceptor) {
+  @Provides @Singleton @Named("RetrofitGoodreads") Retrofit provideGoodreadsRetrofit(
+      @ApiClient OkHttpClient apiClient, GoodreadsInterceptor goodreadsInterceptor) {
     OkHttpClient goodreadsClient = apiClient.clone();
     goodreadsClient.interceptors().add(goodreadsInterceptor);
     return new Retrofit.Builder().client(goodreadsClient)
@@ -69,7 +71,8 @@ import retrofit.SimpleXmlConverterFactory;
         .build();
   }
 
-  @Provides @Singleton GoodreadsApi provideGoodreadsApi(@Named("RetrofitGoodreads") Retrofit retrofit){
+  @Provides @Singleton GoodreadsApi provideGoodreadsApi(
+      @Named("RetrofitGoodreads") Retrofit retrofit) {
     return retrofit.create(GoodreadsApi.class);
   }
 

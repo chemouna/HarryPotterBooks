@@ -5,7 +5,6 @@ package com.mounacheikhna.xebiaproject.api.henripotier.model;
  */
 public class Offer {
 
-  //enum ?
   public static final String TYPE_PERCENTAGE = "percentage";
   public static final String TYPE_MINUS = "minus";
   public static final String TYPE_SLICE = "slice";

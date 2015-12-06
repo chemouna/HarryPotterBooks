@@ -1,4 +1,4 @@
-package com.mounacheikhna.xebiaproject.ui;
+package com.mounacheikhna.xebiaproject.ui.base;
 
 import android.view.View;
 import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;

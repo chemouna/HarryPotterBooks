@@ -83,8 +83,6 @@ public class BuyBook extends AppCompatActivity {
   }
 
   @OnClick(R.id.confirm) public void onConfirm() {
-    Log.d(TAG, "onConfirm() called with: " + "");
-    //TODO: save bought books in preferences
     Cart cart = mCartPref.get();
     if (cart == null) cart = new Cart();
     mBook.setQuantity(mQuantityView.getQuantity());
@@ -95,7 +93,6 @@ public class BuyBook extends AppCompatActivity {
   }
 
   public void dismiss(View view) {
-    Log.d(TAG, "dismiss() called with: " + "view = [" + view + "]");
     setResult(Activity.RESULT_CANCELED);
     ActivityCompat.finishAfterTransition(this);
   }

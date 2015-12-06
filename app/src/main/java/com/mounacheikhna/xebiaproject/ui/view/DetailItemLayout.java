@@ -41,5 +41,4 @@ public class DetailItemLayout extends LinearLayout {
   public void setContentText(CharSequence text) {
     mContentTextView.setText(text);
   }
-
 }

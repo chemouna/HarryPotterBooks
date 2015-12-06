@@ -44,7 +44,6 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
   @Bind(R.id.publication_date_layout) DetailItemLayout mPublicationDateLayout;
   @Bind(R.id.publisher_layout) DetailItemLayout mPublisherLayout;
   @Bind(R.id.pages_info_layout) DetailItemLayout mPagesLayout;
-  /*@Bind(R.id.reviews_rv) RecyclerView mReviewsRv;*/
 
   private Activity mHost;
   private Book mBook;
@@ -134,7 +133,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
           @Override public void onNext(GoodreadsResponse goodreadsResponse) {
             Timber.d("goodreadsResponse : %s", goodreadsResponse);
             final GoodreadsBook book = goodreadsResponse.getBook();
-            if(book != null) {
+            if (book != null) {
               mDescriptionView.setText(book.getDescription());
               mPublisherLayout.setContentText(book.getPublisher());
               mPagesLayout.setContentText(book.getNbPages());
@@ -174,5 +173,4 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     mBookDetailsPresenter.onDetach();
     mSubscriptions.clear();
   }
-
 }

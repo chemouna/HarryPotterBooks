@@ -11,7 +11,7 @@ import rx.Observable;
 /**
  * Created by mouna on 02/12/15.
  */
-@Singleton //temp singleton -> TODO: make it later scoped per component
+@Singleton // singleton for now -> TODO: make it later scoped per component
 public class BooksPresenter extends BasePresenter<BooksScreen> {
 
   private HenriPotierAPi mApi;
@@ -23,5 +23,4 @@ public class BooksPresenter extends BasePresenter<BooksScreen> {
   public Observable<List<Book>> loadBooks() {
     return mApi.fetchBooks();
   }
-
 }

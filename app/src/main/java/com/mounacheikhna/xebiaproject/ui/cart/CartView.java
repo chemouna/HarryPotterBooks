@@ -96,20 +96,21 @@ public class CartView extends FrameLayout implements CartScreen {
       mHeaderFooterAdapter.notifyDataSetChanged();
     }
 
-    //TODO: apply after commercial offer
-    if(cart != null) {
-      mSubscriptions.add(mCartPresenter.getOffers(cart.getBooks()).subscribe(new Subscriber<OfferResponse>() {
-        @Override public void onCompleted() {}
+    if (cart != null) {
+      mSubscriptions.add(
+          mCartPresenter.getOffers(cart.getBooks()).subscribe(new Subscriber<OfferResponse>() {
+            @Override public void onCompleted() {
+            }
 
-        @Override public void onError(Throwable e) {
-        }
+            @Override public void onError(Throwable e) {
+            }
 
-        @Override public void onNext(OfferResponse offerResponse) {
-          final Cart.OfferPrice bestOffer = cart.getBestOffer(offerResponse.getOffers());
-          mOfferView.setText(PriceFormatter.formatEuro(bestOffer.getPromo()));
-          mTotalView.setText(PriceFormatter.formatEuro(bestOffer.getPrice()));
-        }
-      }));
+            @Override public void onNext(OfferResponse offerResponse) {
+              final Cart.OfferPrice bestOffer = cart.getBestOffer(offerResponse.getOffers());
+              mOfferView.setText(PriceFormatter.formatEuro(bestOffer.getPromo()));
+              mTotalView.setText(PriceFormatter.formatEuro(bestOffer.getPrice()));
+            }
+          }));
     }
   }
 
@@ -123,7 +124,7 @@ public class CartView extends FrameLayout implements CartScreen {
     Cart cart = mCartPref.get();
     final View cartFooterView =
         LayoutInflater.from(getContext()).inflate(R.layout.cart_footer, this, false);
-    if(cart != null) {
+    if (cart != null) {
       mTotalView = ButterKnife.findById(cartFooterView, R.id.total_amount);
       mTotalView.setText(PriceFormatter.formatEuro(cart.getTotal()));
     }
@@ -134,9 +135,8 @@ public class CartView extends FrameLayout implements CartScreen {
     Cart cart = mCartPref.get();
     final View promoFooterView =
         LayoutInflater.from(getContext()).inflate(R.layout.cart_offer_footer, this, false);
-    if(cart != null) {
+    if (cart != null) {
       mOfferView = ButterKnife.findById(promoFooterView, R.id.offer_amount);
-      //mOfferView.setText(PriceFormatter.formatEuro(cart.get()));
     }
     mHeaderFooterAdapter.addFooter(promoFooterView);
   }

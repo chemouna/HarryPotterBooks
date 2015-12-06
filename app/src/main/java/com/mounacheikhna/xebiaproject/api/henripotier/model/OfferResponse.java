@@ -12,5 +12,4 @@ public class OfferResponse {
   public List<Offer> getOffers() {
     return offers;
   }
-
 }

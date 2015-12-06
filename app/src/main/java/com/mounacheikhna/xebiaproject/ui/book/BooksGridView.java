@@ -84,7 +84,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
 
   @Override protected void onFinishInflate() {
     super.onFinishInflate();
-    //temp for now -> TODO: later set an injection per component (i.e BooksComponent and scoped to it -> @see mrgabriel)
+    //TODO: later set an injection per component (i.e BooksComponent and scoped to it)
     HenriPotierApp.get(getContext()).getComponent().injectBooksView(this);
     mBooksPresenter.onAttach(this);
     initList();

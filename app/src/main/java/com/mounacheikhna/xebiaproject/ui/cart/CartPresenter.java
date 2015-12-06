@@ -24,13 +24,10 @@ import rx.schedulers.Schedulers;
   }
 
   public Observable<OfferResponse> getOffers(List<Book> books) {
-    //TODO: check and apply optimisations that jw was talking about.
     List<String> listIsbns = new ArrayList<>();
     for (Book b : books) {
       listIsbns.add(b.getIsbn());
     }
-    return mApi.fetchCommercialOffers(TextUtils.join(",", listIsbns))
-        .subscribeOn(Schedulers.io());
+    return mApi.fetchCommercialOffers(TextUtils.join(",", listIsbns)).subscribeOn(Schedulers.io());
   }
-
 }

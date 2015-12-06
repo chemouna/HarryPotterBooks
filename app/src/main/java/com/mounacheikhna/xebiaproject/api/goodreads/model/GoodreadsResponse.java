@@ -9,8 +9,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by mouna on 06/12/15.
  */
-@Root(name = "GoodreadsResponse", strict = false)
-public class GoodreadsResponse {
+@Root(name = "GoodreadsResponse", strict = false) public class GoodreadsResponse {
 
   @Element(name = "Request") Request request;
 
@@ -18,8 +17,7 @@ public class GoodreadsResponse {
 
   @Nullable @Element(name = "book", required = false) GoodreadsBook book;
 
-  @Nullable
-  public GoodreadsBook getBook() {
+  @Nullable public GoodreadsBook getBook() {
     return book;
   }
 
@@ -72,8 +70,6 @@ public class GoodreadsResponse {
   }
 
   @Root(strict = false) public static class Results {
-    @ElementList(name = "work", required = false, inline = true)
-    ArrayList<Work> mWorks;
+    @ElementList(name = "work", required = false, inline = true) ArrayList<Work> mWorks;
   }
-
 }

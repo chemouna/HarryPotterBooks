@@ -1,6 +1,5 @@
 package com.mounacheikhna.xebiaproject.api.goodreads.model;
 
-import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsBook;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 

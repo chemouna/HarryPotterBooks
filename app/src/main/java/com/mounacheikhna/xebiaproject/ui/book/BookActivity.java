@@ -55,7 +55,6 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastM;
  */
 public class BookActivity extends AppCompatActivity {
 
-  private static final String TAG = "BookActivity";
 
   private static final String EXTRA_BOOK = "extra_book";
   private static final int REQUEST_CODE_BUY_BOOK = 1;
@@ -99,7 +98,6 @@ public class BookActivity extends AppCompatActivity {
   }
 
   @SuppressLint("NewApi") private void displayBook(final Bundle savedInstanceState, Book book) {
-    Log.d(TAG, "displayBook() called with: " + "book = [" + book + "]");
     mCollapsingToolbarLayout.setTitle(book.getTitle());
     mBookDetailsView.display(mBook);
 
@@ -108,7 +106,6 @@ public class BookActivity extends AppCompatActivity {
       mBookImage.getViewTreeObserver()
           .addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             @Override public boolean onPreDraw() {
-              Log.d(TAG, "onPreDraw() called with: " + "");
               mBookImage.getViewTreeObserver().removeOnPreDrawListener(this);
               enterAnimation(savedInstanceState != null);
               startPostponedEnterTransition();
@@ -119,8 +116,6 @@ public class BookActivity extends AppCompatActivity {
 
     if (!TextUtils.isEmpty(book.getCover())) {
       mPicasso.load(book.getCover())
-          //.placeholder(R.drawable.people) //temp
-          //.error(R.drawable.people) //temp
           .fit().into(mBookImage, new Callback() {
         @Override public void onSuccess() {
           final Bitmap bitmap = ((BitmapDrawable) mBookImage.getDrawable()).getBitmap();
@@ -150,7 +145,6 @@ public class BookActivity extends AppCompatActivity {
   }
 
   @TargetApi(Build.VERSION_CODES.LOLLIPOP) private void enterAnimation(boolean orientationChanged) {
-    Log.d(TAG, "enterAnimation() called with: " + "");
     if (orientationChanged) {
       ObjectAnimator showFab = ObjectAnimator.ofPropertyValuesHolder(mBookFab,
           PropertyValuesHolder.ofFloat(View.ALPHA, 0f, 1f),
@@ -176,14 +170,6 @@ public class BookActivity extends AppCompatActivity {
       setExitSharedElementCallback(new SharedElementCallback() {
         @Override public Parcelable onCaptureSharedElementSnapshot(View sharedElement,
             Matrix viewToGlobalMatrix, RectF screenBounds) {
-          Log.d(TAG, "onCaptureSharedElementSnapshot() called with: "
-              + "sharedElement = ["
-              + sharedElement
-              + "], viewToGlobalMatrix = ["
-              + viewToGlobalMatrix
-              + "], screenBounds = ["
-              + screenBounds
-              + "]");
           int bitmapWidth = Math.round(screenBounds.width());
           int bitmapHeight = Math.round(screenBounds.height());
           Bitmap bitmap = null;
@@ -256,7 +242,6 @@ public class BookActivity extends AppCompatActivity {
 
   @SuppressLint("NewApi") @OnClick(R.id.book_fab) public void onBookFabClick() {
     Intent buyIntent = new Intent(this, BuyBook.class);
-    //TODO: send current colors from palette too
     buyIntent.putExtra(BuyBook.EXTRA_BUY_BOOK, mBook);
     buyIntent.putExtra(BuyBook.EXTRA_ACCENT_COLOR, mFabColor);
     if (isAtLeastLollipop()) {

@@ -102,10 +102,6 @@ public class Colors {
     return Math.max(min, Math.min(max, v));
   }
 
-  public static @ColorInt int scrimify(@ColorInt int color,
-      @FloatRange(from = 0f, to = 1f) float lightnessMultiplier) {
-    return scrimify(color, isDark(color), lightnessMultiplier);
-  }
 
   @Retention(RetentionPolicy.SOURCE) @IntDef({ IS_LIGHT, IS_DARK, LIGHTNESS_UNKNOWN })
   public @interface Lightness {

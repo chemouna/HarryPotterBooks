@@ -9,7 +9,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
-import com.mounacheikhna.xebiaproject.ui.BindableBookItem;
+import com.mounacheikhna.xebiaproject.ui.base.BindableBookItem;
 import com.mounacheikhna.xebiaproject.util.PriceFormatter;
 import com.squareup.picasso.Picasso;
 
