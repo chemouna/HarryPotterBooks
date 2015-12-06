@@ -1,4 +1,3 @@
-
 buildscript {
   repositories {
     jcenter()
@@ -28,7 +27,8 @@ android {
 
     buildConfigField "String", "GOOD_READ_ENDPOINT_URL", "\"https://www.goodreads.com\""
     buildConfigField "String", "GOOD_READS_KEY", "\"rSgxFW23ByRubOCGfwEQTg\""
-    buildConfigField "String", "GOOD_READS_SCECRET", "\"xs3msWO6DTgBFh5zpRyOjvGm8sxF9HuUd0NWtGbQwi4\""
+    buildConfigField "String", "GOOD_READS_SCECRET",
+        "\"xs3msWO6DTgBFh5zpRyOjvGm8sxF9HuUd0NWtGbQwi4\""
 
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
@@ -63,7 +63,7 @@ dependencies {
 
   compile rootProject.ext.retrofit
   compile rootProject.ext.converterMoshi
-  compile(rootProject.ext.converterSimplexml){
+  compile(rootProject.ext.converterSimplexml) {
     exclude module: 'stax'
     exclude module: 'stax-api'
   }

@@ -2,18 +2,17 @@
 <resources>
 
   <declare-styleable name="ExpandingTextView">
-    <attr name="tv_expanded" format="boolean|reference" />
-    <attr name="collapsed_maxLines" format="integer|reference" />
+    <attr name="tv_expanded" format="boolean|reference"/>
+    <attr name="collapsed_maxLines" format="integer|reference"/>
   </declare-styleable>
 
   <declare-styleable name="DetailCardLayout">
-    <attr name="title" />
+    <attr name="title"/>
   </declare-styleable>
 
   <declare-styleable name="DetailItemLayout">
-    <attr name="title" />
+    <attr name="title"/>
   </declare-styleable>
-
 
 
 </resources>

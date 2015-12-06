@@ -13,19 +13,19 @@
       android:layout_marginTop="@dimen/spacing_large"
       app:title="@string/title_description">
 
-  <com.mounacheikhna.xebiaproject.ui.view.ExpandingTextView
-      android:id="@+id/description"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:paddingLeft="@dimen/spacing_double"
-      android:paddingRight="@dimen/spacing_double"
-      android:paddingBottom="@dimen/spacing_double"
-      android:textAppearance="@style/TextAppearance.BookDescription"
-      app:collapsed_maxLines="3"
-      app:tv_expanded="false"
-      android:textIsSelectable="true"
-      android:layout_marginBottom="@dimen/spacing_double"
-      tools:text="This is a description of the book."/>
+    <com.mounacheikhna.xebiaproject.ui.view.ExpandingTextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/spacing_double"
+        android:paddingRight="@dimen/spacing_double"
+        android:paddingBottom="@dimen/spacing_double"
+        android:textAppearance="@style/TextAppearance.BookDescription"
+        app:collapsed_maxLines="3"
+        app:tv_expanded="false"
+        android:textIsSelectable="true"
+        android:layout_marginBottom="@dimen/spacing_double"
+        tools:text="This is a description of the book."/>
 
   </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
 
@@ -42,63 +42,63 @@
       android:layout_marginTop="@dimen/spacing_small"
       app:title="@string/title_ratings">
 
-  <GridLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:alignmentMode="alignBounds"
-      android:columnCount="3"
-      android:useDefaultMargins="false"
-      android:background="@android:color/transparent"
-      android:paddingBottom="@dimen/spacing_double"
-      tools:background="@color/primary">
-
-    <include layout="@layout/rating_layout"
+    <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_columnSpan="3"/>
+        android:alignmentMode="alignBounds"
+        android:columnCount="3"
+        android:useDefaultMargins="false"
+        android:background="@android:color/transparent"
+        android:paddingBottom="@dimen/spacing_double"
+        tools:background="@color/primary">
 
-    <android.support.percent.PercentRelativeLayout
-        android:id="@+id/book_actions"
-        android:layout_columnSpan="3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/spacing_normal"
-        android:paddingLeft="@dimen/spacing_normal"
-        android:paddingTop="@dimen/spacing_large"
-        android:paddingRight="@dimen/spacing_double"
-        android:paddingEnd="@dimen/spacing_double">
-
-      <Button
-          android:id="@+id/ratings"
-          app:layout_widthPercent="33%"
+      <include layout="@layout/rating_layout"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:drawableTop="@drawable/ic_star_rate"
-          android:text="@string/empty_rating"
-          style="@style/Widget.HenriPotier.BookAction"/>
+          android:layout_columnSpan="3"/>
 
-      <Button
-          android:id="@+id/reviews"
-          app:layout_widthPercent="33%"
+      <android.support.percent.PercentRelativeLayout
+          android:id="@+id/book_actions"
+          android:layout_columnSpan="3"
+          android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_toRightOf="@id/ratings"
-          android:layout_toEndOf="@id/ratings"
-          android:drawableTop="@drawable/ic_evaluate"
-          android:text="@string/empty_review"
-          style="@style/Widget.HenriPotier.BookAction"/>
+          android:paddingStart="@dimen/spacing_normal"
+          android:paddingLeft="@dimen/spacing_normal"
+          android:paddingTop="@dimen/spacing_large"
+          android:paddingRight="@dimen/spacing_double"
+          android:paddingEnd="@dimen/spacing_double">
 
-      <Button
-          android:id="@+id/share"
-          app:layout_widthPercent="33%"
-          android:layout_height="wrap_content"
-          android:layout_toRightOf="@id/reviews"
-          android:layout_toEndOf="@id/reviews"
-          android:drawableTop="@drawable/ic_share"
-          android:text="@string/share"
-          style="@style/Widget.HenriPotier.BookAction"/>
+        <Button
+            android:id="@+id/ratings"
+            app:layout_widthPercent="33%"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/ic_star_rate"
+            android:text="@string/empty_rating"
+            style="@style/Widget.HenriPotier.BookAction"/>
 
-    </android.support.percent.PercentRelativeLayout>
+        <Button
+            android:id="@+id/reviews"
+            app:layout_widthPercent="33%"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ratings"
+            android:layout_toEndOf="@id/ratings"
+            android:drawableTop="@drawable/ic_evaluate"
+            android:text="@string/empty_review"
+            style="@style/Widget.HenriPotier.BookAction"/>
 
-  </GridLayout>
+        <Button
+            android:id="@+id/share"
+            app:layout_widthPercent="33%"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/reviews"
+            android:layout_toEndOf="@id/reviews"
+            android:drawableTop="@drawable/ic_share"
+            android:text="@string/share"
+            style="@style/Widget.HenriPotier.BookAction"/>
+
+      </android.support.percent.PercentRelativeLayout>
+
+    </GridLayout>
 
   </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
 

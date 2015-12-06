@@ -9,36 +9,36 @@
       android:layout_height="match_parent"
       android:orientation="vertical">
 
-  <com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator
-      android:id="@+id/container_animator"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:layout_gravity="center_horizontal"
-      android:inAnimation="@android:anim/fade_in"
-      android:outAnimation="@android:anim/fade_out"
-      android:clipToPadding="false">
-
-    <TextView
-        android:id="@+id/state"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        tools:text="Empty results."/>
-
-    <ProgressBar
-        android:id="@+id/progress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv"
+    <com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator
+        android:id="@+id/container_animator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+        android:layout_gravity="center_horizontal"
+        android:inAnimation="@android:anim/fade_in"
+        android:outAnimation="@android:anim/fade_out"
+        android:clipToPadding="false">
 
-  </com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator>
+      <TextView
+          android:id="@+id/state"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          tools:text="Empty results."/>
+
+      <ProgressBar
+          android:id="@+id/progress"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"/>
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/rv"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:clipToPadding="false"
+          app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+    </com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator>
 
   </LinearLayout>
 </merge>

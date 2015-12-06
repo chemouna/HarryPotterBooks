@@ -87,11 +87,11 @@
     <item name="android:background">?android:selectableItemBackgroundBorderless</item>
   </style>
 
-  <style name="TextAppearance.GreyContent" parent="TextAppearance.AppCompat.Caption" tools:ignore="NewApi">
+  <style name="TextAppearance.GreyContent" parent="TextAppearance.AppCompat.Caption"
+      tools:ignore="NewApi">
     <item name="android:fontFamily">sans-serif-medium</item>
     <item name="android:textSize">14sp</item>
   </style>
-
 
 
 </resources>
