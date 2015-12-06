@@ -26,8 +26,61 @@
     android:layout_height="wrap_content"
     tools:text="J.K Rowling"/>
 
-  <include layout="@layout/rating_layout"
+  <GridLayout
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"/>
+      android:layout_height="wrap_content"
+      android:alignmentMode="alignBounds"
+      android:columnCount="3"
+      android:useDefaultMargins="false"
+      android:background="@android:color/transparent"
+      tools:background="@color/primary">
+
+    <include layout="@layout/rating_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="3"/>
+
+    <android.support.percent.PercentRelativeLayout
+        android:id="@+id/book_actions"
+        android:layout_columnSpan="3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_normal"
+        android:paddingTop="32dp"
+        android:paddingEnd="@dimen/padding_normal">
+
+      <Button
+          android:id="@+id/ratings"
+          app:layout_widthPercent="33%"
+          android:layout_height="wrap_content"
+          android:drawableTop="@drawable/ic_star_rate"
+          android:text="@string/empty_rating"
+          style="@style/Widget.HenriPotier.BookAction"/>
+
+      <Button
+          android:id="@+id/reviews"
+          app:layout_widthPercent="33%"
+          android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/ratings"
+          android:layout_toEndOf="@id/ratings"
+          android:drawableTop="@drawable/ic_evaluate"
+          android:text="@string/empty_review"
+          style="@style/Widget.HenriPotier.BookAction"/>
+
+      <Button
+          android:id="@+id/share"
+          app:layout_widthPercent="33%"
+          android:layout_height="wrap_content"
+          android:layout_toRightOf="@id/reviews"
+          android:layout_toEndOf="@id/reviews"
+          android:drawableTop="@drawable/ic_share"
+          android:text="@string/share"
+          style="@style/Widget.HenriPotier.BookAction"/>
+
+    </android.support.percent.PercentRelativeLayout>
+
+
+  </GridLayout>
+
 
 </merge>

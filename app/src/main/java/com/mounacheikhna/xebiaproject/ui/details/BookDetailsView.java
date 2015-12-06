@@ -1,12 +1,17 @@
 package com.mounacheikhna.xebiaproject.ui.details;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.annotation.PluralsRes;
+import android.support.v4.app.ShareCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.model.Book;
@@ -29,6 +34,13 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
   @Bind(R.id.tv_rating_value) TextView mRatingValueView;
   @Bind(R.id.tv_rating_votes) TextView mRatingVotesView;
 
+  @Bind(R.id.ratings) Button mRatingsButton;
+  @Bind(R.id.reviews) Button mReviewsButton;
+  @Bind(R.id.share) Button mShareButton;
+  private Activity mHost;
+  private Book mBook;
+  private BookResponse.GoodreadsBook mGoodreadsBook;
+
   public BookDetailsView(Context context) {
     super(context);
     init(context);
@@ -45,6 +57,10 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     setOrientation(VERTICAL);
   }
 
+  public void bind(Activity host) {
+    mHost = host;
+  }
+
   @Override protected void onFinishInflate() {
     super.onFinishInflate();
     ButterKnife.bind(this);
@@ -53,6 +69,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
   }
 
   public void display(Book book) {
+    mBook = book;
     mBookDetailsPresenter.searchGoodreadsBook(book.getTitle())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Subscriber<BookResponse>() {
@@ -72,10 +89,10 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
 
   private void displayGoodreadsDetails(BookResponse bookResponse) {
     if(bookResponse == null) return;
-    final BookResponse.GoodreadsBook goodreadsBook = bookResponse.getFirstBook();
-    if(goodreadsBook != null) {
-      mDescriptionView.setText(goodreadsBook.getDescription());
-      final BookResponse.Author author = goodreadsBook.getAuthor();
+    mGoodreadsBook = bookResponse.getFirstBook();
+    if(mGoodreadsBook != null) {
+      mDescriptionView.setText(mGoodreadsBook.getDescription());
+      final BookResponse.Author author = mGoodreadsBook.getAuthor();
       if(author != null) {
         mAuthorView.setText(author.getName());
       }
@@ -84,16 +101,40 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     final BookResponse.Work work = bookResponse.getFirsWork();
     if(work != null) {
       mRatingValueView.setText(work.getAverageRating());
-      mRatingVotesView.setText(buildRatingVotesValue(work.getRatingsCount()));
+      mRatingVotesView.setText(buildPluralsValue(work.getRatingsCount(), R.plurals.votes));
+
+      mReviewsButton.setText(buildPluralsValue(work.getTextReviewsCount(), R.plurals.reviews));
+      mRatingsButton.setText(buildPluralsValue(work.getRatingsCount(), R.plurals.ratings));
     }
 
   }
 
-  public String buildRatingVotesValue(Integer votes) {
-    if (votes == null || votes < 0) {
-      votes = 0;
+  public String buildPluralsValue(Integer values, @PluralsRes int pluralId) {
+    if (values == null || values < 0) {
+      values = 0;
     }
-    return getResources().getQuantityString(R.plurals.votes, votes, votes);
+    return getResources().getQuantityString(pluralId, values, values);
+  }
+
+  @OnClick(R.id.share)
+  public void OnShare() {
+    ShareCompat.IntentBuilder.from(mHost)
+        .setText(getTextToShare())
+        .setType("text/plain")
+        .setSubject(mBook.getTitle())
+        .startChooser();
+  }
+
+  private String getTextToShare() {
+    final StringBuilder builder =
+        new StringBuilder().append("“").append(mBook.getTitle());
+    if(mGoodreadsBook != null) {
+      builder.append("” by ")
+          .append(mGoodreadsBook.getAuthor().getName())
+          .append("\n")
+          .append(mGoodreadsBook.getImageUrl());
+    }
+    return builder.toString();
   }
 
 }

@@ -13,6 +13,12 @@
 
   <string name="offer">Offer</string>
 
+  <string name="empty_rating" translatable="false">--</string>
+  <string name="empty_review" translatable="false">--</string>
+  <string name="rating_range">/5</string>
+  <string name="none_rating">n/a</string>
+
+  <string name="share">Share</string>
 
   <plurals name="votes">
     <item quantity="zero">%d votes</item>
@@ -22,8 +28,23 @@
     <item quantity="many">%d votes</item>
     <item quantity="other">%d votes</item>
   </plurals>
-  <string name="empty_rating" translatable="false">--</string>
-  <string name="rating_range">/5</string>
-  <string name="none_rating">n/a</string>
+
+  <plurals name="ratings">
+    <item quantity="zero">%d ratings</item>
+    <item quantity="one">%d rating</item>
+    <item quantity="two">%d ratings</item>
+    <item quantity="few">%d ratings</item>
+    <item quantity="many">%d ratings</item>
+    <item quantity="other">%d ratings</item>
+  </plurals>
+
+  <plurals name="reviews">
+    <item quantity="zero">%d reviews</item>
+    <item quantity="one">%d review</item>
+    <item quantity="two">%d reviews</item>
+    <item quantity="few">%d reviews</item>
+    <item quantity="many">%d reviews</item>
+    <item quantity="other">%d reviews</item>
+  </plurals>
 
 </resources>

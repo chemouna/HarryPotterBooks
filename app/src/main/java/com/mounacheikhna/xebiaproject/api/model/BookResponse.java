@@ -101,7 +101,9 @@ import org.simpleframework.xml.Root;
       return originalPublicationDay;
     }
 
-
+    public int getTextReviewsCount() {
+      return textReviewsCount;
+    }
   }
 
   @Root(strict = false) public static class GoodreadsBook {
@@ -128,6 +130,10 @@ import org.simpleframework.xml.Root;
 
     public Author getAuthor() {
       return author;
+    }
+
+    public String getImageUrl() {
+      return imageUrl;
     }
   }
 

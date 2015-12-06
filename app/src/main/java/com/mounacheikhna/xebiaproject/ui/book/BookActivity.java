@@ -90,6 +90,7 @@ public class BookActivity extends AppCompatActivity {
     HenriPotierApp.get(this).getComponent().injectBooksActivity(this);
     ButterKnife.bind(this);
 
+    mBookDetailsView.bind(this);
     mFabColor = ContextCompat.getColor(this, R.color.accent);
     mBook = getIntent().getParcelableExtra(EXTRA_BOOK);
     setupToolbar();

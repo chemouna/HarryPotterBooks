@@ -80,4 +80,18 @@
   <style name="TextAppearance.Caption" parent="TextAppearance.AppCompat.Caption">
   </style>
 
+  <style name="Widget.HenriPotier.BookAction" parent="Widget.AppCompat.Button">
+    <item name="android:gravity">center_horizontal</item>
+    <item name="android:textAppearance">@style/TextAppearance.GreyContent</item>
+    <item name="android:drawablePadding">4dp</item>
+    <item name="android:background">?android:selectableItemBackgroundBorderless</item>
+  </style>
+
+  <style name="TextAppearance.GreyContent" parent="TextAppearance.AppCompat.Caption" tools:ignore="NewApi">
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textSize">14sp</item>
+  </style>
+
+
+
 </resources>
