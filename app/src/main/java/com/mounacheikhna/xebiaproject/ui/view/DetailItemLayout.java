@@ -30,14 +30,6 @@ public class DetailItemLayout extends LinearLayout {
     a.recycle();
   }
 
-  public TextView getTitleTextView() {
-    return mTitleTextView;
-  }
-
-  public TextView getContentTextView() {
-    return mContentTextView;
-  }
-
   public void setContentText(CharSequence text) {
     mContentTextView.setText(text);
   }
