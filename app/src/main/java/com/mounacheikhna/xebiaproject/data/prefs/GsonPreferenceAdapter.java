@@ -5,6 +5,9 @@ import com.f2prateek.rx.preferences.Preference;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+/**
+ * An adapter to save gson to shared preferences using rxpreferences library.
+ */
 public class GsonPreferenceAdapter<T> implements Preference.Adapter<T> {
   private final T defaultValue;
   private final Gson gson;

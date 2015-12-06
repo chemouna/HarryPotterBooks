@@ -9,6 +9,8 @@ import java.io.IOException;
 
 /**
  * Created by mouna on 06/12/15.
+ *
+ * An okhttp {@link Interceptor} to add parameter that are require in all requests to goodreads api.
  */
 public class GoodreadsInterceptor implements Interceptor {
 

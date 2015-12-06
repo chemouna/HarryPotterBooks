@@ -8,6 +8,8 @@ import java.util.List;
 
 /**
  * Created by mouna on 05/12/15.
+ *
+ * Container object for books purchased by the user (to be saved in shared preferences).
  */
 public class Cart {
 

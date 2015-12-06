@@ -13,6 +13,8 @@ import javax.inject.Singleton;
 
 /**
  * Created by cheikhnamouna on 11/21/15.
+ *
+ * dagger {@link dagger.Component} to inject dependencies into views, activities..
  */
 @Singleton @Component(modules = {
     AppModule.class, CoreApiModule.class, DebugApiModule.class, DataModule.class

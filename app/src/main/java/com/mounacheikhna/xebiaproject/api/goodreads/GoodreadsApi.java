@@ -7,6 +7,8 @@ import rx.Observable;
 
 /**
  * Created by mouna on 06/12/15.
+ *
+ * An interface to Goodreads site api to get more information about books.
  */
 public interface GoodreadsApi {
 

@@ -11,6 +11,8 @@ import javax.inject.Singleton;
 
 /**
  * Created by mouna on 05/12/15.
+ *
+ * Provides main data related dependencies.
  */
 @Module public class DataModule {
 

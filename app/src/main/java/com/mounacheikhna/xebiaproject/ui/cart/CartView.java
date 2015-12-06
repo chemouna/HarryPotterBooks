@@ -26,6 +26,9 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by mouna on 05/12/15.
+ *
+ * A custom view to display all purchased books and the total price after applying the offer we get
+ * from Henri Potier api.
  */
 public class CartView extends FrameLayout implements CartScreen {
 

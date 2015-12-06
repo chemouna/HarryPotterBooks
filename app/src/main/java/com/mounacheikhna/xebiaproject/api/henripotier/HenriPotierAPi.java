@@ -9,6 +9,8 @@ import rx.Observable;
 
 /**
  * Created by mouna on 02/12/15.
+ *
+ * An interface for HenriPotier api.
  */
 public interface HenriPotierAPi {
 

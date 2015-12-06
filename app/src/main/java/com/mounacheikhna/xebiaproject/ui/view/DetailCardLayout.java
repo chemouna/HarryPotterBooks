@@ -18,6 +18,7 @@ package com.mounacheikhna.xebiaproject.ui.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -28,6 +29,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.mounacheikhna.xebiaproject.R;
 
+/**
+ *  Created by mouna on 30/11/15.
+ *
+ * A custom {@link CardView} to display a card with a title, a content and a link to see more
+ * if the content is too long.
+ */
 public class DetailCardLayout extends FrameLayout {
 
   private final View mTitleLayout;

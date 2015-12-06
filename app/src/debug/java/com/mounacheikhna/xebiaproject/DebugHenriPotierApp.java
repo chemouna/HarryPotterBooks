@@ -7,6 +7,9 @@ import rx.plugins.DebugNotificationListener;
 import rx.plugins.RxJavaPlugins;
 import timber.log.Timber;
 
+/**
+ * A subsclass to hook in specific logic for debugging (logging, rxjava logs..).
+ */
 public class DebugHenriPotierApp extends HenriPotierApp {
 
   @Override public void onCreate() {

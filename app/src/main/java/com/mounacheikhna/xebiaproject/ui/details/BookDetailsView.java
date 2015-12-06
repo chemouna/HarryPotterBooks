@@ -29,6 +29,8 @@ import timber.log.Timber;
 
 /**
  * Created by cheikhnamouna on 12/3/15.
+ *
+ * A custom view to display of a book.
  */
 public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
 

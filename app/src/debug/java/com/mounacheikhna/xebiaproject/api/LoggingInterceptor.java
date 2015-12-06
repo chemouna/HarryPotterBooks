@@ -9,6 +9,9 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import timber.log.Timber;
 
+/**
+ * An {@link Interceptor} to log request done by okhttp.
+ */
 @Singleton public final class LoggingInterceptor implements Interceptor {
 
   @Inject public LoggingInterceptor() {

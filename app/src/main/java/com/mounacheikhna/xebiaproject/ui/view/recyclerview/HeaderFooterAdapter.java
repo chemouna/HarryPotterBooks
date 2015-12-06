@@ -9,6 +9,8 @@ import java.util.List;
 
 /**
  * Created by mouna on 05/12/15.
+ *
+ * A custom adapter for {@link RecyclerView} to display headers and footers.
  */
 public class HeaderFooterAdapter<T extends RecyclerView.Adapter>
     extends RecyclerView.Adapter<RecyclerView.ViewHolder> {

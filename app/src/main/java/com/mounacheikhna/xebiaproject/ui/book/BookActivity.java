@@ -52,6 +52,8 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastM;
 
 /**
  * Created by cheikhnamouna on 3/12/15.
+ *
+ * Main activity to display a grid of books and a FAB to access Cart.
  */
 public class BookActivity extends AppCompatActivity {
 

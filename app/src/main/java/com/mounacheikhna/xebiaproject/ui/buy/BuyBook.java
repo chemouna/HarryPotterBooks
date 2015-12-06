@@ -32,6 +32,7 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
 /**
  * Created by mouna on 03/12/15.
  *
+ * Display a dialog to choose number of books to purchase and confirm.
  * We are using an activity here instead of a dialog to be able to use activity transitions.
  */
 public class BuyBook extends AppCompatActivity {

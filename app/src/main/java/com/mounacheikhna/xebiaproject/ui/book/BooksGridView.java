@@ -36,6 +36,8 @@ import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
 
 /**
  * Created by mouna on 02/12/15.
+ *
+ * A custom view to display a grid of books.
  */
 public class BooksGridView extends LinearLayout implements BooksScreen {
 

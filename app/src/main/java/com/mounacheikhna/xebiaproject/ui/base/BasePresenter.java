@@ -4,6 +4,8 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by mouna on 02/12/15.
+ *
+ * A base class for presenters.
  */
 abstract public class BasePresenter<T extends PresenterScreen> {
 

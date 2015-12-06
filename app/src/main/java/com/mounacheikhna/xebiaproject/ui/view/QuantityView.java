@@ -14,6 +14,8 @@ import com.mounacheikhna.xebiaproject.R;
 
 /**
  * Created by cheikhna on 03/12/15.
+ *
+ * A view with +/- to increase/decrease a quantity.
  */
 public class QuantityView extends LinearLayout {
 

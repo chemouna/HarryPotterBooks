@@ -60,6 +60,10 @@ import retrofit.SimpleXmlConverterFactory;
     return retrofit.create(HenriPotierAPi.class);
   }
 
+  /**
+   * We need to create a new retrofit instance for goodreads api because it needs to hook in to
+   * a different base url and uses an xml converter instead.
+   */
   @Provides @Singleton @Named("RetrofitGoodreads") Retrofit provideGoodreadsRetrofit(
       @ApiClient OkHttpClient apiClient, GoodreadsInterceptor goodreadsInterceptor) {
     OkHttpClient goodreadsClient = apiClient.clone();
