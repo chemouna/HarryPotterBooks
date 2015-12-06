@@ -7,14 +7,14 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:ignore="NewApi">
-
+<!--
   <FrameLayout
       android:id="@+id/container"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@color/background_light"
       android:transitionName="@string/transition_book_container"
-      android:transitionGroup="false">
+      android:transitionGroup="false">-->
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -52,13 +52,19 @@
 
     </android.support.design.widget.AppBarLayout>
 
+
+  <android.support.v4.widget.NestedScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
     <com.mounacheikhna.xebiaproject.ui.details.BookDetailsView
         android:id="@+id/book_details_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="@dimen/app_bar_height"/>
+        android:layout_height="match_parent"/>
 
-  </FrameLayout>
+  </android.support.v4.widget.NestedScrollView>
+ <!-- </FrameLayout>-->
 
   <android.support.design.widget.FloatingActionButton
       android:id="@+id/book_fab"

@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
 import com.mounacheikhna.xebiaproject.ui.BindableBookItem;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;

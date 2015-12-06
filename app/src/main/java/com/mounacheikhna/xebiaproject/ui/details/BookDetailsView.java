@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.PluralsRes;
 import android.support.v4.app.ShareCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.Button;
@@ -14,8 +15,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
-import com.mounacheikhna.xebiaproject.api.model.Book;
-import com.mounacheikhna.xebiaproject.api.model.BookResponse;
+import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsBook;
+import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsBook.Author;
+import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsResponse;
+import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsWork;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
+import com.mounacheikhna.xebiaproject.ui.view.DetailItemLayout;
 import com.mounacheikhna.xebiaproject.ui.view.ExpandingTextView;
 import javax.inject.Inject;
 import rx.Subscriber;
@@ -33,13 +38,15 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
   @Bind(R.id.author) TextView mAuthorView;
   @Bind(R.id.tv_rating_value) TextView mRatingValueView;
   @Bind(R.id.tv_rating_votes) TextView mRatingVotesView;
-
   @Bind(R.id.ratings) Button mRatingsButton;
   @Bind(R.id.reviews) Button mReviewsButton;
   @Bind(R.id.share) Button mShareButton;
+  @Bind(R.id.publication_date_layout) DetailItemLayout mReleaseLayout;
+  @Bind(R.id.reviews_rv) RecyclerView mReviewsRv;
+
   private Activity mHost;
   private Book mBook;
-  private BookResponse.GoodreadsBook mGoodreadsBook;
+  private GoodreadsBook mGoodreadsBook;
 
   public BookDetailsView(Context context) {
     super(context);
@@ -72,7 +79,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     mBook = book;
     mBookDetailsPresenter.searchGoodreadsBook(book.getTitle())
         .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Subscriber<BookResponse>() {
+        .subscribe(new Subscriber<GoodreadsResponse>() {
           @Override public void onCompleted() {
           }
 
@@ -80,33 +87,50 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
             Timber.e(e, " error ");
           }
 
-          @Override public void onNext(BookResponse bookResponse) {
-            Timber.d("bookResponse : %s", bookResponse);
-            displayGoodreadsDetails(bookResponse);
+          @Override public void onNext(GoodreadsResponse goodreadsResponse) {
+            Timber.d("goodreadsResponse : %s", goodreadsResponse);
+            displayGoodreadsDetails(goodreadsResponse);
           }
         });
   }
 
-  private void displayGoodreadsDetails(BookResponse bookResponse) {
-    if(bookResponse == null) return;
-    mGoodreadsBook = bookResponse.getFirstBook();
-    if(mGoodreadsBook != null) {
+  private void displayGoodreadsDetails(GoodreadsResponse goodreadsResponse) {
+    if (goodreadsResponse == null) return;
+    mGoodreadsBook = goodreadsResponse.getFirstBook();
+    if (mGoodreadsBook != null) {
       mDescriptionView.setText(mGoodreadsBook.getDescription());
-      final BookResponse.Author author = mGoodreadsBook.getAuthor();
-      if(author != null) {
+      final Author author = mGoodreadsBook.getAuthor();
+      /*if(author != null) {
         mAuthorView.setText(author.getName());
-      }
+      }*/
+      displayReview(mGoodreadsBook.getId());
     }
 
-    final BookResponse.Work work = bookResponse.getFirsWork();
-    if(work != null) {
+    final GoodreadsWork work = goodreadsResponse.getFirsWork();
+    if (work != null) {
       mRatingValueView.setText(work.getAverageRating());
       mRatingVotesView.setText(buildPluralsValue(work.getRatingsCount(), R.plurals.votes));
-
       mReviewsButton.setText(buildPluralsValue(work.getTextReviewsCount(), R.plurals.reviews));
       mRatingsButton.setText(buildPluralsValue(work.getRatingsCount(), R.plurals.ratings));
+      mReleaseLayout.setContentText(work.getFormattedReleaseDate());
     }
+  }
 
+  private void displayReview(String bookId) {
+    mBookDetailsPresenter.fetchReviews(bookId)
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(new Subscriber<GoodreadsResponse>() {
+          @Override public void onCompleted() {
+          }
+
+          @Override public void onError(Throwable e) {
+            Timber.e(e, " error ");
+          }
+
+          @Override public void onNext(GoodreadsResponse goodreadsResponse) {
+            Timber.d("goodreadsResponse : %s", goodreadsResponse);
+          }
+        });
   }
 
   public String buildPluralsValue(Integer values, @PluralsRes int pluralId) {
@@ -116,8 +140,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     return getResources().getQuantityString(pluralId, values, values);
   }
 
-  @OnClick(R.id.share)
-  public void OnShare() {
+  @OnClick(R.id.share) public void OnShare() {
     ShareCompat.IntentBuilder.from(mHost)
         .setText(getTextToShare())
         .setType("text/plain")
@@ -126,9 +149,8 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
   }
 
   private String getTextToShare() {
-    final StringBuilder builder =
-        new StringBuilder().append("“").append(mBook.getTitle());
-    if(mGoodreadsBook != null) {
+    final StringBuilder builder = new StringBuilder().append("“").append(mBook.getTitle());
+    if (mGoodreadsBook != null) {
       builder.append("” by ")
           .append(mGoodreadsBook.getAuthor().getName())
           .append("\n")
@@ -136,5 +158,4 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     }
     return builder.toString();
   }
-
 }

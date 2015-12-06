@@ -1,4 +1,4 @@
-package com.mounacheikhna.xebiaproject.api.model;
+package com.mounacheikhna.xebiaproject.api.henripotier.model;
 
 import java.util.List;
 

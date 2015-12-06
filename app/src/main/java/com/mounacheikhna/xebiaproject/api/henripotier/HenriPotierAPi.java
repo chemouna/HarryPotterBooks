@@ -1,7 +1,7 @@
-package com.mounacheikhna.xebiaproject.api;
+package com.mounacheikhna.xebiaproject.api.henripotier;
 
-import com.mounacheikhna.xebiaproject.api.model.Book;
-import com.mounacheikhna.xebiaproject.api.model.OfferResponse;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.OfferResponse;
 import java.util.List;
 import retrofit.http.GET;
 import retrofit.http.Path;

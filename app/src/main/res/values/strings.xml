@@ -47,4 +47,9 @@
     <item quantity="other">%d reviews</item>
   </plurals>
 
+  <string name="title_details">Details</string>
+  <string name="publication_details">Publication</string>
+  <string name="more">More</string>
+  <string name="title_reviews">Reviews</string>
+
 </resources>

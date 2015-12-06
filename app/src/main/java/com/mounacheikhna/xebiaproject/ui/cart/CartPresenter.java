@@ -1,9 +1,9 @@
 package com.mounacheikhna.xebiaproject.ui.cart;
 
 import android.text.TextUtils;
-import com.mounacheikhna.xebiaproject.api.HenriPotierAPi;
-import com.mounacheikhna.xebiaproject.api.model.Book;
-import com.mounacheikhna.xebiaproject.api.model.OfferResponse;
+import com.mounacheikhna.xebiaproject.api.henripotier.HenriPotierAPi;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.OfferResponse;
 import com.mounacheikhna.xebiaproject.ui.base.BasePresenter;
 import java.util.ArrayList;
 import java.util.List;

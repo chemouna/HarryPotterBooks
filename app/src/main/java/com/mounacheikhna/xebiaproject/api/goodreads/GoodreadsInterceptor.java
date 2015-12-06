@@ -1,4 +1,4 @@
-package com.mounacheikhna.xebiaproject.api;
+package com.mounacheikhna.xebiaproject.api.goodreads;
 
 import com.mounacheikhna.xebiaproject.BuildConfig;
 import com.squareup.okhttp.HttpUrl;

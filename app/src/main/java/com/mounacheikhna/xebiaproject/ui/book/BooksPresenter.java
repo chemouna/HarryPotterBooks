@@ -1,7 +1,7 @@
 package com.mounacheikhna.xebiaproject.ui.book;
 
-import com.mounacheikhna.xebiaproject.api.HenriPotierAPi;
-import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.HenriPotierAPi;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
 import com.mounacheikhna.xebiaproject.ui.base.BasePresenter;
 import java.util.List;
 import javax.inject.Inject;

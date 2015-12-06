@@ -1,7 +1,7 @@
 package com.mounacheikhna.xebiaproject.ui.details;
 
-import com.mounacheikhna.xebiaproject.api.GoodreadsApi;
-import com.mounacheikhna.xebiaproject.api.model.BookResponse;
+import com.mounacheikhna.xebiaproject.api.goodreads.GoodreadsApi;
+import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsResponse;
 import com.mounacheikhna.xebiaproject.ui.base.BasePresenter;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -19,12 +19,16 @@ import rx.schedulers.Schedulers;
     mGoodreadsApi = goodreadsApi;
   }
 
-  public Observable<BookResponse> fetchGoodreadsBook(String isbn) {
+  public Observable<GoodreadsResponse> fetchGoodreadsBook(String isbn) {
     return mGoodreadsApi.getBookByIsbn(isbn).subscribeOn(Schedulers.io());
   }
 
-  public Observable<BookResponse> searchGoodreadsBook(String title) {
+  public Observable<GoodreadsResponse> searchGoodreadsBook(String title) {
     return mGoodreadsApi.searchBookByTitle(title.replace("Henri Potier", "Harry Potter"))
         .subscribeOn(Schedulers.io());
+  }
+
+  public Observable<GoodreadsResponse> fetchReviews(String bookId) {
+    return mGoodreadsApi.showBook(bookId).subscribeOn(Schedulers.io());
   }
 }

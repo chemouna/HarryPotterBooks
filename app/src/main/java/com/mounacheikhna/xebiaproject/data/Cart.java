@@ -1,7 +1,7 @@
 package com.mounacheikhna.xebiaproject.data;
 
-import com.mounacheikhna.xebiaproject.api.model.Book;
-import com.mounacheikhna.xebiaproject.api.model.Offer;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Offer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;

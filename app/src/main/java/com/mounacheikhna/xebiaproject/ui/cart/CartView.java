@@ -12,7 +12,7 @@ import butterknife.ButterKnife;
 import com.f2prateek.rx.preferences.Preference;
 import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
-import com.mounacheikhna.xebiaproject.api.model.OfferResponse;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.OfferResponse;
 import com.mounacheikhna.xebiaproject.data.Cart;
 import com.mounacheikhna.xebiaproject.ui.book.BooksAdapter;
 import com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator;

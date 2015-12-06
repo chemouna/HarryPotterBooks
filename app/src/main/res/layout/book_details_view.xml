@@ -21,10 +21,10 @@
       tools:text="This is a description of the book."/>
 
   <TextView
-    android:id="@+id/author"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:text="J.K Rowling"/>
+      android:id="@+id/author"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:text="J.K Rowling"/>
 
   <GridLayout
       android:layout_width="match_parent"
@@ -79,8 +79,47 @@
 
     </android.support.percent.PercentRelativeLayout>
 
-
   </GridLayout>
 
+  <com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout
+      android:id="@+id/detail_card_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_normal"
+      app:title="@string/title_details">
+
+    <LinearLayout
+        android:id="@+id/card_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_double"
+        android:paddingTop="@dimen/spacing_small">
+
+      <com.mounacheikhna.xebiaproject.ui.view.DetailItemLayout
+          android:id="@+id/publication_date_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/spacing_small"
+          app:title="@string/publication_details" />
+
+    </LinearLayout>
+
+  </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
+
+  <com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout
+      android:id="@+id/reviews_card_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_normal"
+      app:title="@string/title_reviews">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reviews_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+  </com.mounacheikhna.xebiaproject.ui.view.DetailCardLayout>
 
 </merge>

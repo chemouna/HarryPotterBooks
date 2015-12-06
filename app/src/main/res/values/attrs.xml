@@ -6,4 +6,14 @@
     <attr name="collapsed_maxLines" format="integer|reference" />
   </declare-styleable>
 
+  <declare-styleable name="DetailCardLayout">
+    <attr name="title" />
+  </declare-styleable>
+
+  <declare-styleable name="DetailItemLayout">
+    <attr name="title" />
+  </declare-styleable>
+
+
+
 </resources>

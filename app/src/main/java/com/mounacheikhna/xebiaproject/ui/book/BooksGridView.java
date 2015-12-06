@@ -21,7 +21,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
-import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
 import com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator;
 import com.mounacheikhna.xebiaproject.ui.view.recyclerview.OffsetDecoration;
 import com.squareup.picasso.Picasso;

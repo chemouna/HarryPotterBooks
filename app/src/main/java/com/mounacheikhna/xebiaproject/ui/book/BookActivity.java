@@ -37,7 +37,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.mounacheikhna.xebiaproject.HenriPotierApp;
 import com.mounacheikhna.xebiaproject.R;
-import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
 import com.mounacheikhna.xebiaproject.transition.MophFabDialogHelper;
 import com.mounacheikhna.xebiaproject.ui.buy.BuyBook;
 import com.mounacheikhna.xebiaproject.ui.details.BookDetailsView;

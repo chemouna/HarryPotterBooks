@@ -1,7 +1,7 @@
 package com.mounacheikhna.xebiaproject.ui;
 
 import android.view.View;
-import com.mounacheikhna.xebiaproject.api.model.Book;
+import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
 import com.squareup.picasso.Picasso;
 
 /**
