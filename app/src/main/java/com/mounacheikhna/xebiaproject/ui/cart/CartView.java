@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import javax.inject.Inject;
 import javax.inject.Named;
 import rx.Subscriber;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by mouna on 05/12/15.
@@ -39,6 +40,7 @@ public class CartView extends FrameLayout implements CartScreen {
   private HeaderFooterAdapter<BooksAdapter> mHeaderFooterAdapter;
   private TextView mTotalView;
   private TextView mOfferView;
+  private CompositeSubscription mSubscriptions;
 
   public CartView(Context context) {
     super(context);
@@ -59,6 +61,7 @@ public class CartView extends FrameLayout implements CartScreen {
     if (isInEditMode()) return;
     final View view = LayoutInflater.from(context).inflate(R.layout.cart_view, this, true);
     ButterKnife.bind(this, view);
+    mSubscriptions = new CompositeSubscription();
   }
 
   @Override protected void onFinishInflate() {
@@ -95,7 +98,7 @@ public class CartView extends FrameLayout implements CartScreen {
 
     //TODO: apply after commercial offer
     if(cart != null) {
-      mCartPresenter.getOffers(cart.getBooks()).subscribe(new Subscriber<OfferResponse>() {
+      mSubscriptions.add(mCartPresenter.getOffers(cart.getBooks()).subscribe(new Subscriber<OfferResponse>() {
         @Override public void onCompleted() {}
 
         @Override public void onError(Throwable e) {
@@ -106,7 +109,7 @@ public class CartView extends FrameLayout implements CartScreen {
           mOfferView.setText(PriceFormatter.formatEuro(bestOffer.getPromo()));
           mTotalView.setText(PriceFormatter.formatEuro(bestOffer.getPrice()));
         }
-      });
+      }));
     }
   }
 
@@ -136,5 +139,11 @@ public class CartView extends FrameLayout implements CartScreen {
       //mOfferView.setText(PriceFormatter.formatEuro(cart.get()));
     }
     mHeaderFooterAdapter.addFooter(promoFooterView);
+  }
+
+  @Override protected void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    mCartPresenter.onDetach();
+    mSubscriptions.clear();
   }
 }

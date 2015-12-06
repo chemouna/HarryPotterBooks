@@ -18,13 +18,14 @@ import com.mounacheikhna.xebiaproject.R;
 import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsBook;
 import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsBook.Author;
 import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsResponse;
-import com.mounacheikhna.xebiaproject.api.goodreads.model.GoodreadsWork;
+import com.mounacheikhna.xebiaproject.api.goodreads.model.Work;
 import com.mounacheikhna.xebiaproject.api.henripotier.model.Book;
 import com.mounacheikhna.xebiaproject.ui.view.DetailItemLayout;
 import com.mounacheikhna.xebiaproject.ui.view.ExpandingTextView;
 import javax.inject.Inject;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.subscriptions.CompositeSubscription;
 import timber.log.Timber;
 
 /**
@@ -47,6 +48,8 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
   private Activity mHost;
   private Book mBook;
   private GoodreadsBook mGoodreadsBook;
+  private ReviewAdapter mAdapter;
+  private CompositeSubscription mSubscriptions;
 
   public BookDetailsView(Context context) {
     super(context);
@@ -62,6 +65,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     if (isInEditMode()) return;
     LayoutInflater.from(context).inflate(R.layout.book_details_view, this, true);
     setOrientation(VERTICAL);
+    mSubscriptions = new CompositeSubscription();
   }
 
   public void bind(Activity host) {
@@ -77,7 +81,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
 
   public void display(Book book) {
     mBook = book;
-    mBookDetailsPresenter.searchGoodreadsBook(book.getTitle())
+    mSubscriptions.add(mBookDetailsPresenter.searchGoodreadsBook(book.getTitle())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Subscriber<GoodreadsResponse>() {
           @Override public void onCompleted() {
@@ -91,7 +95,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
             Timber.d("goodreadsResponse : %s", goodreadsResponse);
             displayGoodreadsDetails(goodreadsResponse);
           }
-        });
+        }));
   }
 
   private void displayGoodreadsDetails(GoodreadsResponse goodreadsResponse) {
@@ -103,10 +107,10 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
       /*if(author != null) {
         mAuthorView.setText(author.getName());
       }*/
-      displayReview(mGoodreadsBook.getId());
+      displayReviews(mGoodreadsBook.getId());
     }
 
-    final GoodreadsWork work = goodreadsResponse.getFirsWork();
+    final Work work = goodreadsResponse.getFirsWork();
     if (work != null) {
       mRatingValueView.setText(work.getAverageRating());
       mRatingVotesView.setText(buildPluralsValue(work.getRatingsCount(), R.plurals.votes));
@@ -116,8 +120,9 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     }
   }
 
-  private void displayReview(String bookId) {
-    mBookDetailsPresenter.fetchReviews(bookId)
+  private void displayReviews(String bookId) {
+    mAdapter = new ReviewAdapter();
+    mSubscriptions.add(mBookDetailsPresenter.fetchReviews(bookId)
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Subscriber<GoodreadsResponse>() {
           @Override public void onCompleted() {
@@ -130,7 +135,7 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
           @Override public void onNext(GoodreadsResponse goodreadsResponse) {
             Timber.d("goodreadsResponse : %s", goodreadsResponse);
           }
-        });
+        }));
   }
 
   public String buildPluralsValue(Integer values, @PluralsRes int pluralId) {
@@ -158,4 +163,11 @@ public class BookDetailsView extends LinearLayout implements BookDetailsScreen {
     }
     return builder.toString();
   }
+
+  @Override protected void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    mBookDetailsPresenter.onDetach();
+    mSubscriptions.clear();
+  }
+
 }

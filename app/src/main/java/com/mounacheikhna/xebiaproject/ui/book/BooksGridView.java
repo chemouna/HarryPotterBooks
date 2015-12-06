@@ -30,6 +30,7 @@ import javax.inject.Inject;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 import static com.mounacheikhna.xebiaproject.util.ApiLevels.isAtLeastLollipop;
 
@@ -45,6 +46,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
   @Inject BooksPresenter mBooksPresenter;
   private BooksAdapter mAdapter;
   @Nullable private Activity mHost;
+  private CompositeSubscription mSubscriptions;
 
   public BooksGridView(Context context) {
     super(context);
@@ -73,6 +75,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
     setOrientation(VERTICAL);
     setClipToPadding(false);
     ButterKnife.bind(this, view);
+    mSubscriptions = new CompositeSubscription();
   }
 
   public void bind(Activity host) {
@@ -93,7 +96,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
       mStateView.setText(R.string.no_network);
       return;
     }
-    mBooksPresenter.loadBooks()
+    mSubscriptions.add(mBooksPresenter.loadBooks()
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(new Subscriber<List<Book>>() {
@@ -108,7 +111,7 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
           @Override public void onNext(List<Book> books) {
             mAdapter.call(books);
           }
-        });
+        }));
   }
 
   private boolean isConnected() {
@@ -156,5 +159,6 @@ public class BooksGridView extends LinearLayout implements BooksScreen {
   @Override protected void onDetachedFromWindow() {
     super.onDetachedFromWindow();
     mBooksPresenter.onDetach();
+    mSubscriptions.clear();
   }
 }

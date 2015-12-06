@@ -7,7 +7,7 @@ import org.simpleframework.xml.Root;
 /**
  * Created by mouna on 06/12/15.
  */
-@Root(strict = false) public class GoodreadsWork {
+@Root(strict = false) public class Work {
 
   @Element(name = "best_book", required = false) GoodreadsBook mGoodreadsBook;
 

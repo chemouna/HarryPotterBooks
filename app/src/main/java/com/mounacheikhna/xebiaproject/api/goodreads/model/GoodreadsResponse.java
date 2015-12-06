@@ -25,19 +25,19 @@ public class GoodreadsResponse {
   }
 
   @Nullable public GoodreadsBook getFirstBook() {
-    if (search == null || search.results == null || search.results.mGoodreadsWorks == null ||
-        search.results.mGoodreadsWorks.size() == 0) {
+    if (search == null || search.results == null || search.results.mWorks == null ||
+        search.results.mWorks.size() == 0) {
       return null;
     }
-    return search.results.mGoodreadsWorks.get(0).mGoodreadsBook;
+    return search.results.mWorks.get(0).mGoodreadsBook;
   }
 
-  @Nullable public GoodreadsWork getFirsWork() {
-    if (search == null || search.results == null || search.results.mGoodreadsWorks == null ||
-        search.results.mGoodreadsWorks.size() == 0) {
+  @Nullable public Work getFirsWork() {
+    if (search == null || search.results == null || search.results.mWorks == null ||
+        search.results.mWorks.size() == 0) {
       return null;
     }
-    return search.results.mGoodreadsWorks.get(0);
+    return search.results.mWorks.get(0);
   }
 
   @Root(strict = false) public static class Request {
@@ -65,8 +65,8 @@ public class GoodreadsResponse {
   }
 
   @Root(strict = false) public static class Results {
-    @ElementList(name = "work", required = false, inline = true) ArrayList<GoodreadsWork>
-        mGoodreadsWorks;
+    @ElementList(name = "work", required = false, inline = true)
+    ArrayList<Work> mWorks;
   }
 
 }
