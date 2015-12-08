@@ -28,7 +28,7 @@
           android:id="@+id/book_title"
           app:layout_widthPercent="70%"
           android:layout_height="wrap_content"
-          style="@style/Widget.HenriPotier.BuyTitle"
+          style="@style/Widget.HarryPotterBooks.BuyTitle"
           tools:text="Henri Potier blabla blabla blabla 1"/>
 
       <TextView
@@ -40,12 +40,12 @@
           android:layout_alignParentRight="true"
           android:layout_alignParentEnd="true"
           android:gravity="end"
-          style="@style/Widget.HenriPotier.BuyPrice"
+          style="@style/Widget.HarryPotterBooks.BuyPrice"
           tools:text="10.33€"/>
 
     </android.support.percent.PercentRelativeLayout>
 
-    <com.mounacheikhna.xebiaproject.ui.view.QuantityView
+    <com.mounacheikhna.harrypotterbooks.ui.view.QuantityView
         android:id="@+id/quantity"
         android:layout_below="@id/header"
         android:layout_marginTop="@dimen/spacing_double"

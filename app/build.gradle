@@ -23,12 +23,12 @@ android {
 
     //multiDexEnabled true
 
-    buildConfigField "String", "HENRI_POTIER_ENDPOINT_URL", "\"http://henri-potier.xebia.fr\""
+    buildConfigField "String", "HARRY_POTTER_BOOK_ENDPOINT_URL", "\"http://henri-potier.xebia.fr\""
 
     buildConfigField "String", "GOOD_READ_ENDPOINT_URL", "\"https://www.goodreads.com\""
-    buildConfigField "String", "GOOD_READS_KEY", "\"rSgxFW23ByRubOCGfwEQTg\""
+    buildConfigField "String", "GOOD_READS_KEY", "\"YOUR_API_KEY\""
     buildConfigField "String", "GOOD_READS_SCECRET",
-        "\"xs3msWO6DTgBFh5zpRyOjvGm8sxF9HuUd0NWtGbQwi4\""
+        "\"YOUR_API_SECRET\""
 
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }

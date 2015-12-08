@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-  <style name="HenriPotier.TranslucentBase">
+  <style name="HarryPotterBooks.TranslucentBase">
     <item name="android:windowDrawsSystemBarBackgrounds">true</item>
   </style>
 
-  <style name="HenriPotier.BookActivity">
+  <style name="HarryPotterBooks.BookActivity">
     <item name="android:windowSharedElementEnterTransition">@transition/book_image_shared_enter
     </item>
     <item name="android:windowSharedElementReturnTransition">@transition/book_image_shared_return
@@ -15,7 +15,7 @@
     <item name="android:windowAllowReturnTransitionOverlap">false</item>
   </style>
 
-  <style name="Widget.HenriPotier.QuantityAction">
+  <style name="Widget.HarryPotterBooks.QuantityAction">
     <item name="android:background">?android:selectableItemBackgroundBorderless</item>
   </style>
 

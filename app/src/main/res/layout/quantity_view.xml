@@ -11,7 +11,7 @@
       android:layout_width="38dp"
       android:layout_height="38dp"
       android:src="@drawable/ic_remove_circle_outline_grey_600_18dp"
-      style="@style/Widget.HenriPotier.QuantityAction"/>
+      style="@style/Widget.HarryPotterBooks.QuantityAction"/>
 
   <TextView
       android:id="@+id/tv_quantity"
@@ -28,6 +28,6 @@
       android:layout_width="38dp"
       android:layout_height="38dp"
       android:src="@drawable/ic_add_circle_outline_grey_600_18dp"
-      style="@style/Widget.HenriPotier.QuantityAction"/>
+      style="@style/Widget.HarryPotterBooks.QuantityAction"/>
 
 </merge>

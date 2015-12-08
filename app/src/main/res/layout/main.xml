@@ -22,7 +22,7 @@
   </android.support.design.widget.AppBarLayout>
 
 
-  <com.mounacheikhna.xebiaproject.ui.book.BooksGridView
+  <com.mounacheikhna.harrypotterbooks.ui.book.BooksGridView
       android:id="@+id/books_grid_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -32,7 +32,7 @@
       tools:listitem="@layout/book_item"/>
   <!-- android:layout_margin="@dimen/spacing_double" -->
 
-  <com.mounacheikhna.xebiaproject.ui.cart.CartView
+  <com.mounacheikhna.harrypotterbooks.ui.cart.CartView
       android:id="@+id/cart_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"

@@ -9,7 +9,7 @@
       android:layout_height="match_parent"
       android:orientation="vertical">
 
-    <com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator
+    <com.mounacheikhna.harrypotterbooks.ui.view.CustomViewAnimator
         android:id="@+id/container_animator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +38,7 @@
           android:clipToPadding="false"
           app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
-    </com.mounacheikhna.xebiaproject.ui.view.CustomViewAnimator>
+    </com.mounacheikhna.harrypotterbooks.ui.view.CustomViewAnimator>
 
   </LinearLayout>
 </merge>

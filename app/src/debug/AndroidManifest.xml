@@ -1,14 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mounacheikhna.xebiaproject">
+    package="com.mounacheikhna.harrypotterbooks">
 
   <application
-      android:name=".DebugHenriPotierApp"
+      android:name=".DebugHarryPotterBooksApp"
       android:allowBackup="true"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:supportsRtl="true"
-      android:theme="@style/HenriPotier"
+      android:theme="@style/HarryPotterBooks"
       tools:replace="android:name">
 
   </application>

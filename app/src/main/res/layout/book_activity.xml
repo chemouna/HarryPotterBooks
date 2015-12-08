@@ -58,7 +58,7 @@
       android:paddingTop="@dimen/app_bar_height"
       app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.mounacheikhna.xebiaproject.ui.details.BookDetailsView
+    <com.mounacheikhna.harrypotterbooks.ui.details.BookDetailsView
         android:id="@+id/book_details_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
