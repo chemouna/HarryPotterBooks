@@ -8,6 +8,11 @@
     android:fitsSystemWindows="true"
     tools:ignore="NewApi">
 
+  <FrameLayout
+      android:id="@+id/container"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
   <android.support.design.widget.AppBarLayout
       android:id="@+id/appbar"
       android:layout_width="match_parent"
@@ -31,6 +36,7 @@
           android:scaleType="centerCrop"
           android:fitsSystemWindows="true"
           android:transitionName="@string/transition_book_image"
+
           tools:ignore="NewApi"/>
 
       <android.support.v7.widget.Toolbar
@@ -43,14 +49,16 @@
     </android.support.design.widget.CollapsingToolbarLayout>
 
   </android.support.design.widget.AppBarLayout>
+  </FrameLayout>
 
 
   <android.support.v4.widget.NestedScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      android:paddingTop="@dimen/app_bar_height"
       app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <com.mounacheikhna.xebiaproject.ui.details.BookDetailsView
+    <com.mounacheikhna.harrypotterbooks.ui.details.BookDetailsView
         android:id="@+id/book_details_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

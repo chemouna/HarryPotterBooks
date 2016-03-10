@@ -33,7 +33,7 @@
       android:layout_height="wrap_content"
       android:layout_toRightOf="@id/total_label"
       android:layout_toEndOf="@id/total_label"
-      style="@style/Widget.HenriPotier.CardPrice"
+      style="@style/Widget.HarryPotterBooks.CardPrice"
       android:gravity="center"
       android:textStyle="bold"
       tools:text="100.0€"/>

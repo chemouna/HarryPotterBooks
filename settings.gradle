@@ -1,3 +1,3 @@
-rootProject.name = 'XebiaProject'
+rootProject.name = 'HarryPotterBooks'
 
 include ':app'

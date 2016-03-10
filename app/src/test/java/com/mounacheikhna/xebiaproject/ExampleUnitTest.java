@@ -1,4 +1,4 @@
-package com.mounacheikhna.xebiaproject;
+package com.mounacheikhna.harrypotterbooks;
 
 import org.junit.Test;
 

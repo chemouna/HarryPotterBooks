@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mounacheikhna.xebiaproject.ui.book.BookItemView
+<com.mounacheikhna.harrypotterbooks.ui.book.BookItemView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/book_overflow_menu"
             android:layout_toStartOf="@id/book_overflow_menu"
-            style="@style/Widget.HenriPotier.CardTitle"
+            style="@style/Widget.HarryPotterBooks.CardTitle"
             tools:text="Book name Book name Book name"/>
 
         <TextView
@@ -56,7 +56,7 @@
             android:layout_below="@id/book_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.HenriPotier.CardSubtitle"
+            style="@style/Widget.HarryPotterBooks.CardSubtitle"
             android:text="@string/default_author"
             tools:text="@string/default_author"/>
 
@@ -70,7 +70,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="@dimen/spacing_normal"
             android:layout_marginEnd="@dimen/spacing_normal"
-            style="@style/Widget.HenriPotier.CardPrice"
+            style="@style/Widget.HarryPotterBooks.CardPrice"
             tools:text="17.72€"/>
 
 
@@ -80,4 +80,4 @@
 
   </android.support.v7.widget.CardView>
 
-</com.mounacheikhna.xebiaproject.ui.book.BookItemView>
+</com.mounacheikhna.harrypotterbooks.ui.book.BookItemView>

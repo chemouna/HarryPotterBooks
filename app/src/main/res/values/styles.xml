@@ -1,38 +1,38 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-  <style name="Widget.HenriPotier" parent="android:Widget"/>
+  <style name="Widget.HarryPotterBooks" parent="android:Widget"/>
 
-  <style name="Widget.HenriPotier.Toolbar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+  <style name="Widget.HarryPotterBooks.Toolbar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
     <item name="android:background">@color/primary</item>
     <item name="titleTextColor">@color/text_primary_light</item>
     <item name="android:textColor">@color/text_primary_light</item>
     <item name="android:elevation" tools:targetApi="lollipop">@dimen/toolbar_elevation</item>
   </style>
 
-  <style name="HenriPotier.MainActivity"/>
+  <style name="HarryPotterBooks.MainActivity"/>
 
-  <style name="Widget.HenriPotier.CardTitle">
+  <style name="Widget.HarryPotterBooks.CardTitle">
     <item name="android:maxLines">2</item>
     <item name="android:ellipsize">end</item>
     <item name="android:textSize">16sp</item>
     <item name="android:textColor">@color/text_primary_dark</item>
   </style>
 
-  <style name="Widget.HenriPotier.CardSubtitle" parent="TextAppearance.AppCompat.Small">
+  <style name="Widget.HarryPotterBooks.CardSubtitle" parent="TextAppearance.AppCompat.Small">
     <item name="android:maxLines">1</item>
     <item name="android:ellipsize">end</item>
     <item name="android:layout_marginBottom">@dimen/spacing_very_small</item>
     <item name="android:textColor">@color/text_secondary_dark</item>
   </style>
 
-  <style name="Widget.HenriPotier.CardPrice">
+  <style name="Widget.HarryPotterBooks.CardPrice">
     <item name="android:textColor">@color/accent</item>
   </style>
 
 
-  <style name="HenriPotier.TranslucentBase"/>
+  <style name="HarryPotterBooks.TranslucentBase"/>
 
-  <style name="HenriPotier.Translucent" parent="HenriPotier.TranslucentBase">
+  <style name="HarryPotterBooks.Translucent" parent="HarryPotterBooks.TranslucentBase">
     <item name="android:windowBackground">@color/translucent_background</item>
     <item name="android:colorBackgroundCacheHint">@null</item>
     <item name="android:windowContentOverlay">@null</item>
@@ -41,30 +41,30 @@
     <item name="android:windowNoTitle">true</item>
   </style>
 
-  <style name="HenriPotier.BookActivity">
+  <style name="HarryPotterBooks.BookActivity">
   </style>
 
-  <style name="HenriPotier.Translucent.BuyBook">
+  <style name="HarryPotterBooks.Translucent.BuyBook">
     <item name="android:windowAnimationStyle">@null</item>
     <item name="colorPrimary">@color/accent</item>
   </style>
 
-  <style name="Widget.HenriPotier.BuyPrice">
+  <style name="Widget.HarryPotterBooks.BuyPrice">
     <item name="android:textColor">@color/accent</item>
     <item name="android:textSize">18sp</item>
   </style>
 
-  <style name="Widget.HenriPotier.BuyTitle">
+  <style name="Widget.HarryPotterBooks.BuyTitle">
     <item name="android:textColor">@color/text_primary_dark</item>
     <item name="android:textSize">18sp</item>
     <item name="android:maxLines">3</item>
     <item name="android:ellipsize">end</item>
   </style>
 
-  <style name="Widget.HenriPotier.QuantityAction">
+  <style name="Widget.HarryPotterBooks.QuantityAction">
   </style>
 
-  <style name="Widget.HenriPotier.CartTitle" parent="TextAppearance.AppCompat.Caption">
+  <style name="Widget.HarryPotterBooks.CartTitle" parent="TextAppearance.AppCompat.Caption">
     <item name="android:textAllCaps">true</item>
   </style>
 
@@ -80,7 +80,7 @@
   <style name="TextAppearance.Caption" parent="TextAppearance.AppCompat.Caption">
   </style>
 
-  <style name="Widget.HenriPotier.BookAction" parent="Widget.AppCompat.Button">
+  <style name="Widget.HarryPotterBooks.BookAction" parent="Widget.AppCompat.Button">
     <item name="android:gravity">center_horizontal</item>
     <item name="android:textAppearance">@style/TextAppearance.GreyContent</item>
     <item name="android:drawablePadding">4dp</item>
