@@ -3,7 +3,7 @@
 
 An app to display all Harry potter books details (From a custom server and goodreads api).
 
-### Demo For :
+### Implementation :
 * Building an application with MVP. 
 * Implementation of Android Transitions
   (Morph Fab to Dialog and Dialog back to Fab).
