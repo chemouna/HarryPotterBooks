@@ -3,7 +3,7 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.0.0-beta6'
+    classpath 'com.android.tools.build:gradle:2.1.0-alpha1'
   }
 }
 
@@ -15,7 +15,7 @@ android {
   buildToolsVersion rootProject.ext.buildToolsVersion
 
   defaultConfig {
-    applicationId "com.mounacheikhna.xebiaproject"
+    applicationId "com.mounacheikhna.harrypotterbooks"
     minSdkVersion rootProject.ext.minSdkVersion
     targetSdkVersion rootProject.ext.targetSdkVersion
     versionCode rootProject.ext.versionCode
@@ -43,7 +43,6 @@ android {
     }
   }
 }
-
 
 dependencies {
   compile rootProject.ext.supportAppCompat
