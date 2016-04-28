@@ -14,6 +14,27 @@ public class Book implements Parcelable {
   private String cover;
   private int quantity;
 
+  public static final Creator<Book> CREATOR = new Creator<Book>() {
+    public Book createFromParcel(Parcel source) {
+      return new Book(source);
+    }
+
+    public Book[] newArray(int size) {
+      return new Book[size];
+    }
+  };
+
+  public Book() {
+  }
+
+  protected Book(Parcel in) {
+    this.isbn = in.readString();
+    this.title = in.readString();
+    this.price = in.readInt();
+    this.cover = in.readString();
+    this.quantity = in.readInt();
+  }
+
   public String getIsbn() {
     return isbn;
   }
@@ -38,9 +59,6 @@ public class Book implements Parcelable {
     this.quantity = quantity;
   }
 
-  public Book() {
-  }
-
   @Override public int describeContents() {
     return 0;
   }
@@ -53,21 +71,4 @@ public class Book implements Parcelable {
     dest.writeInt(this.quantity);
   }
 
-  protected Book(Parcel in) {
-    this.isbn = in.readString();
-    this.title = in.readString();
-    this.price = in.readInt();
-    this.cover = in.readString();
-    this.quantity = in.readInt();
-  }
-
-  public static final Creator<Book> CREATOR = new Creator<Book>() {
-    public Book createFromParcel(Parcel source) {
-      return new Book(source);
-    }
-
-    public Book[] newArray(int size) {
-      return new Book[size];
-    }
-  };
 }

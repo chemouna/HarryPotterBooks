@@ -47,6 +47,26 @@ public class MainActivity extends AppCompatActivity {
   private Interpolator mInterpolator;
   private ObjectAnimator mColorChange;
 
+  public static final Property<FrameLayout, Integer> FOREGROUND_COLOR =
+          new Animations.IntProperty<FrameLayout>("foregroundColor") {
+
+            @Override public void setValue(FrameLayout layout, int value) {
+              if (layout.getForeground() instanceof ColorDrawable) {
+                ((ColorDrawable) layout.getForeground().mutate()).setColor(value);
+              } else {
+                layout.setForeground(new ColorDrawable(value));
+              }
+            }
+
+            @Override public Integer get(FrameLayout layout) {
+              if (layout.getForeground() instanceof ColorDrawable) {
+                return ((ColorDrawable) layout.getForeground()).getColor();
+              } else {
+                return Color.TRANSPARENT;
+              }
+            }
+          };
+
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
@@ -114,25 +134,5 @@ public class MainActivity extends AppCompatActivity {
     mColorChange.setEvaluator(new ArgbEvaluator());
     mColorChange.setInterpolator(mInterpolator);
   }
-
-  public static final Property<FrameLayout, Integer> FOREGROUND_COLOR =
-      new Animations.IntProperty<FrameLayout>("foregroundColor") {
-
-        @Override public void setValue(FrameLayout layout, int value) {
-          if (layout.getForeground() instanceof ColorDrawable) {
-            ((ColorDrawable) layout.getForeground().mutate()).setColor(value);
-          } else {
-            layout.setForeground(new ColorDrawable(value));
-          }
-        }
-
-        @Override public Integer get(FrameLayout layout) {
-          if (layout.getForeground() instanceof ColorDrawable) {
-            return ((ColorDrawable) layout.getForeground()).getColor();
-          } else {
-            return Color.TRANSPARENT;
-          }
-        }
-      };
 
 }
