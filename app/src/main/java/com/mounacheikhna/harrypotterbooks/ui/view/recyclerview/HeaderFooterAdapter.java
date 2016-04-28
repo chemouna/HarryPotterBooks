@@ -29,8 +29,8 @@ public class HeaderFooterAdapter<T extends RecyclerView.Adapter>
   private static final int HEADER_VIEW_TYPE = -1000;
   private static final int FOOTER_VIEW_TYPE = -2000;
   private final T mBase;
-  private final List<View> mHeaders = new ArrayList<View>();
-  private final List<View> mFooters = new ArrayList<View>();
+  private final List<View> mHeaders = new ArrayList<>();
+  private final List<View> mFooters = new ArrayList<>();
 
   /**
    * Constructor.

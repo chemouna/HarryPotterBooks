@@ -31,7 +31,7 @@ import org.simpleframework.xml.Root;
 
   @Nullable public GoodreadsBook getFirstBook() {
     if (search == null || search.results == null || search.results.mWorks == null ||
-        search.results.mWorks.size() == 0) {
+        search.results.mWorks.isEmpty()) {
       return null;
     }
     return search.results.mWorks.get(0).mGoodreadsBook;
@@ -39,7 +39,7 @@ import org.simpleframework.xml.Root;
 
   @Nullable public Work getFirsWork() {
     if (search == null || search.results == null || search.results.mWorks == null ||
-        search.results.mWorks.size() == 0) {
+        search.results.mWorks.isEmpty()) {
       return null;
     }
     return search.results.mWorks.get(0);

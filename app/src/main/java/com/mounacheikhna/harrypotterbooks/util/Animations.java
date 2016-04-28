@@ -129,7 +129,7 @@ public final class Animations {
   public static class NoPauseAnimator extends Animator {
     private final Animator mAnimator;
     private final ArrayMap<AnimatorListener, AnimatorListener> mListeners =
-        new ArrayMap<AnimatorListener, AnimatorListener>();
+        new ArrayMap<>();
 
     public NoPauseAnimator(Animator animator) {
       mAnimator = animator;
@@ -164,7 +164,7 @@ public final class Animations {
     }
 
     @Override public ArrayList<AnimatorListener> getListeners() {
-      return new ArrayList<AnimatorListener>(mListeners.keySet());
+      return new ArrayList<>(mListeners.keySet());
     }
 
     @Override public long getStartDelay() {
