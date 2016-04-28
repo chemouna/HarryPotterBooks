@@ -104,22 +104,22 @@ import com.mounacheikhna.harrypotterbooks.R;
       return null;
     }
 
-    Integer startColor = (Integer) startValues.values.get(PROPERTY_COLOR);
-    Integer startCornerRadius = (Integer) startValues.values.get(PROPERTY_CORNER_RADIUS);
-    Integer endColor = (Integer) endValues.values.get(PROPERTY_COLOR);
-    Integer endCornerRadius = (Integer) endValues.values.get(PROPERTY_CORNER_RADIUS);
+    Integer startColorTmp = (Integer) startValues.values.get(PROPERTY_COLOR);
+    Integer startCornerRadiusTmp = (Integer) startValues.values.get(PROPERTY_CORNER_RADIUS);
+    Integer endColorTmp = (Integer) endValues.values.get(PROPERTY_COLOR);
+    Integer endCornerRadiusTmp = (Integer) endValues.values.get(PROPERTY_CORNER_RADIUS);
 
-    if (startColor == null || startCornerRadius == null || endColor == null ||
-        endCornerRadius == null) {
+    if (startColorTmp == null || startCornerRadiusTmp == null || endColorTmp == null ||
+        endCornerRadiusTmp == null) {
       return null;
     }
 
-    MorphDrawable background = new MorphDrawable(startColor, startCornerRadius);
+    MorphDrawable background = new MorphDrawable(startColorTmp, startCornerRadiusTmp);
     endValues.view.setBackground(background);
 
-    Animator color = ObjectAnimator.ofArgb(background, background.COLOR, endColor);
+    Animator color = ObjectAnimator.ofArgb(background, background.COLOR, endColorTmp);
     Animator corners =
-        ObjectAnimator.ofFloat(background, background.CORNER_RADIUS, endCornerRadius);
+        ObjectAnimator.ofFloat(background, background.CORNER_RADIUS, endCornerRadiusTmp);
 
     // hide child views (offset down & fade out)
     if (endValues.view instanceof ViewGroup) {
