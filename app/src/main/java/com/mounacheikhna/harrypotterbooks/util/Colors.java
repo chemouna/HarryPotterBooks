@@ -12,12 +12,12 @@ import java.lang.annotation.RetentionPolicy;
 
 public class Colors {
 
-  private Colors() {
-  }
-
   public static final int IS_LIGHT = 0;
   public static final int IS_DARK = 1;
   public static final int LIGHTNESS_UNKNOWN = 2;
+
+  private Colors() {
+  }
 
   /**
    * Checks if the most populous color in the given palette is dark
