@@ -39,12 +39,13 @@ public class GsonPreferenceAdapter<T> implements Preference.Adapter<T> {
       switch (this.syntaxExceptionBehavior) {
         case NULL:
           return null;
-        default:
-          throw new IllegalStateException("Unknown behavior: " + this.syntaxExceptionBehavior);
         case DELETE:
           delete(key, preferences);
+          break;
         case THROWN:
           throw jsonSyntaxException;
+        default:
+          throw new IllegalStateException("Unknown behavior: " + this.syntaxExceptionBehavior);
       }
     }
   }
